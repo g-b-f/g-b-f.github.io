@@ -1,0 +1,72 @@
+*{
+	color: white;
+	box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0
+}
+
+body {
+  /*font-family: Arial, Helvetica, sans-serif;*/
+  font-family: Garamond, serif;
+
+} 
+
+h1, h2, h3, h4, h5, h6, li a{
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1,h2 {
+	padding: 1% 1%;
+	margin: auto;
+	text-align: center;
+}
+
+h2{
+	font-weight: normal;
+}
+
+h3{
+	font-size: 1.2em;
+}
+
+p{
+	font-size: 1.2em;
+}
+
+
+.mainbox, ul.nav{
+	margin: auto;
+	width: 70%;
+	padding: 1% 5%;	
+}
+.mainbox {
+	text-align: top-left;
+	height: 70%;
+	/*padding-bottom: 30%;*/
+	padding-top: 2%;
+	background-color: #222;
+	line-height: 1.5em;
+}	
+ul.nav {
+	/*margin-top: 2em;*/
+	background-color: #333;
+	list-style-type: none;
+	overflow: hidden;
+	list-style-type: none;
+}
+li {
+  float: left;
+}
+li a { /* make this a flex box or a grid or something in order for it to auto scale */
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 0.9em 6.8em;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #111;
+}
