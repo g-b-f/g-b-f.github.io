@@ -1,17 +1,33 @@
+/* 
+light background: #69c
+medium light background: #369
+medium dark background: #366
+dark background: #036
+*/
+:root{
+	--textColour: #fff;
+	--light_bg: #999;
+	--med_light_bg: #666;
+	--med_dark_bg: #333;
+	--dark_bg: #000;
+}
+
 *{
-	color: white;
+	color: var(--textColour);
 	box-sizing: border-box;
 }
 
 html, body {
   height: 100%;
-  margin: 0
+  margin: 0;
+  background-color: var(--dark_bg);
+/*background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);*/
 }
 
 body {
   /*font-family: Arial, Helvetica, sans-serif;*/
   font-family: Garamond, serif;
-
 } 
 
 h1, h2, h3, h4, h5, h6, li a{
@@ -28,14 +44,10 @@ h2{
 	font-weight: normal;
 }
 
-h3{
+h3,p{
 	font-size: 1.2em;
+	/* overflow: auto; */
 }
-
-p{
-	font-size: 1.2em;
-}
-
 
 .mainbox, ul.nav{
 	margin: auto;
@@ -43,16 +55,18 @@ p{
 	padding: 1% 5%;	
 }
 .mainbox {
+	overflow: auto;
 	text-align: top-left;
-	height: 70%;
+	/* height: 70%; */
 	/*padding-bottom: 30%;*/
 	padding-top: 2%;
-	background-color: #222;
+	padding-bottom: 2%;
+	background-color: var(--med_light_bg);
 	line-height: 1.5em;
 }	
 ul.nav {
 	/*margin-top: 2em;*/
-	background-color: #333;
+	background-color: var(--light_bg);
 	list-style-type: none;
 	overflow: hidden;
 	list-style-type: none;
@@ -62,11 +76,31 @@ li {
 }
 li a { /* make this a flex box or a grid or something in order for it to auto scale */
   display: block;
-  color: white;
+/*  color: white;*/
   text-align: center;
-  padding: 0.9em 6.8em;
+  padding: 0.9em 6.5em;
   text-decoration: none;
 }
 li a:hover {
-  background-color: #111;
+  background-color: var(--med_light_bg);
+}
+
+
+
+
+
+	
+.grid-container {
+	height: 80%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: auto;
+	border: 1px solid var(--dark_bg);
+}
+.grid-item {
+	border: 1px solid var(--dark_bg);
+	background-color: var(--med_light_bg)
+  padding: 10%;
+  font-size: 30px;
+  text-align: center;
 }
