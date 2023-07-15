@@ -41,6 +41,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'pipeline';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Assumptions about data" href="assumptions.html" />
     <link rel="prev" title="pipeline" href="modules.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -129,6 +130,13 @@
                       </a>
                     </li>
                 
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="assumptions.html">
+                        Assumptions about data
+                      </a>
+                    </li>
+                
   </ul>
 </nav></div>
       
@@ -209,6 +217,13 @@ document.write(`
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="modules.html">
                         pipeline
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="assumptions.html">
+                        Assumptions about data
                       </a>
                     </li>
                 
@@ -320,7 +335,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.chk">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">chk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_verbosity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.chk" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">chk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.chk" title="Permalink to this definition">#</a></dt>
 <dd><p>Displays status of python code.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -411,7 +426,7 @@ such as those used in this pipeline</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>clust</strong> (<em>DataFrame</em>) – DataFrame of clusters</p></li>
+<li><p><strong>lab_df</strong> (<em>DataFrame</em>) – DataFrame of patients, each labelled with their predicted cluster</p></li>
 <li><p><strong>attrib</strong> (<em>DataFrame</em>) – DataFrame of patients and their corresponding attributes
 such as Gender, Ethnicity, etc</p></li>
 <li><p><strong>threshold</strong> (<em>int</em><em>, </em><em>optional</em>) – Ignore clusters smaller than this threshold</p></li>
@@ -424,12 +439,6 @@ such as Gender, Ethnicity, etc</p></li>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pipeline.getPath">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">getPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.getPath" title="Permalink to this definition">#</a></dt>
-<dd><p>unused. raises exception if called</p>
 </dd></dl>
 
 <dl class="py function">
@@ -476,7 +485,8 @@ doi: 10.1186/s12877-018-0929-6</p>
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Kiesel, E.K., Hopf, Y.M. and Drey, M. (2018)
 “An anticholinergic burden score for German prescribers: Score development”,
-BMC Geriatrics, 18(1). doi:10.1186/s12877-018-0929-6.</p>
+BMC Geriatrics, 18(1).
+doi: <a class="reference external" href="doi.org/10.1186/s12877-018-0929-6">10.1186/s12877-018-0929-6</a>.</p>
 </div>
 </div>
 </dd></dl>
@@ -506,14 +516,19 @@ reach consensus through simple majority voting</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pipeline.premain">
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">premain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.premain" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pipeline.prepare_window">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">prepare_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileOut</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempDir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.prepare_window" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">prepare_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempDir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.prepare_window" title="Permalink to this definition">#</a></dt>
 <dd><p>Prepares auxiliary files for running the windowing C file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fileIn</strong> (<em>str</em>) – path to input file</p></li>
-<li><p><strong>fileOut</strong> (<em>str</em>) – path to desired output file</p></li>
+<li><p><strong>tempDir</strong> (<em>str</em>) – path to temporary directory</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -533,7 +548,10 @@ reach consensus through simple majority voting</p>
 <dd><p>Runs the C file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>groups</strong> (<em>groupBy object</em>) – Patients grouped using DataFrame.groupby(‘patid’)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups</strong> (<em>groupBy object</em>) – Patients grouped using DataFrame.groupby(‘patid’)</p></li>
+<li><p><strong>tempDir</strong> (<em>str</em>) – path to temporary directory</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>windowOut</strong> – DataFrame created by the C function</p>
@@ -547,6 +565,24 @@ reach consensus through simple majority voting</p>
 <p>This was intended to use multiprocessing.Pool() to allow for multicore
 processing, however an issue with Pool() made me fall back to running
 this in single core. Feel free to dive into the code and get this working.</p>
+<p>Calling Pool() without args results in the program thinking it has more cores than reality.
+As each process allocates memory, this can lead to a large memory use, and possibly other unforeseen issues down the road.
+The fix for this would be to call Pool(NSLOTS), but that causes no work to be done, as if it skipped the call entirely.
+Currently I’m just running this in single core, but if you can figure out how to get this working with more then be my guest.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pipeline.save">
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Pickles an object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>obj</em>) – Object to be pickled</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name to give pickle file</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -610,6 +646,15 @@ and return None if unable to reach consensus</p></li>
         <p class="prev-next-title">pipeline</p>
       </div>
     </a>
+    <a class="right-next"
+       href="assumptions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Assumptions about data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -633,13 +678,14 @@ and return None if unable to reach consensus</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.cluster_prep"><code class="docutils literal notranslate"><span class="pre">cluster_prep()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.clustering"><code class="docutils literal notranslate"><span class="pre">clustering()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.describeClust"><code class="docutils literal notranslate"><span class="pre">describeClust()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.getPath"><code class="docutils literal notranslate"><span class="pre">getPath()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.inputCSV"><code class="docutils literal notranslate"><span class="pre">inputCSV()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.kieselTest"><code class="docutils literal notranslate"><span class="pre">kieselTest()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.majVote"><code class="docutils literal notranslate"><span class="pre">majVote()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.premain"><code class="docutils literal notranslate"><span class="pre">premain()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.prepare_window"><code class="docutils literal notranslate"><span class="pre">prepare_window()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.run_window"><code class="docutils literal notranslate"><span class="pre">run_window()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.unify_score"><code class="docutils literal notranslate"><span class="pre">unify_score()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.x2_analyse"><code class="docutils literal notranslate"><span class="pre">x2_analyse()</span></code></a></li>
 </ul>
