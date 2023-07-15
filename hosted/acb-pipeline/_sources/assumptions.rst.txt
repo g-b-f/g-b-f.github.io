@@ -1,0 +1,21 @@
+Assumptions about data
+======================
+
+While the pipeline is written to be as flexible as possible, quite a few
+assumptions are made for the sake of code simplicity.
+
+Most of these are assumptions about the layout of the source DataFrames,
+i.e, they are assumed to come from and follow the GOLD dataset
+
+For example, the parameter ``fileIn`` of ``prepare_window()`` expects
+the following
+
+====== =============== ========
+patid  fullbnf         age_days
+====== =============== ========
+100000 RXY57UBZJIQK3WG 30000
+100001 S5CDHXZYCP3Z1RP 30010
+100002 nan             30020
+100003 H8CRJGH4ZP1XWB1 30030
+100004 1FNX5TYO5XIARZM 30040
+====== =============== ========
