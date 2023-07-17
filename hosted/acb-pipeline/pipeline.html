@@ -335,7 +335,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.chk">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">chk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.chk" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">chk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.chk" title="Permalink to this definition">#</a></dt>
 <dd><p>Displays status of python code.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -389,7 +389,7 @@ Set to None to not smooth</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.clustering">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dtw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.clustering" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dtw'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.clustering" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates time series clusters using tsLearn.TimeSeriesKMeans</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -399,11 +399,6 @@ Set to None to not smooth</p></li>
 <li><p><strong>n_clusters</strong> (<em>int</em>) – number of clusters</p></li>
 <li><p><strong>metric</strong> (<em>{&quot;euclidean&quot;</em><em>, </em><em>&quot;dtw&quot;</em><em>, </em><em>&quot;softdtw&quot;}</em><em>, </em><em>optional</em>) – Metric to be used for both cluster assignment and barycenter computation.
 If “dtw”, DBA is used for barycenter computation</p></li>
-<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>optional</em>) – Inertia variation threshold.
-If at some point, inertia varies less than this threshold between two consecutive iterations,
-the model is considered to have converged and the algorithm stops.</p></li>
-<li><p><strong>n_init</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time the k-means algorithm will be run with different centroid seeds.
-The final results will be the best output of n_init consecutive runs in terms of inertia.</p></li>
 <li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – Use at most this many patients in calculation</p></li>
 </ul>
 </dd>
@@ -460,6 +455,8 @@ Convenience function that allows for relative paths.</p>
 <dd class="field-odd"><p>DataFrame</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>kwargs are passed to <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">pandas.read_csv()</a>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -492,6 +489,23 @@ doi: <a class="reference external" href="doi.org/10.1186/s12877-018-0929-6">10.1
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pipeline.load">
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Pickles an object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – name of pickle file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>obj</strong> – Unpickled object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>obj</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pipeline.main">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.main" title="Permalink to this definition">#</a></dt>
 <dd><p>Main pipeline. Will execute when the program is run at top level, i.e, not imported</p>
@@ -507,10 +521,10 @@ reach consensus through simple majority voting</p>
 <dd class="field-odd"><p><strong>arr</strong> (<em>array_like</em>) – array of potential scores for the same drug</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>score</strong> – Agreed upon score</p>
+<dd class="field-even"><p><strong>score</strong> – Agreed upon score if possible, None otherwise</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
+<dd class="field-odd"><p>int or None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -609,11 +623,14 @@ and return None if unable to reach consensus</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.x2_analyse">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">x2_analyse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tab_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.x2_analyse" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">x2_analyse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tab_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigLevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.x2_analyse" title="Permalink to this definition">#</a></dt>
 <dd><p>Describes the clusters by finding the contents of each</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>tab_dict</strong> (<em>dict</em>) – Dictionary of DataFrames, in the form {attribute: df}</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tab_dict</strong> (<em>dict</em>) – Dictionary of DataFrames, in the form {attribute: df}</p></li>
+<li><p><strong>sigLevel</strong> (<em>float</em><em>, </em><em>optional</em>) – Threshold at which P can be considered significant</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>df_dict</strong> – Dictionary of DataFrames, in the form {attribute: df}</p>
@@ -680,6 +697,7 @@ and return None if unable to reach consensus</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.describeClust"><code class="docutils literal notranslate"><span class="pre">describeClust()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.inputCSV"><code class="docutils literal notranslate"><span class="pre">inputCSV()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.kieselTest"><code class="docutils literal notranslate"><span class="pre">kieselTest()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.majVote"><code class="docutils literal notranslate"><span class="pre">majVote()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.premain"><code class="docutils literal notranslate"><span class="pre">premain()</span></code></a></li>
