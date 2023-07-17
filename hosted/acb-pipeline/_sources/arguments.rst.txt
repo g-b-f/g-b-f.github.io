@@ -9,21 +9,19 @@ arguments not given, as shown at the bottom of this page.
 
 When importing ``pipeline.py`` as a module, these arguments can be
 passed to the relevant functions by first creating a dictionary called
-for example argDict, then doing ``pipeline.args=argDict``. The keys in
-argDict should be the same as those found in the “Argument” column
-below, but without dashes.
+for example ``argDict``, then doing ``pipeline.args.update(argDict)``.
+The keys in argDict should be the same as those found in the “Argument”
+column below, but without dashes.
 
 
 ===============  ============  ===============================================================  =========
-Argument         Short form    Description                                                      Default
+Argument         Short form    Description                                                        Default
 ===============  ============  ===============================================================  =========
-``--debug``      ``-d``        Make temp files persist                                          False
-``--verbose``    ``-v``        Increase verbosity. Can be passed up to 3 times                  0
-``--tempDir``    ``-t``        Location of temporary directory                                  nan
-``--NSLOTS``     ``-n``        Number of slots                                                  1
-``--window``     ``-w``        Length of window                                                 183
-``--skip``       ``-s``        Amount to skip after each window                                 1
-``--fileIn``     ``-i``        Location of input file                                           data
-``--multicore``  ``-m``        Sliding window algorithm in multicore mode. Not yet implemented  False
-``--highmem``    ``-z``        Run faster but use more memory. Not yet implemented              False
+``--debug``      ``-d``        Make temp files persist                                              False
+``--verbose``    ``-v``        Increase verbosity. Can be passed up to 3 times                          0
+``--NSLOTS``     ``-n``        Number of slots                                                          1
+``--window``     ``-w``        Length of window                                                       183
+``--skip``       ``-s``        Amount to skip after each window                                         1
+``--multicore``  ``-m``        Sliding window algorithm in multicore mode. Not yet implemented      False
+``--highmem``    ``-z``        Run faster but use more memory. Not yet implemented                  False
 ===============  ============  ===============================================================  =========

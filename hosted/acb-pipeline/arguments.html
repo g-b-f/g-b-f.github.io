@@ -320,9 +320,9 @@ receive command line arguments, and fall back to default values for any
 arguments not given, as shown at the bottom of this page.</p>
 <p>When importing <code class="docutils literal notranslate"><span class="pre">pipeline.py</span></code> as a module, these arguments can be
 passed to the relevant functions by first creating a dictionary called
-for example argDict, then doing <code class="docutils literal notranslate"><span class="pre">pipeline.args=argDict</span></code>. The keys in
-argDict should be the same as those found in the “Argument” column
-below, but without dashes.</p>
+for example <code class="docutils literal notranslate"><span class="pre">argDict</span></code>, then doing <code class="docutils literal notranslate"><span class="pre">pipeline.args.update(argDict)</span></code>.
+The keys in argDict should be the same as those found in the “Argument”
+column below, but without dashes.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Argument</p></th>
@@ -342,30 +342,20 @@ below, but without dashes.</p>
 <td><p>Increase verbosity. Can be passed up to 3 times</p></td>
 <td><p>0</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--tempDir</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-t</span></code></p></td>
-<td><p>Location of temporary directory</p></td>
-<td><p>nan</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--NSLOTS</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--NSLOTS</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">-n</span></code></p></td>
 <td><p>Number of slots</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--window</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--window</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">-w</span></code></p></td>
 <td><p>Length of window</p></td>
 <td><p>183</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--skip</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--skip</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">-s</span></code></p></td>
 <td><p>Amount to skip after each window</p></td>
 <td><p>1</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--fileIn</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-i</span></code></p></td>
-<td><p>Location of input file</p></td>
-<td><p>data</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--multicore</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">-m</span></code></p></td>
