@@ -19,7 +19,7 @@ Argument         Short form    Description                                      
 ===============  ============  ===============================================================  =========
 ``--debug``      ``-d``        Make temp files persist                                              False
 ``--verbose``    ``-v``        Increase verbosity. Can be passed up to 3 times                          0
-``--NSLOTS``     ``-n``        Number of slots                                                          1
+``--NSLOTS``     ``-n``        Number of cores                                                          1
 ``--window``     ``-w``        Length of window                                                       183
 ``--skip``       ``-s``        Amount to skip after each window                                         1
 ``--multicore``  ``-m``        Sliding window algorithm in multicore mode. Not yet implemented      False

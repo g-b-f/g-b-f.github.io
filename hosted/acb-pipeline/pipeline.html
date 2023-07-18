@@ -348,6 +348,17 @@ document.write(`
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pipeline.batch_func">
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">batch_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.batch_func" title="Permalink to this definition">#</a></dt>
+<dd><p>Used internally when calling the C windowing program</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gp</strong> (<em>pandas DataFrame</em>) – dataframe containing values for a single patient</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pipeline.chk">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">chk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.chk" title="Permalink to this definition">#</a></dt>
 <dd><p>Displays status of python code.</p>
@@ -357,13 +368,12 @@ document.write(`
 <li><p><strong>task</strong> (<em>str</em><em>, </em><em>optional</em>) – String describing the current task.
 Passing None will end the current timer without starting a new one</p></li>
 <li><p><strong>min_verbosity</strong> (<em>int</em><em>, </em><em>optional</em>) – minimum verbosity level required to display</p></li>
-<li><p><strong>argsDict</strong> (<em>dict</em><em>, </em><em>optional</em>) – dict of args, intended to be passed by command line</p></li>
 <li><p><strong>timer</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to time the current task</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Do chk() (i.e, with no input) at end of program,
+<p>Do <code class="docutils literal notranslate"><span class="pre">chk()</span></code> (i.e, with no input) at end of program,
 or before statements that will print.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
@@ -388,13 +398,13 @@ or before statements that will print.</p>
 <li><p><strong>window_df</strong> (<em>DataFrame</em>) – DataFrame containing patients, ID of prescription, and age at prescription</p></li>
 <li><p><strong>acbDict</strong> (<em>dict</em>) – Dictionary mapping drugs to scores</p></li>
 <li><p><strong>kernel</strong> (<em>iterable</em><em>, </em><em>optional</em>) – Kernel used for smoothing via linear convolution.
-Set to None to not smooth</p></li>
+Set to <code class="docutils literal notranslate"><span class="pre">None</span></code> to not smooth</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>window_df</strong> (<em>DataFrame</em>)</p></li>
-<li><p><strong>pat</strong> (<em>iterable</em>)</p></li>
+<li><p><strong>window_df</strong> (<em>list</em>) – List of scores for each patient, convolved using <code class="docutils literal notranslate"><span class="pre">kernel</span></code></p></li>
+<li><p><strong>pat</strong> (<em>numpy array</em>) – List of patients, in same order as <code class="docutils literal notranslate"><span class="pre">window_df</span></code></p></li>
 </ul>
 </p>
 </dd>
@@ -404,7 +414,7 @@ Set to None to not smooth</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.clustering">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dtw'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.clustering" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates time series clusters using tsLearn.TimeSeriesKMeans</p>
+<dd><p>Creates time series clusters using <code class="docutils literal notranslate"><span class="pre">tslearn.clustering.TimeSeriesKMeans()</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -424,8 +434,9 @@ If “dtw”, DBA is used for barycenter computation</p></li>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>metric: “euclidean” does not work for datasets without equal-length time series,
+<p>metric= “euclidean” does not work for datasets without equal-length time series,
 such as those used in this pipeline</p>
+<p>kwargs are passed to <a class="reference external" href="https://tslearn.readthedocs.io/en/stable/gen_modules/clustering/tslearn.clustering.TimeSeriesKMeans.html">tslearn.clustering.TimeSeriesKMeans()</a>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -514,7 +525,7 @@ doi: <a class="reference external" href="doi.org/10.1186/s12877-018-0929-6">10.1
 <dd class="field-even"><p><strong>obj</strong> – Unpickled object</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>obj</p>
+<dd class="field-odd"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -563,22 +574,22 @@ reach consensus through simple majority voting</p>
 <dd class="field-even"><p><strong>groups</strong> – Patients grouped using DataFrame.groupby(‘patid’)</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>groupBy object</p>
+<dd class="field-odd"><p>pandas.groupBy object</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>Will only work on unix-based systems.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.run_window">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">run_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempDir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.run_window" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">run_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempDir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pipeline'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.run_window" title="Permalink to this definition">#</a></dt>
 <dd><p>Runs the C file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>groups</strong> (<em>groupBy object</em>) – Patients grouped using DataFrame.groupby(‘patid’)</p></li>
 <li><p><strong>tempDir</strong> (<em>str</em>) – path to temporary directory</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – argument for handling corner cases on non-unix systems.
+See notes below.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -590,13 +601,9 @@ reach consensus through simple majority voting</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>Resultant file will be saved in tempDir/slideWindow.csv</p>
-<p>This was intended to use multiprocessing.Pool() to allow for multicore
-processing, however an issue with Pool() made me fall back to running
-this in single core. Feel free to dive into the code and get this working.</p>
-<p>Calling Pool() without args results in the program thinking it has more cores than reality.
-As each process allocates memory, this can lead to a large memory use, and possibly other unforeseen issues down the road.
-The fix for this would be to call Pool(NSLOTS), but that causes no work to be done, as if it skipped the call entirely.
-Currently I’m just running this in single core, but if you can figure out how to get this working with more then be my guest.</p>
+<p>On non-unix systems, when this function is imported as a module (not top level),
+<code class="docutils literal notranslate"><span class="pre">name</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">__name__</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code>. Leaving it at the default value will not achieve
+this, as <code class="docutils literal notranslate"><span class="pre">__name__</span></code> will resolve to the name of the library, not <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -606,7 +613,7 @@ Currently I’m just running this in single core, but if you can figure out how 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>obj</strong> (<em>obj</em>) – Object to be pickled</p></li>
+<li><p><strong>obj</strong> (<em>object</em>) – Object to be pickled</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – name to give pickle file</p></li>
 </ul>
 </dd>
@@ -705,6 +712,7 @@ and return None if unable to reach consensus</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.BNF_to_dict"><code class="docutils literal notranslate"><span class="pre">BNF_to_dict()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.batch_func"><code class="docutils literal notranslate"><span class="pre">batch_func()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.chk"><code class="docutils literal notranslate"><span class="pre">chk()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.cluster_prep"><code class="docutils literal notranslate"><span class="pre">cluster_prep()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.clustering"><code class="docutils literal notranslate"><span class="pre">clustering()</span></code></a></li>
