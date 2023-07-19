@@ -336,10 +336,10 @@ document.write(`
 <dd><p>Converts a bnf csv to a mapping dictionary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>bnfCSV</strong> (<em>DataFrame</em>) – </p>
+<dd class="field-odd"><p><strong>bnfCSV</strong> (<em>DataFrame</em>) – DataFrame of BNF codes and names</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>mapDict</strong></p>
+<dd class="field-even"><p><strong>mapDict</strong> – Dictionary mapping drug names to BNF codes</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -462,6 +462,13 @@ such as Gender, Ethnicity, etc</p></li>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pipeline.get_args">
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">get_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.get_args" title="Permalink to this definition">#</a></dt>
+<dd><p>Runs just before main(), getting command line arguments.
+Non-functional when <code class="docutils literal notranslate"><span class="pre">pipeline.py</span></code> is imported as a library.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pipeline.inputCSV">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">inputCSV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.inputCSV" title="Permalink to this definition">#</a></dt>
 <dd><p>Reads csv or similar using Pandas.
@@ -488,8 +495,7 @@ Convenience function that allows for relative paths.</p>
 <dt class="sig sig-object py" id="pipeline.kieselTest">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">kieselTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.kieselTest" title="Permalink to this definition">#</a></dt>
 <dd><p>From an array of different scores for the same drug,
-reach consensus through the algorithm outlined by Kiesel et al. (2018) <a class="reference internal" href="#rf4de14838b87-1" id="id1">[1]</a>
-doi: 10.1186/s12877-018-0929-6</p>
+reach consensus through the algorithm outlined by Kiesel et al. (2018) <a class="reference internal" href="#rf4de14838b87-1" id="id1">[1]</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>arr</strong> (<em>array_like</em>) – array of potential scores for the same drug</p>
@@ -553,11 +559,6 @@ reach consensus through simple majority voting</p>
 </dd>
 </dl>
 </dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pipeline.premain">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">premain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.premain" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.prepare_window">
@@ -715,12 +716,12 @@ and return None if unable to reach consensus</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.cluster_prep"><code class="docutils literal notranslate"><span class="pre">cluster_prep()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.clustering"><code class="docutils literal notranslate"><span class="pre">clustering()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.describeClust"><code class="docutils literal notranslate"><span class="pre">describeClust()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.get_args"><code class="docutils literal notranslate"><span class="pre">get_args()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.inputCSV"><code class="docutils literal notranslate"><span class="pre">inputCSV()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.kieselTest"><code class="docutils literal notranslate"><span class="pre">kieselTest()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.majVote"><code class="docutils literal notranslate"><span class="pre">majVote()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.premain"><code class="docutils literal notranslate"><span class="pre">premain()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.prepare_window"><code class="docutils literal notranslate"><span class="pre">prepare_window()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.run_window"><code class="docutils literal notranslate"><span class="pre">run_window()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
