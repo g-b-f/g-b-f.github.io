@@ -3,8 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ACB-pipeline's documentation!
+Welcome to ACB pipeline's documentation!
 ========================================
+
+The ACB pipeline is a multi-core pipeline to create longitudinal clusters of
+patient prescription data. While it was formulated to analyse anticholinergic burden,
+it is designed to be as open as possible to other needs.
 
 .. toctree::
    :maxdepth: 2
