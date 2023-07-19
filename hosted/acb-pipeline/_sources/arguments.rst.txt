@@ -14,14 +14,14 @@ The keys in argDict should be the same as those found in the “Argument”
 column below, but without dashes.
 
 
-===============  ============  ===============================================================  =========
-Argument         Short form    Description                                                        Default
-===============  ============  ===============================================================  =========
-``--debug``      ``-d``        Make temp files persist                                              False
-``--verbose``    ``-v``        Increase verbosity. Can be passed up to 3 times                          0
-``--NSLOTS``     ``-n``        Number of cores                                                          1
-``--window``     ``-w``        Length of window                                                       183
-``--skip``       ``-s``        Amount to skip after each window                                         1
-``--multicore``  ``-m``        Sliding window algorithm in multicore mode. Not yet implemented      False
-``--highmem``    ``-z``        Run faster but use more memory. Not yet implemented                  False
-===============  ============  ===============================================================  =========
+================  ============  ===============================================  =========
+Argument          Short form    Description                                        Default
+================  ============  ===============================================  =========
+``--debug``       ``-d``        Make temp files persist                              False
+``--verbose``     ``-v``        Increase verbosity. Can be passed up to 3 times          0
+``--NSLOTS``      ``-n``        Number of cores                                          1
+``--window``      ``-w``        Length of window                                       183
+``--skip``        ``-s``        Amount to skip after each window                         1
+``--singlecore``  ``-z``        Sliding window algorithm in single core mode         False
+``--highmem``     ``-m``        Run window algorithm faster but use more memory      False
+================  ============  ===============================================  =========
