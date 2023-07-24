@@ -336,7 +336,7 @@ document.write(`
 <dd><p>Converts a bnf csv to a mapping dictionary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>bnfCSV</strong> (<em>DataFrame</em>) – DataFrame of BNF codes and names</p>
+<dd class="field-odd"><p><strong>bnfCSV</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – DataFrame of BNF codes and names</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>mapDict</strong> – Dictionary mapping drug names to BNF codes</p>
@@ -350,10 +350,10 @@ document.write(`
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.batch_func">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">batch_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.batch_func" title="Permalink to this definition">#</a></dt>
-<dd><p>Used internally when calling the C windowing program</p>
+<dd><p>Used by <a class="reference internal" href="#pipeline.run_window" title="pipeline.run_window"><code class="xref py py-func docutils literal notranslate"><span class="pre">run_window()</span></code></a> when calling the C windowing program</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>gp</strong> (<em>pandas DataFrame</em>) – dataframe containing values for a single patient</p>
+<dd class="field-odd"><p><strong>gp</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – dataframe containing values for a single patient</p>
 </dd>
 </dl>
 </dd></dl>
@@ -395,7 +395,7 @@ or before statements that will print.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>window_df</strong> (<em>DataFrame</em>) – DataFrame containing patients, ID of prescription, and age at prescription</p></li>
+<li><p><strong>window_df</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – DataFrame containing patients, ID of prescription, and age at prescription</p></li>
 <li><p><strong>acbDict</strong> (<em>dict</em>) – Dictionary mapping drugs to scores</p></li>
 <li><p><strong>kernel</strong> (<em>iterable</em><em>, </em><em>optional</em>) – Kernel used for smoothing via linear convolution.
 Set to <code class="docutils literal notranslate"><span class="pre">None</span></code> to not smooth</p></li>
@@ -415,7 +415,7 @@ Set to <code class="docutils literal notranslate"><span class="pre">None</span><
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.clustering">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dtw'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.clustering" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates time series clusters using <code class="docutils literal notranslate"><span class="pre">tslearn.clustering.TimeSeriesKMeans()</span></code></p>
+<dd><p>Creates time series clusters using <a class="reference external" href="https://tslearn.readthedocs.io/en/stable/gen_modules/clustering/tslearn.clustering.TimeSeriesKMeans.html#tslearn.clustering.TimeSeriesKMeans" title="(in tslearn v0.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeriesKMeans</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -431,13 +431,13 @@ If “dtw”, DBA is used for barycenter computation</p></li>
 <dd class="field-even"><p><strong>lab_df</strong> – DataFrame of patients, each labelled with their predicted cluster</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>DataFrame</p>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>metric= “euclidean” does not work for datasets without equal-length time series,
 such as those used in this pipeline</p>
-<p>kwargs are passed to <a class="reference external" href="https://tslearn.readthedocs.io/en/stable/gen_modules/clustering/tslearn.clustering.TimeSeriesKMeans.html">tslearn.clustering.TimeSeriesKMeans()</a>.</p>
+<p>kwargs are passed to <a class="reference external" href="https://tslearn.readthedocs.io/en/stable/gen_modules/clustering/tslearn.clustering.TimeSeriesKMeans.html#tslearn.clustering.TimeSeriesKMeans" title="(in tslearn v0.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeriesKMeans</span></code></a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -447,8 +447,8 @@ such as those used in this pipeline</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>lab_df</strong> (<em>DataFrame</em>) – DataFrame of patients, each labelled with their predicted cluster</p></li>
-<li><p><strong>attrib</strong> (<em>DataFrame</em>) – DataFrame of patients and their corresponding attributes
+<li><p><strong>lab_df</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – DataFrame of patients, each labelled with their predicted cluster</p></li>
+<li><p><strong>attrib</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – DataFrame of patients and their corresponding attributes
 such as Gender, Ethnicity, etc</p></li>
 <li><p><strong>threshold</strong> (<em>int</em><em>, </em><em>optional</em>) – Ignore clusters smaller than this threshold</p></li>
 </ul>
@@ -486,7 +486,7 @@ Convenience function that allows for relative paths.</p>
 <dd class="field-even"><p><strong>df</strong> – parsed DataFrame</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>DataFrame</p>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -565,8 +565,7 @@ reach consensus through simple majority voting</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.run_window">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">run_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.run_window" title="Permalink to this definition">#</a></dt>
-<dd><p>Prepares auxiliary files for running the windowing C file
-Runs the C file</p>
+<dd><p>Prepares and run auxiliary files for running the windowing C file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>fileIn</strong> (<em>str</em>) – input file</p>
@@ -575,7 +574,7 @@ Runs the C file</p>
 <dd class="field-even"><p><strong>windowOut</strong> – DataFrame created by the C function</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>DataFrame</p>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -604,7 +603,7 @@ Runs the C file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>lit_dfs</strong> (<em>DataFrame</em><em> or </em><em>iterable containing DataFrames</em>) – one or more pandas DataFrames</p></li>
+<li><p><strong>lit_dfs</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> or iterable containing DataFrames) – one or more pandas DataFrames</p></li>
 <li><p><strong>bnfDict</strong> (<em>dict</em><em> or </em><em>None</em>) – dictionary mapping drug names to codes. If None, function will skip mapping</p></li>
 <li><p><strong>votingAlg</strong> (<em>function</em><em>,</em><em>optional</em>) – function to use to vote on scores. Must receive an iterable of potential scores,
 and return None if unable to reach consensus</p></li>
@@ -626,12 +625,12 @@ and return None if unable to reach consensus</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tab_dict</strong> (<em>dict</em>) – Dictionary of DataFrames, in the form {attribute: df}</p></li>
+<li><p><strong>tab_dict</strong> (<em>dict</em>) – Dictionary of <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrames</span></code></a>, in the form {attribute: df}</p></li>
 <li><p><strong>sigLevel</strong> (<em>float</em><em>, </em><em>optional</em>) – Threshold at which P can be considered significant</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>df_dict</strong> – Dictionary of DataFrames, in the form {attribute: df}</p>
+<dd class="field-even"><p><strong>df_dict</strong> – Dictionary of <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrames</span></code></a>, in the form {attribute: df}</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
