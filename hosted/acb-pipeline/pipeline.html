@@ -390,7 +390,7 @@ or before statements that will print.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.cluster_prep">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">cluster_prep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acbDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">range(0,</span> <span class="pre">10)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.cluster_prep" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">cluster_prep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acbDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">range(0,</span> <span class="pre">10)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patLen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.cluster_prep" title="Permalink to this definition">#</a></dt>
 <dd><p>Prepares the data for clustering</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -399,6 +399,7 @@ or before statements that will print.</p>
 <li><p><strong>acbDict</strong> (<em>dict</em>) – Dictionary mapping drugs to scores</p></li>
 <li><p><strong>kernel</strong> (<em>iterable</em><em>, </em><em>optional</em>) – Kernel used for smoothing via linear convolution.
 Set to <code class="docutils literal notranslate"><span class="pre">None</span></code> to not smooth</p></li>
+<li><p><strong>patLen</strong> – Minimum number of patients per group</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -413,7 +414,7 @@ Set to <code class="docutils literal notranslate"><span class="pre">None</span><
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.clustering">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dtw'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.clustering" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dtw'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.clustering" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates time series clusters using <code class="docutils literal notranslate"><span class="pre">tslearn.clustering.TimeSeriesKMeans()</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -464,8 +465,9 @@ such as Gender, Ethnicity, etc</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.get_args">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">get_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.get_args" title="Permalink to this definition">#</a></dt>
-<dd><p>Runs just before main(), getting command line arguments.
-Non-functional when <code class="docutils literal notranslate"><span class="pre">pipeline.py</span></code> is imported as a library.</p>
+<dd><p>Runs just before main(), getting command line arguments.</p>
+<p class="rubric">Notes</p>
+<p>See <a class="reference internal" href="arguments.html#args"><span class="std std-ref">Passing arguments</span></a> for more information on the specific arguments that can be passed</p>
 </dd></dl>
 
 <dl class="py function">
@@ -522,7 +524,7 @@ doi: <a class="reference external" href="doi.org/10.1186/s12877-018-0929-6">10.1
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.load">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.load" title="Permalink to this definition">#</a></dt>
-<dd><p>Pickles an object</p>
+<dd><p>Unpickles a file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – name of pickle file</p>
@@ -561,37 +563,13 @@ reach consensus through simple majority voting</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pipeline.prepare_window">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">prepare_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempDir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.prepare_window" title="Permalink to this definition">#</a></dt>
-<dd><p>Prepares auxiliary files for running the windowing C file</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fileIn</strong> (<em>str</em>) – path to input file</p></li>
-<li><p><strong>tempDir</strong> (<em>str</em>) – path to temporary directory</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>groups</strong> – Patients grouped using DataFrame.groupby(‘patid’)</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pandas.groupBy object</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Only unix-like systems are supported for this function</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pipeline.run_window">
-<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">run_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempDir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.run_window" title="Permalink to this definition">#</a></dt>
-<dd><p>Runs the C file</p>
+<span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">run_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.run_window" title="Permalink to this definition">#</a></dt>
+<dd><p>Prepares auxiliary files for running the windowing C file
+Runs the C file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>groups</strong> (<em>pandas.groupBy object</em>) – Patients grouped using DataFrame.groupby(‘patid’)</p></li>
-<li><p><strong>tempDir</strong> (<em>str</em>) – path to temporary directory</p></li>
-</ul>
+<dd class="field-odd"><p><strong>fileIn</strong> (<em>str</em>) – input file</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>windowOut</strong> – DataFrame created by the C function</p>
@@ -601,7 +579,7 @@ reach consensus through simple majority voting</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Resultant file will be saved in tempDir/slideWindow.csv</p>
+<p>If debug mode on, resultant file will be saved in pipeline_xxxx/slideWindow.csv</p>
 <p>Only unix-like systems are supported for this function</p>
 </dd></dl>
 
@@ -722,7 +700,6 @@ and return None if unable to reach consensus</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.majVote"><code class="docutils literal notranslate"><span class="pre">majVote()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.prepare_window"><code class="docutils literal notranslate"><span class="pre">prepare_window()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.run_window"><code class="docutils literal notranslate"><span class="pre">run_window()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline.unify_score"><code class="docutils literal notranslate"><span class="pre">unify_score()</span></code></a></li>

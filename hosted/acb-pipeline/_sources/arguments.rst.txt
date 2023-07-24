@@ -1,4 +1,4 @@
-:_args:  
+.. _args:  
   
 Passing arguments
 =================
