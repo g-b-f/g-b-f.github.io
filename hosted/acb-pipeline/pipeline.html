@@ -399,13 +399,13 @@ or before statements that will print.</p>
 <li><p><strong>acbDict</strong> (<em>dict</em>) – Dictionary mapping drugs to scores</p></li>
 <li><p><strong>kernel</strong> (<em>iterable</em><em>, </em><em>optional</em>) – Kernel used for smoothing via linear convolution.
 Set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> to not smooth</p></li>
-<li><p><strong>patLen</strong> – Minimum number of patients per group</p></li>
+<li><p><strong>patLen</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of patients per group</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>window_df</strong> (<em>list</em>) – List of scores for each patient, convolved using <code class="xref py py-obj docutils literal notranslate"><span class="pre">kernel</span></code></p></li>
-<li><p><strong>pat</strong> (<em>numpy array</em>) – List of patients, in same order as <code class="xref py py-obj docutils literal notranslate"><span class="pre">window_df</span></code></p></li>
+<li><p><strong>pat</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.25)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a>) – List of patients, in same order as <code class="xref py py-obj docutils literal notranslate"><span class="pre">window_df</span></code></p></li>
 </ul>
 </p>
 </dd>
