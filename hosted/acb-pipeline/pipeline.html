@@ -336,7 +336,7 @@ document.write(`
 <dd><p>Converts a bnf csv to a mapping dictionary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>bnfCSV</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – DataFrame of BNF codes and names</p>
+<dd class="field-odd"><p><strong>bnfCSV</strong> (<em>DataFrame</em>) – <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> of BNF codes and names</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>mapDict</strong> – Dictionary mapping drug names to BNF codes</p>
@@ -353,7 +353,7 @@ document.write(`
 <dd><p>Used by <a class="reference internal" href="#pipeline.run_window" title="pipeline.run_window"><code class="xref py py-func docutils literal notranslate"><span class="pre">run_window()</span></code></a> when calling the C windowing program</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>gp</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – dataframe containing values for a single patient</p>
+<dd class="field-odd"><p><strong>gp</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – DataFrame containing values for a single patient</p>
 </dd>
 </dl>
 </dd></dl>
@@ -373,7 +373,7 @@ Passing None will end the current timer without starting a new one</p></li>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Do <code class="docutils literal notranslate"><span class="pre">chk()</span></code> (i.e, with no input) at end of program,
+<p>Do <a class="reference internal" href="#pipeline.chk" title="pipeline.chk"><code class="xref py py-func docutils literal notranslate"><span class="pre">chk()</span></code></a> (i.e, with no input) at end of program,
 or before statements that will print.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
@@ -395,17 +395,17 @@ or before statements that will print.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>window_df</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – DataFrame containing patients, ID of prescription, and age at prescription</p></li>
+<li><p><strong>window_df</strong> (<em>DataFrame</em>) – <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> containing patients, ID of prescription, and age at prescription</p></li>
 <li><p><strong>acbDict</strong> (<em>dict</em>) – Dictionary mapping drugs to scores</p></li>
 <li><p><strong>kernel</strong> (<em>iterable</em><em>, </em><em>optional</em>) – Kernel used for smoothing via linear convolution.
-Set to <code class="docutils literal notranslate"><span class="pre">None</span></code> to not smooth</p></li>
+Set to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> to not smooth</p></li>
 <li><p><strong>patLen</strong> – Minimum number of patients per group</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>window_df</strong> (<em>list</em>) – List of scores for each patient, convolved using <code class="docutils literal notranslate"><span class="pre">kernel</span></code></p></li>
-<li><p><strong>pat</strong> (<em>numpy array</em>) – List of patients, in same order as <code class="docutils literal notranslate"><span class="pre">window_df</span></code></p></li>
+<li><p><strong>window_df</strong> (<em>list</em>) – List of scores for each patient, convolved using <code class="xref py py-obj docutils literal notranslate"><span class="pre">kernel</span></code></p></li>
+<li><p><strong>pat</strong> (<em>numpy array</em>) – List of patients, in same order as <code class="xref py py-obj docutils literal notranslate"><span class="pre">window_df</span></code></p></li>
 </ul>
 </p>
 </dd>
@@ -447,14 +447,14 @@ such as those used in this pipeline</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>lab_df</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – DataFrame of patients, each labelled with their predicted cluster</p></li>
-<li><p><strong>attrib</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>) – DataFrame of patients and their corresponding attributes
+<li><p><strong>lab_df</strong> (<em>DataFrame</em>) – <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> of patients, each labelled with their predicted cluster</p></li>
+<li><p><strong>attrib</strong> (<em>DataFrame</em>) – <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> of patients and their corresponding attributes
 such as Gender, Ethnicity, etc</p></li>
 <li><p><strong>threshold</strong> (<em>int</em><em>, </em><em>optional</em>) – Ignore clusters smaller than this threshold</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>tab_dict</strong> – Dictionary of DataFrames, in the form {attribute: df}</p>
+<dd class="field-even"><p><strong>tab_dict</strong> – Dictionary of <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrames</span></code></a>, in the form {attribute: df}</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -465,7 +465,7 @@ such as Gender, Ethnicity, etc</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="pipeline.get_args">
 <span class="sig-prename descclassname"><span class="pre">pipeline.</span></span><span class="sig-name descname"><span class="pre">get_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.get_args" title="Permalink to this definition">#</a></dt>
-<dd><p>Runs just before main(), getting command line arguments.</p>
+<dd><p>Runs just before <a class="reference internal" href="#pipeline.main" title="pipeline.main"><code class="xref py py-func docutils literal notranslate"><span class="pre">main()</span></code></a>, getting command line arguments.</p>
 <p class="rubric">Notes</p>
 <p>See <a class="reference internal" href="arguments.html#args"><span class="std std-ref">Passing arguments</span></a> for more information on the specific arguments that can be passed</p>
 </dd></dl>
@@ -479,7 +479,7 @@ Convenience function that allows for relative paths.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – Relative file path of file</p></li>
-<li><p><strong>delim</strong> (<em>str</em><em>, </em><em>optional</em>) – delimiter of file. Default is ‘,’</p></li>
+<li><p><strong>delim</strong> (<em>str</em><em>, </em><em>optional</em>) – delimiter of file. Default is <code class="docutils literal notranslate"><span class="pre">,</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -490,7 +490,7 @@ Convenience function that allows for relative paths.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>kwargs are passed to <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">pandas.read_csv()</a>.</p>
+<p>kwargs are passed to <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html#pandas.read_csv" title="(in pandas v2.0.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code></a></p>
 </dd></dl>
 
 <dl class="py function">
@@ -554,7 +554,7 @@ reach consensus through simple majority voting</p>
 <dd class="field-odd"><p><strong>arr</strong> (<em>array_like</em>) – array of potential scores for the same drug</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>score</strong> – Agreed upon score if possible, None otherwise</p>
+<dd class="field-even"><p><strong>score</strong> – Agreed upon score if possible, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> otherwise</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int or None</p>
@@ -603,17 +603,17 @@ reach consensus through simple majority voting</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>lit_dfs</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a> or iterable containing DataFrames) – one or more pandas DataFrames</p></li>
+<li><p><strong>lit_dfs</strong> (<em>DataFrame</em><em> or </em><em>iterable containing DataFrames</em>) – one or more pandas <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrames</span></code></a></p></li>
 <li><p><strong>bnfDict</strong> (<em>dict</em><em> or </em><em>None</em>) – dictionary mapping drug names to codes. If None, function will skip mapping</p></li>
 <li><p><strong>votingAlg</strong> (<em>function</em><em>,</em><em>optional</em>) – function to use to vote on scores. Must receive an iterable of potential scores,
 and return None if unable to reach consensus</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>score</strong> – Agreed upon score</p>
+<dd class="field-even"><p><strong>score</strong> – DataFrame of agreed upon scores</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
