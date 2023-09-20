@@ -85,8 +85,17 @@ li a:hover {
   background-color: var(--med_light_bg);
 }
 
-
-
+.jsButton{
+  background-color: var(--med_dark_bg);
+  border: none;
+  padding: 1em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.1em;
+  /* margin: 4px 2px; */
+  cursor: pointer;
+}
 
 
 	
