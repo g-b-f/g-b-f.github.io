@@ -12,12 +12,14 @@
 <h1>Text splitter</h1>
 <h2>For code and the like</h2>
 
-<div class = "mainbox">
-<textarea id="textBox" rows="10" cols="80"></textarea>
 
+<div class = "mainbox">
+<p> Paste text in the box below, then click the button to split into columns of at
+most 80 characters wide<br></p>
+<textarea id="textBox" rows="10" cols="80"></textarea>
+<br>
 <!-- <input id="columnLen" type="text" size="5" value="80"> -->
 
-<p>Click the button below to split into columns of at most 80 characters wide<br></p>
 
 <button class="jsButton" onclick="splitter()">Split!</button>
 
@@ -28,7 +30,7 @@
 <script>
 function splitter() {
 	const colLen=80;
-	// the following works correctly for the first row, then not at all after
+	// the following works correctly for the first row, then not at all after:
 	// var colLen = document.getElementById("columnLen").value;
 	// if(/\D/.test(colLen)){
 	// 	alert("column length must be a numeric value");
@@ -50,6 +52,7 @@ function splitter() {
 	}
 	document.getElementById("outputText").innerHTML = text;
 }
+
 </script>
 </body>
 </html>
