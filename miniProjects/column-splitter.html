@@ -2,11 +2,11 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/gabe_stylesheet.css">
+	<link rel="stylesheet" href="../gabe_stylesheet.css">
 	<title>Text splitter</title>
 </head>
 <body>
-<script src="/index.js" type="text/javascript"></script>
+<script src="../index.js" type="text/javascript"></script>
 
 
 <h1>Text splitter</h1>
@@ -17,9 +17,9 @@
 
 <!-- <input id="columnLen" type="text" size="5" value="80"> -->
 
-<p>Click "Split!"<br></p>
+<p>Click the button below to split into columns of at most 80 characters wide<br></p>
 
-<button onclick="splitter()">Split!</button>
+<button class="jsButton" onclick="splitter()">Split!</button>
 
 <p id="outputText"></p>
 <p id="logText"></p>
@@ -28,13 +28,12 @@
 <script>
 function splitter() {
 	const colLen=80;
-	// idk why the following doesn't work properly
+	// the following works correctly for the first row, then not at all after
 	// var colLen = document.getElementById("columnLen").value;
 	// if(/\D/.test(colLen)){
 	// 	alert("column length must be a numeric value");
 	// 	return;
 	// }
-
 
 	var text = document.getElementById("textBox").value;
 
