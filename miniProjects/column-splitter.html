@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Text splitter</h1>
+
+<input type="textBox" id="textBox"
+
+<p>Click "Split!"<br></p>
+
+<button onclick="splitter()">Split!</button>
+
+<p id="outputText"></p>
+<p id="logText"></p>
+
+<script>
+function splitter() {
+	const colLen=80;
+	var text = document.getElementById("textBox").value;
+
+	if (text.length >colLen){
+		for (let i = colLen; i < text.length; i+=colLen){
+			for (; i>(i-colLen); i--){
+				if (text[i] == ' '){
+					text=text.slice(0,i) +"<br>"+ text.slice(i+1);
+					i+=3;
+					break;
+				}
+			}
+		}
+	}
+	document.getElementById("outputText").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
