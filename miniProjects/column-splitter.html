@@ -15,6 +15,8 @@
 <div class = "mainbox">
 <textarea id="textBox" rows="10" cols="80"></textarea>
 
+<!-- <input id="columnLen" type="text" size="5" value="80"> -->
+
 <p>Click "Split!"<br></p>
 
 <button onclick="splitter()">Split!</button>
@@ -26,6 +28,14 @@
 <script>
 function splitter() {
 	const colLen=80;
+	// idk why the following doesn't work properly
+	// var colLen = document.getElementById("columnLen").value;
+	// if(/\D/.test(colLen)){
+	// 	alert("column length must be a numeric value");
+	// 	return;
+	// }
+
+
 	var text = document.getElementById("textBox").value;
 
 	if (text.length >colLen){
