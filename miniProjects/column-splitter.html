@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../gabe_stylesheet.css">
+	<title>Text splitter</title>
+</head>
 <body>
+<script src="../index.js" type="text/javascript"></script>
+
 
 <h1>Text splitter</h1>
+<h2>For code and the like</h2>
 
-<input type="textBox" id="textBox"
+<div class = "mainbox">
+<textarea id="textBox" rows="10" cols="80"></textarea>
 
 <p>Click "Split!"<br></p>
 
@@ -12,6 +21,7 @@
 
 <p id="outputText"></p>
 <p id="logText"></p>
+</div>
 
 <script>
 function splitter() {
@@ -32,6 +42,5 @@ function splitter() {
 	document.getElementById("outputText").innerHTML = text;
 }
 </script>
-
 </body>
 </html>
