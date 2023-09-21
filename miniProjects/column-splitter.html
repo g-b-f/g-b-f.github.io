@@ -15,10 +15,10 @@
 
 <div class = "mainbox">
 <p> Paste text in the box below, then click the button to split into columns of at
-most 80 characters wide<br></p>
+most <input id="columnLen" type="text" size="2" value="80"> characters wide:<br></p>
 <textarea id="textBox" rows="10" cols="80"></textarea>
 <br>
-<!-- <input id="columnLen" type="text" size="5" value="80"> -->
+
 
 
 <button class="jsButton" onclick="splitter()">Split!</button>
@@ -29,13 +29,11 @@ most 80 characters wide<br></p>
 
 <script>
 function splitter() {
-	const colLen=80;
-	// the following works correctly for the first row, then not at all after:
-	// var colLen = document.getElementById("columnLen").value;
-	// if(/\D/.test(colLen)){
-	// 	alert("column length must be a numeric value");
-	// 	return;
-	// }
+	var colLen = Number(document.getElementById("columnLen").value);
+	if(isNaN(colLen)){
+		alert("column length must be a numeric value");
+		return;
+	}
 
 	var text = document.getElementById("textBox").value;
 
