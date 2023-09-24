@@ -32,21 +32,6 @@ header="""<!DOCTYPE html>
 
 """
 
-
-"""
-<div class="themeItem">
-    <a class="themeItem" href="#" onclick="setTheme('white','black','#66a','#559','#227')">Dark</a>
-    <div class="boxWrapper">
-        <div style="background-color:white;" class="box"></div>
-        <div style="background-color:black;" class="box"></div>
-        <div style="background-color:#66a;" class="box"></div>
-        <div style="background-color:#559;" class="box"></div>
-        <div style="background-color:#227;" class="box"></div>
-    </div>
-</div>
-<br>
-"""
-
 with open( "themes.html",'wt') as fo:
     fo.write(header)
     for name, colours in themeDict.items():
