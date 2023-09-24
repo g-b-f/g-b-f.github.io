@@ -5,11 +5,11 @@ medium dark background: #366
 dark background: #036
 */
 :root{
-	--textColour: #fff;
-	--light_bg: #999;
-	--med_light_bg: #666;
-	--med_dark_bg: #333;
-	--dark_bg: #000;
+	--textColour: #fff; /* text */
+	--light_bg: #999; /* top links (ul.nav)*/
+	--mild_bg: #666; /* mainbox, top link hover */
+	--med_bg: #333; /* h2, JSbutton */
+	--strong_bg: #000; /* background */
 }
 
 *{
@@ -20,7 +20,7 @@ dark background: #036
 html, body {
   height: 100%;
   margin: 0;
-  background-color: var(--dark_bg);
+  background-color: var(--strong_bg);
 /*background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);*/
 }
@@ -42,6 +42,8 @@ h1,h2 {
 
 h2{
 	font-weight: normal;
+	background-color: var(--med_bg);
+	width: 70%;
 }
 
 h3,p{
@@ -61,7 +63,7 @@ h3,p{
 	/*padding-bottom: 30%;*/
 	padding-top: 2%;
 	padding-bottom: 2%;
-	background-color: var(--med_light_bg);
+	background-color: var(--mild_bg);
 	line-height: 1.5em;
 }	
 ul.nav {
@@ -82,11 +84,11 @@ li a { /* make this a flex box or a grid or something in order for it to auto sc
   text-decoration: none;
 }
 li a:hover {
-  background-color: var(--med_light_bg);
+  background-color: var(--mild_bg);
 }
 
 .jsButton{
-  background-color: var(--med_dark_bg);
+  background-color: var(--med_bg);
   border: none;
   padding: 1em 2em;
   text-align: center;
@@ -96,20 +98,19 @@ li a:hover {
   /* margin: 4px 2px; */
   cursor: pointer;
 }
-
-
 	
+
 .grid-container {
 	height: 80%;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  margin: auto;
-	border: 1px solid var(--dark_bg);
+	display: grid;
+	grid-template-columns: auto auto auto;
+	margin: auto;
+	border: 1px solid var(--strong_bg);
 }
 .grid-item {
-	border: 1px solid var(--dark_bg);
-	background-color: var(--med_light_bg)
-  padding: 10%;
-  font-size: 30px;
-  text-align: center;
+	border: 1px solid var(--strong_bg);
+	background-color: var(--mild_bg);
+	padding: 10%;
+	font-size: 30px;
+	text-align: center;
 }
