@@ -1,5 +1,7 @@
 // Get the root element
 var r = document.querySelector(':root');
+// var s = sessionStorage;
+var s = localStorage;
 function setTheme(textColour="white", light_bg="black", mild_bg= "#66a", med_bg= "#559", strong_bg= "#227") {
 
     // Set value of colour variables
@@ -10,18 +12,12 @@ function setTheme(textColour="white", light_bg="black", mild_bg= "#66a", med_bg=
     r.style.setProperty('--strong_bg', strong_bg);
 
     // Saving selection to session storage
-    sessionStorage.setItem("textColour", textColour);
-    sessionStorage.setItem("light_bg", light_bg);
-    sessionStorage.setItem("mild_bg", mild_bg);
-    sessionStorage.setItem("med_bg", med_bg);
-    sessionStorage.setItem("strong_bg", strong_bg);
+    s.setItem("textColour", textColour);
+    s.setItem("light_bg", light_bg);
+    s.setItem("mild_bg", mild_bg);
+    s.setItem("med_bg", med_bg);
+    s.setItem("strong_bg", strong_bg);
 }
-
-// --textColour: #fff;
-// --light_bg: #999;
-// --med_light_bg: #666;
-// --med_dark_bg: #333;
-// --dark_bg: #000;
 
 function getTheme(){
     
@@ -36,7 +32,7 @@ function getTheme(){
     setTheme(textColour, contrast_bg, mild_bg, med_bg, strong_bg)    
 }
 
-if (sessionStorage.getItem("textColour")){      // if there's anything in session storage
+if (s.getItem("textColour")){      // if there's anything in session storage
     getTheme()                                  // retrieve the theme
 }
 else{

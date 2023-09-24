@@ -6,6 +6,7 @@ template.innerHTML = `
   <li><a href="/index.html">Home</a></li>
   <li><a href="/projects.html">Projects</a></li>
   <li><a href="/links.html">Links</a></li>
+  <li><a href="/Themes.html">Themes</a></li>
 </ul>
 `;
 
