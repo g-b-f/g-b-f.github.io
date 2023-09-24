@@ -14,8 +14,7 @@ themeDict={
     "Gray": ["#999999", "#999999", "#666666", "#444444"]
 }
 
-header="""
-<!DOCTYPE html>
+header="""<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,6 +29,7 @@ header="""
 <h1>Themes</h1>
 <h2>Spice up your life, or at least my page</h2>
 <div class="mainbox">
+
 """
 
 
@@ -47,8 +47,16 @@ header="""
 <br>
 """
 
-for name, colours in themeDict.items():
-    test=[f'<div style="background-color:{colour};" class="box"></div>' for colour in colours]
-    
-    print(test)
-    break
+with open( "themes.html",'wt') as fo:
+    fo.write(header)
+    for name, colours in themeDict.items():
+        themeBox=[f'\t\t\t<div style="background-color:{colour};" class="box"></div>' for colour in colours]
+        setThemeArgs=[f"'{colour}'" for colour in colours]
+        themeButton=f"""\t\t<a class="themeItem" href="#" onclick="setTheme({','.join(setThemeArgs)})">{name}</a>\n"""
+        
+        fo.write('\t<div class="themeItem">\n')
+        fo.write(themeButton)
+        fo.write('\t\t<div class="boxWrapper">\n')
+        fo.write('\n'.join(themeBox))
+        fo.write("\n\t\t</div>\n\t</div>\n\t<br>\n\n")
+    fo.write("</main>\n</body>\n</html>")
