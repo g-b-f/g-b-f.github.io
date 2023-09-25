@@ -19,14 +19,15 @@
 #     "Pastels": ["#AEC6CF", "#AEC6CF", "#ffc4c4", "#ae7f9a"],
 #     "Gray": ["#999999", "#999999", "#666666", "#444444"]
 # }
-# "#fff","#999";"#666","#333","#000"
+
 
 themeDict={
+# "Default":["#fff","#999";"#666","#333","#000"],
 'Dark': ['white', '#66a', '#66a', '#559', '#227'],
 'Light': ['black', '#7e7ece', '#7e7ece', '#8f8fef', '#a3a3ff'],
-'Accessibility Green': ['Black', '#A8F29A', '#A8F29A', '#A8F29A', '#A8F29A'],
-'Accessibility Yellow': ['Black', '#F8FD89', '#F8FD89', '#F8FD89', '#F8FD89'],
-'Accessibility Blue': ['Black', '#96ADFC', '#96ADFC', '#96ADFC', '#96ADFC'],
+# 'Accessibility Green': ['Black', '#A8F29A', '#A8F29A', '#A8F29A', '#A8F29A'],
+# 'Accessibility Yellow': ['Black', '#F8FD89', '#F8FD89', '#F8FD89', '#F8FD89'],
+# 'Accessibility Blue': ['Black', '#96ADFC', '#96ADFC', '#96ADFC', '#96ADFC'],
 'Black and White': ['white', 'black', 'black', '#282828', 'black'],
 'Sunset': ['#fff', '#aa8764', '#aa8764', '#9b6655', '#772222'],
 'Ye Olde Theme': ['saddlebrown', 'antiquewhite', 'antiquewhite', 'tan', 'darkgoldenrod'],

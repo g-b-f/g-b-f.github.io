@@ -2,8 +2,7 @@
 var r = document.querySelector(':root');
 // var s = sessionStorage;
 var s = localStorage;
-
-function setTheme(textColour="white", light_bg="#66a", mild_bg= "#66a", med_bg= "#559", strong_bg= "#227") {
+function setTheme(textColour="white", light_bg="#66a", mild_bg= "#55f", med_bg= "#559", strong_bg= "#227") {
 
     // Set value of colour variables
     r.style.setProperty('--textColour', textColour);
