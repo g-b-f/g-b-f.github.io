@@ -114,3 +114,26 @@ li a:hover {
 	font-size: 30px;
 	text-align: center;
 }
+
+
+/* Theme stuff */
+.boxWrapper {
+	display: flex;
+	padding: 0.5em 0;
+	margin: auto;
+	align-content: center;
+	align-items: center;
+	width: fit-content;
+  }
+  
+.box {
+width: 1.5em;
+height: 1.5em;
+border: 2px solid black;
+}
+
+.themeItem{
+	font-size: 1.1em;
+	margin: auto;
+	text-align: center;
+}
