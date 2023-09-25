@@ -2,7 +2,8 @@
 var r = document.querySelector(':root');
 // var s = sessionStorage;
 var s = localStorage;
-function setTheme(textColour="white", light_bg="black", mild_bg= "#66a", med_bg= "#559", strong_bg= "#227") {
+
+function setTheme(textColour="white", light_bg="#66a", mild_bg= "#66a", med_bg= "#559", strong_bg= "#227") {
 
     // Set value of colour variables
     r.style.setProperty('--textColour', textColour);
@@ -21,18 +22,18 @@ function setTheme(textColour="white", light_bg="black", mild_bg= "#66a", med_bg=
 
 function getTheme(){
     
-    // retrieve colours from session storage
+    // retrieve colours from storage
     let textColour = sessionStorage.getItem("textColour");
-    let contrast_bg = sessionStorage.getItem("contrast_bg");
+    let light_bg = sessionStorage.getItem("light_bg");
     let mild_bg = sessionStorage.getItem("mild_bg");
     let med_bg = sessionStorage.getItem("med_bg");
     let strong_bg = sessionStorage.getItem("strong_bg");
     
     // set theme
-    setTheme(textColour, contrast_bg, mild_bg, med_bg, strong_bg)    
+    setTheme(textColour, light_bg, mild_bg, med_bg, strong_bg)    
 }
 
-if (s.getItem("textColour")){      // if there's anything in session storage
+if (s.getItem("textColour")){      // if there's anything in storage
     getTheme()                                  // retrieve the theme
 }
 else{

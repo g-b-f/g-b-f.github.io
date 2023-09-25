@@ -1,18 +1,42 @@
+# function setTheme(textColour="white", light_bg="black", mild_bg= "#66a", med_bg= "#559", strong_bg= "#227")
+
+
+		
+
+
+# themeDict={
+#     "Dark": ["#66a", "#66a", "#559", "#227"],
+#     "Light": ["#7e7ece", "#7e7ece", "#8f8fef","#a3a3ff"],
+#     "Accessibility Green": ["#A8F29A", "#A8F29A", "#A8F29A", "#A8F29A"],
+#     "Accessibility Yellow": ["#F8FD89", "#F8FD89", "#F8FD89", "#F8FD89"],
+#     "Accessibility Blue": ["#96ADFC", "#96ADFC", "#96ADFC", "#96ADFC"],
+#     "Black and White": ["black", "black", "#282828", "black"],
+#     "Sunset": ["#aa8764", "#aa8764", "#9b6655", "#772222"],
+#     "Ye Olde Theme": ["antiquewhite", "antiquewhite", "tan", "darkgoldenrod"],
+#     "Teal": ["#3AAFA9", "#3AAFA9", "#2B7A78", "#17252a"],
+#     "Plum":["#895061", "#895061", "#78244c", "#59253a"],
+#     "Candy Floss": ["#83d9dc", "#83d9dc", "#e3c3ff", "#f498c2"],
+#     "Pastels": ["#AEC6CF", "#AEC6CF", "#ffc4c4", "#ae7f9a"],
+#     "Gray": ["#999999", "#999999", "#666666", "#444444"]
+# }
+# "#fff","#999";"#666","#333","#000"
+
 themeDict={
-    "Dark": ["#66a", "#66a", "#559", "#227"],
-    "Light": ["#7e7ece", "#7e7ece", "#8f8fef","#a3a3ff"],
-    "Accessibility Green": ["#A8F29A", "#A8F29A", "#A8F29A", "#A8F29A"],
-    "Accessibility Yellow": ["#F8FD89", "#F8FD89", "#F8FD89", "#F8FD89"],
-    "Accessibility Blue": ["#96ADFC", "#96ADFC", "#96ADFC", "#96ADFC"],
-    "Black and White": ["black", "black", "#282828", "black"],
-    "Sunset": ["#aa8764", "#aa8764", "#9b6655", "#772222"],
-    "Ye Olde Theme": ["antiquewhite", "antiquewhite", "tan", "darkgoldenrod"],
-    "Teal": ["#3AAFA9", "#3AAFA9", "#2B7A78", "#17252a"],
-    "Plum":["#895061", "#895061", "#78244c", "#59253a"],
-    "Candy Floss": ["#83d9dc", "#83d9dc", "#e3c3ff", "#f498c2"],
-    "Pastels": ["#AEC6CF", "#AEC6CF", "#ffc4c4", "#ae7f9a"],
-    "Gray": ["#999999", "#999999", "#666666", "#444444"]
+'Dark': ['white', '#66a', '#66a', '#559', '#227'],
+'Light': ['black', '#7e7ece', '#7e7ece', '#8f8fef', '#a3a3ff'],
+'Accessibility Green': ['Black', '#A8F29A', '#A8F29A', '#A8F29A', '#A8F29A'],
+'Accessibility Yellow': ['Black', '#F8FD89', '#F8FD89', '#F8FD89', '#F8FD89'],
+'Accessibility Blue': ['Black', '#96ADFC', '#96ADFC', '#96ADFC', '#96ADFC'],
+'Black and White': ['white', 'black', 'black', '#282828', 'black'],
+'Sunset': ['#fff', '#aa8764', '#aa8764', '#9b6655', '#772222'],
+'Ye Olde Theme': ['saddlebrown', 'antiquewhite', 'antiquewhite', 'tan', 'darkgoldenrod'],
+'Teal': ['white', '#3AAFA9', '#3AAFA9', '#2B7A78', '#17252a'],
+'Plum': ['white', '#895061', '#895061', '#78244c', '#59253a'],
+'Candy Floss': ['black', '#83d9dc', '#83d9dc', '#e3c3ff', '#f498c2'],
+'Pastels': ['black', '#AEC6CF', '#AEC6CF', '#ffc4c4', '#ae7f9a'],
+'Gray': ['#f2f2f2', '#999999', '#999999', '#666666', '#444444']
 }
+
 
 header="""<!DOCTYPE html>
 <html>
@@ -20,6 +44,7 @@ header="""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="gabe_stylesheet.css">
 <title>Themes</title>
+<script src="themes.js"></script>
 
 </head>
 <body>
