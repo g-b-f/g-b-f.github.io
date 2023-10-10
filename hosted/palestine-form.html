@@ -19,17 +19,17 @@
 <div class = "mainbox">
 <p>
 Fill in the below details and click "Generate" to create a form to be sent to your local MP:<br><br>
-Full name: <input id="fullName" type="text" size="30"><br>
-MP name (including title): <input id="mpName" type="text" size="30" value="Ms. Kate Hollern"><br>
-MP's party:<input id="party" type="text" size="30" value="Labour"><br>
-MP's Email address: <input id="mpEmail" type="text" size="30" value="kate.hollern.mp@parliament.uk"><br>
-Constituency: <input id="area" type="text" size="30" value="Blackburn"><br>
+Full name: <input class="textInput" id="fullName" type="text" size="30"><br>
+MP name (including title): <input class="textInput" id="mpName" type="text" size="30" value="Ms. Kate Hollern"><br>
+MP's party:<input class="textInput" id="party" type="text" size="30" value="Labour"><br>
+MP's Email address: <input class="textInput" id="mpEmail" type="text" size="30" value="kate.hollern.mp@parliament.uk"><br>
+Constituency: <input class="textInput" id="area" type="text" size="30" value="Blackburn"><br>
 </p>
 
 
 
 <button class="jsButton" onclick="letterGen()">Generate</button>
-<textarea id="outputText" rows="20" cols="80"></textarea>
+<textarea class="textInput" id="outputText" rows="20" cols="80"></textarea>
 <!-- <p id="outputText"></p> -->
 <p id="copySend"></p>
 

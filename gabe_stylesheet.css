@@ -10,6 +10,7 @@ dark background: #036
 	--mild_bg: #666; /* mainbox, top link hover */
 	--med_bg: #333; /* h2, JSbutton */
 	--strong_bg: #000; /* background */
+	--contrast_bg: var(--strong_bg);
 }
 
 *{
@@ -98,7 +99,10 @@ li a:hover {
   /* margin: 4px 2px; */
   cursor: pointer;
 }
-	
+
+.textInput{
+  color: var(--contrast_bg);
+}
 
 .grid-container {
 	height: 80%;
