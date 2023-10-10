@@ -37,41 +37,41 @@ Full name: <input id="fullName" type="text" size="30">
 
 function strReplace(mpName,area,author,party,newLine){
 
-var letterText=`Dear ${mpName},${newLine}${newLine}\
-This is an open letter requesting your stance on recent world events. We, the concerned constituents of\
-${area}, urgently write to you regarding the escalating crisis in Palestine —an issue of immense\
-importance to our community.${newLine}\
-${area} has consistently demonstrated its unwavering opposition to Israeli apartheid policies and\
-actions that severely impact Palestinian citizens and their land. Over many years, our community has\
-united through demonstrations, protests, and campaigns, voicing collective opposition against these\
-injustices. We firmly assert that the ${party} Party should unequivocally refrain from involvement in\
-the supply of support, arms, aid, and weapons to Israel.${newLine}\
-Therefore, we fervently push for you to represent these views within the ${party} Party. Specifically,\
-we urge you to advocate for the official recognition of the State of Palestine on the international stage.\
-Recognizing Palestine as a sovereign state is a critical step towards fostering peace, justice, and\
-equality in the region. By actively promoting this recognition, you would echo the sentiments of the\
-constituents of ${area}, underscoring the importance of a fair and lasting resolution to the\
-longstanding crisis in the Middle East. We believe that your representation of these views within the\
-${party} Party will ensure that the concerns and aspirations of our constituency are well reflected and\
-respected on this pressing matter.${newLine}\
-However, we have observed a notable absence of public statements or actions from you, our esteemed\
-representative in Parliament, on this pressing issue. Given the sentiments of our community, it is\
-imperative for us to understand your stance and actions concerning the situation in Palestine. We are\
-eager to know why there has been no expression of your views or actions that resonate with the\
-concerns shared by your constituents.${newLine}\
-Recent events have added urgency to our appeal. The defence by Palestinian forces against the\
-blockade, the brazen violations of international law targeting schools and hospitals by the Israeli\
-government, and the recent total blockade resulting in severe deprivation of essential supplies such as\
-food, electricity, water, and the denial of escape from the Gaza area have profoundly shaken our\
-community. We are compelled to seek your input and leadership on these critical matters.\
-We are keen to understand your perspective and what actions, if any, you plan to take to address this\
-crisis. Additionally, we would appreciate any information on how you plan to represent our collective\
-concerns in the UK Government and the ${party} Party.${newLine}\
-Your response to this matter will provide clarity and assurance to the constituents of ${area}\
-regarding your position and actions concerning the situation in Palestine. We eagerly await your reply\
-and appreciate your attention to this vital issue.${newLine}\
-Sincerely,${newLine}${newLine}\
-${author}${newLine}\
+var letterText=`Dear ${mpName},${newLine}${newLine} \
+This is an open letter requesting your stance on recent world events. We, the concerned constituents of \
+${area}, urgently write to you regarding the escalating crisis in Palestine —an issue of immense \
+importance to our community.${newLine} \
+${area} has consistently demonstrated its unwavering opposition to Israeli apartheid policies and \
+actions that severely impact Palestinian citizens and their land. Over many years, our community has \
+united through demonstrations, protests, and campaigns, voicing collective opposition against these \
+injustices. We firmly assert that the ${party} Party should unequivocally refrain from involvement in \
+the supply of support, arms, aid, and weapons to Israel.${newLine} \
+Therefore, we fervently push for you to represent these views within the ${party} Party. Specifically, \
+we urge you to advocate for the official recognition of the State of Palestine on the international stage. \
+Recognizing Palestine as a sovereign state is a critical step towards fostering peace, justice, and \
+equality in the region. By actively promoting this recognition, you would echo the sentiments of the \
+constituents of ${area}, underscoring the importance of a fair and lasting resolution to the \
+longstanding crisis in the Middle East. We believe that your representation of these views within the \
+${party} Party will ensure that the concerns and aspirations of our constituency are well reflected and \
+respected on this pressing matter.${newLine} \
+However, we have observed a notable absence of public statements or actions from you, our esteemed \
+representative in Parliament, on this pressing issue. Given the sentiments of our community, it is \
+imperative for us to understand your stance and actions concerning the situation in Palestine. We are \
+eager to know why there has been no expression of your views or actions that resonate with the \
+concerns shared by your constituents.${newLine} \
+Recent events have added urgency to our appeal. The defence by Palestinian forces against the \
+blockade, the brazen violations of international law targeting schools and hospitals by the Israeli \
+government, and the recent total blockade resulting in severe deprivation of essential supplies such as \
+food, electricity, water, and the denial of escape from the Gaza area have profoundly shaken our \
+community. We are compelled to seek your input and leadership on these critical matters. \
+We are keen to understand your perspective and what actions, if any, you plan to take to address this \
+crisis. Additionally, we would appreciate any information on how you plan to represent our collective \
+concerns in the UK Government and the ${party} Party.${newLine} \
+Your response to this matter will provide clarity and assurance to the constituents of ${area} \
+regarding your position and actions concerning the situation in Palestine. We eagerly await your reply \
+and appreciate your attention to this vital issue.${newLine} \
+Sincerely,${newLine}${newLine} \
+${author}${newLine} \
 Constituent of ${area}`;
 
     return letterText;
@@ -119,7 +119,7 @@ function letterGen() {
     let mpEmail="kate.hollern.mp@parliament.uk";
     let party="Labour";
     // let newLine="<br>";
-    let newLine="\n"
+    let newLine=" \n"
     var author = document.getElementById("fullName").value;
 
     let letterText = strReplace(mpName,area,author,party,newLine);
