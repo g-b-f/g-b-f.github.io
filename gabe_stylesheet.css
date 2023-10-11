@@ -52,11 +52,34 @@ h3,p{
 	/* overflow: auto; */
 }
 
-.mainbox, ul.nav{
+.mainbox,ul.nav{ /* mobile view  */
+	width: 100%;
+	padding: 1% 2%;
 	margin: auto;
-	width: 70%;
-	padding: 1% 5%;	
+  }
+
+@media (min-width: 600px) { /* low res tablet */
+	.mainbox, ul.nav{
+		width: 90%;
+		padding: 1% 3%;	
+	}
 }
+
+@media (min-width: 800px) { /* high res tablet */
+	.mainbox, ul.nav{
+		width: 80%;
+		padding: 1% 4%;
+	}
+}
+
+@media (min-width: 1000px) {
+	.mainbox, ul.nav{
+		width: 70%;
+		padding: 1% 5%;
+	}
+}
+
+
 .mainbox {
 	overflow: auto;
 	text-align: top-left;
