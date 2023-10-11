@@ -29,13 +29,12 @@ Constituency: <input class="textInput" id="area" type="text" size="30" value="Bl
 
 
 <button class="jsButton" onclick="letterGen()">Generate</button><br>
-<textarea class="textInput" id="outputText" rows="20" cols="80"></textarea>
+<!-- <textarea class="textInput" id="outputText" rows="20" cols="80"></textarea> -->
 <!-- <p id="outputText"></p> -->
 <p id="copySend"></p>
-<a href="whatsapp://send?text=Please consider using this to send a letter to your local MP about palestine\nhttps://g-b-f.github.io/hosted/palestine-form.html"><img src="whatsapp.svg" alt="HTML tutorial" style="width:3em;height:3em;"></a>
+<a href="whatsapp://send?text=Please consider using this to send a letter to your local MP about Palestine https://g-b-f.github.io/hosted/palestine-form.html"><img src="whatsapp.svg" alt="HTML tutorial" style="width:3em;height:3em;"></a>
 
 </div>
-
 </body>
 
 <script>
@@ -82,19 +81,6 @@ Constituent of ${area}`;
     return letterText;
 }
 
-function copyText(){
-  var inputText = document.getElementById("outputText");
-
-  // Select the text field
-  inputText.select();
-  inputText.setSelectionRange(0, 99999); // For mobile devices
-
-  // Copy the text inside the text field
-  navigator.clipboard.writeText(inputText.value);
-  
-  // Alert the copied text
-  alert("Copied!");
-}
 
 function letterGen() {
     let area = document.getElementById("area").value;
@@ -106,9 +92,10 @@ function letterGen() {
     let author = document.getElementById("fullName").value;
 
     let letterText = strReplace(mpName,area,author,party,newLine);
-    document.getElementById("outputText").innerHTML = letterText;
+    // document.getElementById("outputText").innerHTML = letterText;
 
-    let mail=`${mpEmail}&subject=Request%20for%20Your%20Stance%20on%20Recent%20Events%20in%20Palestine`;
+    // let mail=`${mpEmail}&subject=Request%20for%20Your%20Stance%20on%20Recent%20Events%20in%20Palestine`;
+    let mail=mpEmail;
     let sendButton = `<a class="jsButton" href='mailto:${mail}'">Send</a>`;
 
     document.getElementById("copySend").innerHTML = sendButton;
