@@ -3,20 +3,24 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../gabe_stylesheet.css">
-	<title>Palestine form</title>
+	<title>Palestine Letter Generator</title>
 </head>
 <body>
-
-<!-- 
-    TODO:
-    - add custom names etc
-    - fix copy button
-    - change to <p> if possible
- -->
 
 <h1>Palestine form</h1>
 
 <div class = "mainbox">
+
+<h3>Instructions:</h3>
+<ul>
+  <li>Fill in any missing/ incorrect details below</li>
+  <li>Click "Generate", this will create a letter and copy it to your clipboard</li>
+  <li>Click "Send", this should open your email app where you can paste the email and send it to your MP</li>
+  <li>Send this page to friends and family by tapping the WhatsApp icon below:</li>
+</ul>
+<a href="whatsapp://send?text=Please consider using this to send a letter to your local MP about palestine\nhttps://g-b-f.github.io/hosted/palestine-form.html"><img src="whatsapp.svg" alt="HTML tutorial" style="width:3em;height:3em;"></a>
+
+
 <p>
 Fill in the below details and click "Generate" to create a form to be sent to your local MP:<br><br>
 Full name: <input class="textInput" id="fullName" type="text" size="30"><br>
@@ -24,11 +28,11 @@ MP name (including title): <input class="textInput" id="mpName" type="text" size
 MP's party:<input class="textInput" id="party" type="text" size="30" value="Labour"><br>
 MP's Email address: <input class="textInput" id="mpEmail" type="text" size="30" value="kate.hollern.mp@parliament.uk"><br>
 Constituency: <input class="textInput" id="area" type="text" size="30" value="Blackburn"><br>
-</p>
+</p><br>
 
 
 
-<button class="jsButton" onclick="letterGen()">Generate</button>
+<button class="jsButton" onclick="letterGen()">Generate</button><br>
 <textarea class="textInput" id="outputText" rows="20" cols="80"></textarea>
 <!-- <p id="outputText"></p> -->
 <p id="copySend"></p>
@@ -95,35 +99,12 @@ function copyText(){
   alert("Copied!");
 }
 
-function CopyToClipboard() {
-    containerid="outputText"
-    if (document.selection) {
-        var range = document.body.createTextRange();
-        range.moveToElementText(document.getElementById(containerid));
-        range.select().createTextRange();
-        document.execCommand("copy");
-    } else if (window.getSelection) {
-        var range = document.createRange();
-        range.selectNode(document.getElementById(containerid));
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
-        alert("Text has been copied, now paste in the text-area")
-    }
-}
-
-
 function letterGen() {
-    // let area="Blackburn";
     let area = document.getElementById("area").value;
     let mpName = document.getElementById("mpName").value;
 
-    // let mpName="Ms. Kate Hollern";
     let mpEmail = document.getElementById("mpEmail").value;
-    // let mpEmail="kate.hollern.mp@parliament.uk";
     let party = document.getElementById("party").value;
-
-    // let party="Labour";
-    // let newLine="<br>";
     let newLine=" \n"
     let author = document.getElementById("fullName").value;
 
@@ -132,13 +113,10 @@ function letterGen() {
 
     let mail=`${mpEmail}&subject=Request%20for%20Your%20Stance%20on%20Recent%20Events%20in%20Palestine`;
     let sendButton = `<button class="jsButton" onclick="location.href='${mail}'">Send</button>`;
-    // let sendButton=`<a class="jsButton" href="mailto:${mpEmail}">Send</a>`;
 
-    // let copyButton=`<button class="jsButton" onclick="CopyToClipboard()">Copy</button>`;
-    // let copyButton=`<button class="jsButton" onclick="copyText()">Copy</button>`;
-    // document.getElementById("copySend").innerHTML = copyButton;
     document.getElementById("copySend").innerHTML = sendButton;
-
+    newLine="\n"
+    navigator.clipboard.writeText(strReplace(mpName,area,author,party,newLine));
 }
 </script>
 </html>
