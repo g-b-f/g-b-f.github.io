@@ -74,17 +74,17 @@ ul.nav {
 	overflow: hidden;
 	list-style-type: none;
 }
-li {
+li.topLinks {
   float: left;
 }
-li a { /* make this a flex box or a grid or something in order for it to auto scale */
+li.topLinks a { /* make this a flex box or a grid or something in order for it to auto scale */
   display: block;
 /*  color: white;*/
   text-align: center;
   padding: 0.9em 6.5em;
   text-decoration: none;
 }
-li a:hover {
+li.topLinks a:hover {
   background-color: var(--mild_bg);
 }
 
