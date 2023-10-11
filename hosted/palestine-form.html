@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RL7SPJ1SRZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Analytics purely out of curiosity -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RL7SPJ1SRZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-RL7SPJ1SRZ');
-</script>
+    gtag('config', 'G-RL7SPJ1SRZ');
+  </script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../gabe_stylesheet.css">
 	<title>Palestine Letter Generator</title>
-
 </head>
 <body>
 
@@ -27,7 +26,7 @@
   <li>Tap "Generate", this will create a letter and copy it to your clipboard</li>
   <li>Tap "Send", this should open your email app</li>
   <li>Once in the app, long press on the empty message and tap 'paste'</li>
-  <li>Type something in the 'subject' of the email, I recommend Request for Your Stance on Recent Events in Palestine</li>
+  <li>Type something in the 'subject' of the email, I recommend: Request for Your Stance on Recent Events in Palestine</li>
   <li>Send this page to family and friends by tapping the WhatsApp icon at the bottom</li>
 </ul>
 
@@ -39,7 +38,6 @@ MP's party:<input class="textInput" id="party" type="text" size="30" value="Labo
 MP's Email address: <input class="textInput" id="mpEmail" type="text" size="30" value="kate.hollern.mp@parliament.uk"><br>
 Constituency: <input class="textInput" id="area" type="text" size="30" value="Blackburn"><br>
 </p><br>
-
 
 <button class="jsButton" onclick="letterGen()">Generate</button><br>
 <!-- <textarea class="textInput" id="outputText" rows="20" cols="80"></textarea> -->
@@ -91,7 +89,7 @@ Sincerely,${newLine} ${newLine}\
 ${author} ${newLine}\
 Constituent of ${area}`;
 
-    return letterText;
+return letterText;
 }
 
 
@@ -105,10 +103,9 @@ function letterGen() {
     let author = document.getElementById("fullName").value;
 
     let letterText = strReplace(mpName,area,author,party,newLine);
-    // document.getElementById("outputText").innerHTML = letterText;
 
     // let mail=`${mpEmail}&subject=Request%20for%20Your%20Stance%20on%20Recent%20Events%20in%20Palestine`;
-    // let mail=`${mpEmail}&subject=Request%2520for%2520Your%2520Stance%2520on%2520Recent%2520Events%2520in%2520Palestine`;
+    // let mail=`${mpEmail}&subject=Request for Your Stance on Recent Events in Palestine`;
     let mail=mpEmail;
     let sendButton = `<a class="jsButton" href='mailto:${mail}'">Send</a>`;
 
