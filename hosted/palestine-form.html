@@ -4,18 +4,33 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../gabe_stylesheet.css">
 	<title>Palestine Letter Generator</title>
+  <style>
+
+    .mainbox{
+	    width: 100%;
+	    padding: 1% 2%;	
+      }
+    @media (min-width: 700px) {
+      .mainbox{
+	    width: 70%;
+	    padding: 1% 5%;	
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>Palestine form</h1>
+<h1>Palestine Letter Generator</h1>
 
 <div class="mainbox">
 <h3>Instructions:</h3>
 <ul style="font-size: 1.2em;">
   <li>Fill in any missing/ incorrect details below</li>
-  <li>Click "Generate", this will create a letter and copy it to your clipboard</li>
-  <li>Click "Send", this should open your email app where you can paste the email and send it to your MP</li>
-  <li>Send this page to friends and family by tapping the WhatsApp icon at the bottom</li>
+  <li>Tap "Generate", this will create a letter and copy it to your clipboard</li>
+  <li>Tap "Send", this should open your email app</li>
+  <li>Once in the app, long press on the empty message and tap 'paste'</li>
+  <li>Type something in the 'subject' of the email, I recommend Request for Your Stance on Recent Events in Palestine</li>
+  <li>Send this page to family and friends by tapping the WhatsApp icon at the bottom</li>
 </ul>
 
 <p>
@@ -95,6 +110,7 @@ function letterGen() {
     // document.getElementById("outputText").innerHTML = letterText;
 
     // let mail=`${mpEmail}&subject=Request%20for%20Your%20Stance%20on%20Recent%20Events%20in%20Palestine`;
+    // let mail=`${mpEmail}&subject=Request%2520for%2520Your%2520Stance%2520on%2520Recent%2520Events%2520in%2520Palestine`;
     let mail=mpEmail;
     let sendButton = `<a class="jsButton" href='mailto:${mail}'">Send</a>`;
 
