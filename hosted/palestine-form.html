@@ -109,7 +109,7 @@ function letterGen() {
     document.getElementById("outputText").innerHTML = letterText;
 
     let mail=`${mpEmail}&subject=Request%20for%20Your%20Stance%20on%20Recent%20Events%20in%20Palestine`;
-    let sendButton = `<button class="jsButton" onclick="location.href='${mail}'">Send</button>`;
+    let sendButton = `<a class="jsButton" href='mailto:${mail}'">Send</a>`;
 
     document.getElementById("copySend").innerHTML = sendButton;
     newLine="\n"
