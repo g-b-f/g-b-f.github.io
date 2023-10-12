@@ -96,15 +96,18 @@ ${homeAddress}`;
 return letterText;
 }
 
+function getID(id){
+  return document.getElementById(id).value;
+}
 
 function letterGen() {
-    let area = document.getElementById("area").value;
-    let mpName = document.getElementById("mpName").value;
-    let homeAddress=document.getElementById("homeAddress").value;
-    let mpEmail = document.getElementById("mpEmail").value;
-    let party = document.getElementById("party").value;
     let newLine=" \n"
-    let author = document.getElementById("fullName").value;
+    let area = getID("area");
+    let mpName = getID("mpName");
+    let homeAddress=getID("homeAddress");
+    let mpEmail = getID("mpEmail");
+    let party = getID("party");
+    let author = getID("fullName");
 
     let letterText = strReplace(mpName,area,author,party,newLine);
 
