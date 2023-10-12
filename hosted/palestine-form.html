@@ -32,12 +32,15 @@
 
 <p>
 Fill in the below details and click "Generate" to create a form to be sent to your local MP:<br><br>
-Full name: <input class="textInput" id="fullName" type="text" size="30"><br>
+Full name*: <input class="textInput" id="fullName" type="text" size="30"><br>
+Your address*: <input class="textInput" id="homeAddress" type="text" size="30"><br>
 MP name (including title): <input class="textInput" id="mpName" type="text" size="30" value="Ms. Kate Hollern"><br>
 MP's party:<input class="textInput" id="party" type="text" size="30" value="Labour"><br>
 MP's Email address: <input class="textInput" id="mpEmail" type="text" size="30" value="kate.hollern.mp@parliament.uk"><br>
 Constituency: <input class="textInput" id="area" type="text" size="30" value="Blackburn"><br>
+* Your full name and address are required to guarantee a response from your MP. This data is not stored anywhere.<br>
 </p><br>
+
 
 <button class="jsButton" onclick="letterGen()">Generate</button><br>
 <!-- <textarea class="textInput" id="outputText" rows="20" cols="80"></textarea> -->
@@ -50,7 +53,7 @@ Constituency: <input class="textInput" id="area" type="text" size="30" value="Bl
 
 <script>
 
-function strReplace(mpName,area,author,party,newLine){
+function strReplace(mpName,area,author,party,homeAddress,newLine){
 
 var letterText=`Dear ${mpName},${newLine} ${newLine}\
 This is an open letter requesting your stance on recent world events. We, the concerned constituents of \
@@ -87,7 +90,8 @@ regarding your position and actions concerning the situation in Palestine. We ea
 and appreciate your attention to this vital issue. ${newLine}\
 Sincerely,${newLine} ${newLine}\
 ${author} ${newLine}\
-Constituent of ${area}`;
+Constituent of ${area}${newLine}\
+${homeAddress}`;
 
 return letterText;
 }
@@ -96,7 +100,7 @@ return letterText;
 function letterGen() {
     let area = document.getElementById("area").value;
     let mpName = document.getElementById("mpName").value;
-
+    let homeAddress=document.getElementById("homeAddress").value;
     let mpEmail = document.getElementById("mpEmail").value;
     let party = document.getElementById("party").value;
     let newLine=" \n"
@@ -111,7 +115,7 @@ function letterGen() {
 
     document.getElementById("copySend").innerHTML = sendButton;
     newLine="\n"
-    navigator.clipboard.writeText(strReplace(mpName,area,author,party,newLine));
+    navigator.clipboard.writeText(strReplace(mpName,area,author,party,homeAddress,newLine));
 }
 </script>
 </html>
