@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../gabe_stylesheet.css">
+	<title>QR size calculator</title>
+	<script src="../../themes.js"></script>
+</head>
+<body onload="qrCalc()">
+<script src="../../index.js" type="text/javascript"></script>
+
+
+<h1>QR size calculator</h1>
+<h2>Find the best QR type for a given URL</h2>
+
+
+<div class = "mainbox">
+<p>Type a URL below:<br>
+first bit: <input type="text" id="firstBit" value="https://example.com/" onkeyup="qrCalc()"><br>
+second bit: <input type="text" id="secondBit" value="1234" onkeyup="qrCalc()"><br></p>
+</p>
+
+<p id="outputText"></p>
+</div>
+
+<script>
+function getWords(num){
+    const words=['','thousand','million','billion','trillion','quadrillion',
+    'quintillion','sextillion', 'septillion'];
+    let str=num.toString();
+    let strLen=str.length;
+    let idx=Math.floor(strLen/3);
+    let mod=strLen%3;
+    if (mod==0){mod=3;}
+    let firstNum=str.substr(0,mod);
+    let secondNum=words[idx];
+    return(`${firstNum} ${secondNum}`);
+}
+
+function qrCalc() {
+    const ver2= new Map(
+        [["H",128/8],["Q",176/8],["M",224/8],["L",272/8]]);
+    let firstLen = document.getElementById("firstBit").value.length;
+    let secondLen= document.getElementById("secondBit").value.length;
+    let len=firstLen+secondLen;
+
+    let output="URL too large";
+
+    for (const element of ver2){
+        if (element[1]>len){
+            let poss=Math.pow(64,secondLen);
+            output=`URL is ${len} characters long, best QR is version 2 level ${element[0]},
+            there are ${poss} possible links<br>That is ${getWords(poss)}`;
+            break
+        }
+    }
+
+	document.getElementById("outputText").innerHTML = output;
+}
+
+</script>
+</body>
+</html>
