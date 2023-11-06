@@ -18,8 +18,16 @@
 <div class = "mainbox">
 
 <button class="jsButton" onclick="getQ()">Get question</button>
+<!-- <button class="jsButton" onclick="restart()">Restart</button> -->
+<p id="qCount" style="display:inline"></p>
 
-<p style="font-size:xx-large; line-height: 1.2;" id="outputText"></p>
+
+
+<p style="font-size:xx-large; line-height: 1.2;" id="outputText">
+Online version of <a href="https://www.askhole.io/">askhole</a>. Press "Get question"
+to get a random question, then remove that from the list of potential questions.
+<!-- Press "Restart" to replace all questions and begin again. -->
+</p>
 </div>
 
 <!-- askhole.io -->
@@ -31,7 +39,7 @@ Personal: A look into your identity and meaningful hidden treasures from your li
 
 <script>
 
-let questions=[
+const questions_const=[
 "In what ways are you inhibited from expressing love?",
 "What difficult or painful experience would you recommend to everyone?",
 "What's the most intense emotional pain you've ever experienced?",
@@ -159,11 +167,21 @@ let questions=[
 "Is bestiality wrong? Are you a vegan?"
 ];
 
+var questions=questions_const;
+
 function getQ(){
-    let q= questions[Math.floor(Math.random()*questions.length)];
+	let qLen=questions.length;
+	let i=Math.floor(Math.random()*qLen);
+    let q= questions[i];
     document.getElementById("outputText").innerHTML = q;
+	questions.splice(i,1);
+	document.getElementById("qCount").innerHTML = `${qLen-1} questions left`;
 }
 
+// function restart(){
+// 	questions=questions_const;
+// 	getQ();
+// }
 
 </script>
 </body>
