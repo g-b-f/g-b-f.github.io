@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/gabe_stylesheet.css">
+	<title>Text splitter</title>
+	<script src="/themes.js"></script>
+</head>
+<body>
+<script src="/index.js" type="text/javascript"></script>
+
+
+<h1>Pace calculator</h1>
+<!-- <h2>For code and the like</h2> -->
+
+
+<div class = "mainbox">
+<p> some text here
+<br>
+Total running time (mins): <input id="totalTime" type="number" size="4" value="20"><br>
+Warmup time (mins): <input id="warmupTime" type="number" size="4" value="5"><br>
+Average pace: <input id="totalPace" type="number" size="4" value="8"><br>
+Warmup speed: <input id="warmupSpeed" type="number" size="4" value="6"><br>
+<br>
+</p>
+<button class="jsButton" onclick="calc()">calculate</button>
+<br>
+run pace:
+<p id="outputText"></p>
+</div>
+
+<script>
+function calc() {
+	var totalTime = Number(document.getElementById("totalTime").value);
+    var warmupTime = Number(document.getElementById("warmupTime").value);
+    var totalPace = Number(document.getElementById("totalPace").value);
+    var warmupSpeed = Number(document.getElementById("warmupSpeed").value);
+
+    let totalDistance = totalTime/totalPace;
+    let warmupDistance = warmupSpeed*warmupTime/60;
+
+    let runningPace = (totalTime - warmupTime)/(totalDistance - warmupDistance);
+
+	document.getElementById("outputText").innerHTML = runningPace;
+}
+
+</script>
+</body>
+</html>
