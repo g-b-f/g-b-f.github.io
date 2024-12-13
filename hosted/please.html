@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../gabe_stylesheet.css">
+	<title>PLEASE</title>
+</head>
+
+<body>
+
+<!-- <h1>Typewriter</h1> -->
+
+<button onclick="typeWriter()">Click me (please)</button>
+<div class="mainbox">
+
+<p id="please"></p>
+<!-- <p id="demo" style="width: 50%;"></p> -->
+
+</div>
+</body>
+
+<script>
+var i = 0;
+var txt = 'please ';
+var speed = 50;
+
+function typeWriter() {
+    document.getElementById("please").innerHTML += txt.charAt(i);
+    i++;
+    if (i==txt.length){
+    	i=0;
+    }
+    setTimeout(typeWriter, speed);
+}
+</script>
+
+</html>
