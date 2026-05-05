@@ -18,7 +18,7 @@ function App() {
         <div>
           <h1>Under contruction!</h1>
           <p>
-            Watch this space
+            Watch this space!
           </p>
         </div>
         {/* <button
