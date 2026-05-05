@@ -1,7 +1,7 @@
 import './App.css'
-import { HashRouter, Routes, Route, NavLink } from 'react-router-dom';
+import { HashRouter, Routes, Route, NavLink } from 'react-router';
 
-import {routes} from './modules/navigation.tsx'
+import { routes } from './modules/navigation.tsx'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
               isActive ? 'nav-link active' : 'nav-link'
             }
           >
-            {route.label}
+            <nav className="nav-button"> {route.label} </nav>
           </NavLink>
         ))}
       </nav>

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
+// A simple page thrown together to demonstrate routing and different pages
+
 export default function Calculator() {
   const [display, setDisplay] = useState('');
 
   const handleClick = (value: string) => {
     if (value === '=') {
       try {
-        // Note: eval() is used here for simplicity in a demo, 
-        // but in a real app, use a math library for safety.
-        setDisplay(eval(display).toString());
+        setDisplay(eval(display).toString()); // eval for simplicity, don't use in prod!
       } catch {
         setDisplay('Error');
       }
@@ -22,8 +22,9 @@ export default function Calculator() {
   const buttons = ['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '=', '+', 'C'];
 
   return (
+    <section id="center">
     <div style={{ padding: '20px', maxWidth: '300px' }}>
-      <h2>Pocket Calc</h2>
+      <h2>Calculator</h2>
       <div style={{ 
         background: '#333', color: '#fff', padding: '10px', 
         textAlign: 'right', marginBottom: '10px', fontSize: '1.5rem',
@@ -43,5 +44,6 @@ export default function Calculator() {
         ))}
       </div>
     </div>
+    </section>
   );
 }
