@@ -1,31 +1,34 @@
 import './App.css'
 import { HashRouter, Routes, Route, NavLink } from 'react-router-dom';
-import Calculator from './pages/Calculator';
-import Home from './pages/Home';
 
-const navLinks = [
-  { path: "/", label: "Home" },
-  { path: "/calculator", label: "Calculator" },
-];
+import {routes} from './modules/navigation.tsx'
 
 function App() {
   return (
     <HashRouter>
-    <nav className="nav-container">
-        {navLinks.map((link) => (
-          <NavLink  to={link.path} className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'}
+      <nav className="nav-container">
+        {routes.filter(r => r.showInNav !== false).map((route) => (
+          <NavLink
+            key={route.path}
+            to={route.path}
+            className={({ isActive }) =>
+              isActive ? 'nav-link active' : 'nav-link'
+            }
           >
-            {link.label}
+            {route.label}
           </NavLink>
         ))}
       </nav>
 
       <main style={{ padding: '20px' }}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/calculator" element={<Calculator />} />
-          {/* Fallback route for 404s */}
+          {routes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={route.element}
+            />
+          ))}
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>
       </main>
