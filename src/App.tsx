@@ -16,23 +16,23 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Get started</h1>
+          <h1>Under contruction!</h1>
           <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+            Watch this space
           </p>
         </div>
-        <button
+        {/* <button
           type="button"
           className="counter"
           onClick={() => setCount((count) => count + 1)}
         >
           Count is {count}
-        </button>
+        </button> */}
       </section>
 
-      <div className="ticks"></div>
+      {/* <div className="ticks"></div> */}
 
-      <section id="next-steps">
+      {/* <section id="next-steps">
         <div id="docs">
           <svg className="icon" role="presentation" aria-hidden="true">
             <use href="/icons.svg#documentation-icon"></use>
@@ -114,7 +114,7 @@ function App() {
       </section>
 
       <div className="ticks"></div>
-      <section id="spacer"></section>
+      <section id="spacer"></section> */}
     </>
   )
 }
