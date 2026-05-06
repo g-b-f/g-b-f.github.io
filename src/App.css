@@ -1,3 +1,7 @@
+.small_pad {
+  padding:0.5rem
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -21,19 +25,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 2rem;
   padding: 1.5rem;
   background-color: #242424;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--accent-border);
 }
 
 .nav-button{
-  font-size: 16px;
   padding: 5px 10px;
   border-radius: 5px;
   color: var(--accent);
   background: var(--accent-bg);
-  border: 2px solid transparent;
+  border: 0.1rem solid transparent;
   transition: border-color 0.3s;
 
   &:hover {
