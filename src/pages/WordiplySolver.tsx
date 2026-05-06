@@ -3,6 +3,7 @@ const fileUrl = "/assets/words.txt";
 
 /* TODO:
   - Load wordList on first page load, block get_matching_words() until wordList not null
+  - Fade in results to prevent flickering
 */
 
 export default function WordiplySolver() {
@@ -29,6 +30,7 @@ export default function WordiplySolver() {
 
   async function handleSubmit(event: ChangeEvent<HTMLFormElement>){
     console.debug("handling submit")
+    const start_time = performance.now();
 
     event.preventDefault();
     setStatus('submitting');
@@ -50,7 +52,7 @@ export default function WordiplySolver() {
       if (!response.ok) err("Internal word list not found");
       const text = await response.text();
       const words = text.split("\n");
-      console.log(
+      console.debug(
         "got word list. character count: " + text.length +
         " word count: " + words.length
       )
@@ -66,6 +68,8 @@ export default function WordiplySolver() {
     }
     setStatus('success');
     setError(null);
+    const end_time = performance.now();
+    console.log("Calulated in " + Math.round(end_time - start_time) + " ms")
   }
 
   const handleTextareaChange = (e: ChangeEvent<HTMLInputElement>) => setWord(e.target.value);
