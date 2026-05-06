@@ -10,6 +10,7 @@ export default function WordiplySolver() {
   const err = (e:string) => {throw new Error(e + '!')};
 
   function get_matching_words(match_str: string): string[]{
+    console.log("getting matching words for " + match_str)
     let ret = [];
     if (wordList === null) {throw new Error("word list is unexpectedly null")}
     for (const candidate of wordList){
@@ -17,10 +18,12 @@ export default function WordiplySolver() {
         ret.push(candidate);
       }
     }
+    console.log("got " + ret.length + " matching words")
     return ret;
     }
 
   async function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
+      console.log("handling submit")
 
       event.preventDefault();
       setStatus('submitting');
@@ -39,11 +42,15 @@ export default function WordiplySolver() {
         }
         setStatus('success');
       
+        console.log("validated input, fetching word list")
         const fileUrl = "/assets/words.txt";
         const response = (await fetch(fileUrl))
         if (!response.ok) err("File not found");
         const text = await response.text();
+        console.log("got word list. character count: " + text.length + " word count: " + text.split("\n").length)
         setwordList(text.split("\n"));
+        console.log(wordList === null ? "word list is null" : "word list is not null")
+        console.log("got word list of length " + wordList?.length)
         setResult(get_matching_words(answer));
       }
 
