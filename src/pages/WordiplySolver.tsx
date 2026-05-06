@@ -77,11 +77,16 @@ export default function WordiplySolver() {
     <>
     <section className="wordiply-result">
       <h3>Matches</h3>
-      {
-        <ul className="no-bullets">
-          { result.map((candidate) => (<li key={candidate}>{candidate}</li>)) }
-        </ul>
-      }
+        <table><tbody>
+          {
+            result.map((res) => (
+              <tr key={res}>
+                <td>{res.length}</td>
+                <td>{res}</td>
+              </tr>
+            ))
+          }
+        </tbody></table>
     </section>
     </>
     )
