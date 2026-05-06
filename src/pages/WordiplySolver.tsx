@@ -69,15 +69,13 @@ export default function WordiplySolver() {
   
   function get_result_text(): ReactElement {
     if (status === 'typing') return <></>;
-    if (status === 'submitting') return <p>Fetching word list…</p>;
+    if (status === 'submitting') return <p>Fetching results...</p>;
     if (status === 'success') {
-      if (result.length === 0) {
-        return <p>No matching words found.</p>;
-      }
+      if (result.length === 0) return <p>No matching words found.</p>;
 
     return (
     <>
-    <section>
+    <section className="wordiply-result">
       <h3>Matches</h3>
       {
         <ul className="no-bullets">
