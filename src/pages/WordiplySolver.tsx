@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent, type ReactElement} from 'react';
 const fileUrl = "/assets/words.txt";
 
+// TODO: load wordList on first page load, block get_matching_words() until wordList not null
 
 export default function WordiplySolver() {
   const [word, setWord] = useState('');
@@ -22,9 +23,9 @@ export default function WordiplySolver() {
     console.log("got " + ret.length + " matching words for " + match_str)
     ret.sort((a, b) => b.length - a.length);
     return ret;
-    }
+  }
 
-  async function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
+  async function handleSubmit(event: ChangeEvent<HTMLFormElement>){
       console.debug("handling submit")
 
       event.preventDefault();
@@ -33,13 +34,12 @@ export default function WordiplySolver() {
       try {
         const answer = word.toLowerCase()
         if (! /^[A-Za-z]+$/.test(answer)){
-
           err("Must be letters only");
         }
-        else if (answer.length <2 ){
+        else if (answer.length <1 ){
           err("Too few letters");
         }
-        else if (answer.length >5 ){
+        else if (answer.length >9 ){
           err("Too many letters");
         }
       
@@ -73,23 +73,21 @@ export default function WordiplySolver() {
     if (status === 'success') {
       if (result.length === 0) return <p>No matching words found.</p>;
 
-    return (
-    <>
-    <section className="wordiply-result">
-      <h3>Matches</h3>
-        <table><tbody>
-          {
-            result.map((res) => (
-              <tr key={res}>
-                <td>{res.length}</td>
-                <td>{res}</td>
-              </tr>
-            ))
-          }
-        </tbody></table>
-    </section>
-    </>
-    )
+      return (<>
+        <section className="wordiply-result">
+          <h3>Matches</h3>
+            <table><tbody>
+              {
+                result.map((res) => (
+                  <tr key={res}>
+                    <td>{res.length}</td>
+                    <td>{res}</td>
+                  </tr>
+                ))
+              }
+            </tbody></table>
+        </section>
+      </>)
     }
     throw new Error("Invalid status: " + status);
   }
@@ -97,11 +95,9 @@ export default function WordiplySolver() {
   return (
     <>
     <h2>Wordiply Solver</h2>
-    <p>
-        Input word from Wordiply
-    </p>
-    <form onSubmit={handleSubmit}>
+    <p>Input word from Wordiply</p>
 
+    <form onSubmit={handleSubmit}>
         <input
           className="small-margin"
           value={word}
@@ -110,21 +106,20 @@ export default function WordiplySolver() {
         />
 
         <button disabled={
-          word.length === 0 || 
-          status === 'submitting'
-        }>
-        Calculate
+            word.length === 0 || 
+            status === 'submitting'
+          }>
+          Calculate
         </button>
 
         {
           error !== null &&
-          <p color="red" className="Error">{error.message}</p>
+          status !== 'success' &&
+          <p color="red" className="error-text">{error.message}</p>
         }
-      
     </form>
 
     {get_result_text()}
-
     </>
   )
 }
