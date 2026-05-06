@@ -1,34 +1,27 @@
 import { useState, type ChangeEvent} from 'react';
-
-function get_matching_words(match_str:string){
-  return ""
-}
-
 export default function WordiplySolver() {
-  const [word, setWord] = useState('');
-  const [error, setError] = useState<Error | null>(null);
-  const [status, setStatus] = useState('typing');
-  const [wordList, setwordList] = useState(['']);
-  const [result, setResult] = useState(['']);
 
-  const err = (e:string) => setError(Error(e + '!'));
 
-  function submitForm(answer: string): string {
-    const ret = answer.toLowerCase();
-    if (! /^[A-Za-z]+$/.test(answer)){
-      err("Must be letters only");
-    }
-    else if (answer.length <2 ){
-      err("Too few letters");
-    }
-    else if (answer.length >5 ){
-      err("Too many letters");
-    }
 
-    return ret
+const [word, setWord] = useState('');
+const [error, setError] = useState<Error | null>(null);
+const [status, setStatus] = useState('typing');
+const [wordList, setwordList] = useState(['']);
+const [result, setResult] = useState(['']);
+
+const err = (e:string) => setError(Error(e + '!'));
+
+function get_matching_words(match_str: string): string[]{
+  let ret = [];
+  for (const candidate of wordList){
+    if (candidate.includes(match_str)){
+      ret.push(candidate);
+    }
+  }
+  return ret;
 }
 
-  async function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
+async function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus('submitting');
     try {
@@ -44,11 +37,26 @@ export default function WordiplySolver() {
     const text = await response.text();
     setwordList(text.split("\n"));
 
-  }
+    setResult(get_matching_words(word));
+}
 
-  function handleTextareaChange(event: ChangeEvent<HTMLInputElement>) {
-    setWord(event.target.value);
-  }
+function submitForm(answer: string): string {
+    const ret = answer.toLowerCase();
+    if (! /^[A-Za-z]+$/.test(answer)){
+      err("Must be letters only");
+    }
+    else if (answer.length <2 ){
+      err("Too few letters");
+    }
+    else if (answer.length >5 ){
+      err("Too many letters");
+    }
+
+    return ret
+}
+
+const handleTextareaChange = (e: ChangeEvent<HTMLInputElement>) => setWord(e.target.value);
+
 
 
   return (
