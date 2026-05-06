@@ -20,6 +20,7 @@ export default function WordiplySolver() {
       }
     }
     console.log("got " + ret.length + " matching words for " + match_str)
+    ret.sort((a, b) => b.length - a.length);
     return ret;
     }
 
