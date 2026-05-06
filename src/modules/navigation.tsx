@@ -1,15 +1,10 @@
-import Calculator from '../pages/Calculator';
-import Home from '../pages/Home';
+import { lazy } from 'react';
+const pages = import.meta.glob('../pages/*.tsx');
 
-/* 
-  * TODO:
-  * Lazy loading pages:
-  * const Calculator = React.lazy(() => import('./pages/calculator'));
-  * Then wrap Routes in <Suspense>
-*/
+const lazyPage = (name: string) => lazy(pages[`../pages/${name}.tsx`] as any);
 
 export const routes = [
-  { path: "/", label: "Home", element: <Home /> },
-  { path: "/calculator", label: "Calculator", element: <Calculator /> },
-  { path: "/test", element: <Home />, showInNav: false},
+  { path: "/", label: "Home", component: lazyPage("Home") },
+  { path: "/calculator", label: "Calculator", component: lazyPage("Calculator") },
+  { path: "/", label: "Home", component: lazyPage("Home"), showInNav: false},
 ];

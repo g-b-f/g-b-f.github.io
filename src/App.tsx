@@ -1,4 +1,5 @@
 import './App.css'
+import { Suspense } from 'react';
 import { HashRouter, Routes, Route, NavLink } from 'react-router';
 
 import { routes } from './modules/navigation.tsx'
@@ -20,17 +21,22 @@ function App() {
         ))}
       </nav>
 
-      <main style={{ padding: '20px' }}>
-        <Routes>
-          {routes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={route.element}
-            />
-          ))}
-          <Route path="*" element={<h1>Page Not Found</h1>} />
-        </Routes>
+      <main style={{ padding: '1.5rem' }}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            {routes.map((route) => {
+              const Component = route.component;
+              return (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<Component />}
+                />
+              );
+            })}
+            <Route path="*" element={<h1>Page Not Found</h1>} />
+          </Routes>
+        </Suspense>
       </main>
     </HashRouter>
   );
