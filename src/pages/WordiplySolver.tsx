@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent} from 'react';
+import { useState, type ChangeEvent, type ReactElement} from 'react';
 const fileUrl = "/assets/words.txt";
 
 
@@ -42,7 +42,6 @@ export default function WordiplySolver() {
         else if (answer.length >5 ){
           err("Too many letters");
         }
-        setStatus('success');
       
         console.debug("validated input, fetching word list")
         const response = (await fetch(fileUrl))
@@ -63,9 +62,34 @@ export default function WordiplySolver() {
         console.error(er)
         return
       }
+      setStatus('success');
   }
 
   const handleTextareaChange = (e: ChangeEvent<HTMLInputElement>) => setWord(e.target.value);
+  
+  function get_result_text(): ReactElement {
+    if (status === 'typing') return <></>;
+    if (status === 'submitting') return <p>Fetching word list…</p>;
+    if (status === 'success') {
+      if (result.length === 0) {
+        return <p>No matching words found.</p>;
+      }
+
+    return (
+    <>
+    <section>
+      <h3>Matches</h3>
+      {
+        <ul className="no-bullets">
+          { result.map((candidate) => (<li key={candidate}>{candidate}</li>)) }
+        </ul>
+      }
+    </section>
+    </>
+    )
+    }
+    throw new Error("Invalid status: " + status);
+  }
 
   return (
     <>
@@ -96,24 +120,9 @@ export default function WordiplySolver() {
       
     </form>
 
-    {status === 'submitting' && <p>Fetching word list…</p>}
+    {get_result_text()}
 
-    {status === 'success' && (
-      <section>
-        <h3>Matches</h3>
-        {result.length > 0 ? (
-          <ul className="no-bullets">
-            {result.map((candidate) => (
-              <li key={candidate}>{candidate}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No matching words found.</p>
-        )}
-      </section>
-    )}
     </>
-
   )
 }
 
