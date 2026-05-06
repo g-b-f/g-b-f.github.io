@@ -1,29 +1,30 @@
 import { useState, type ChangeEvent} from 'react';
+const fileUrl = "/assets/words.txt";
+
 
 export default function WordiplySolver() {
   const [word, setWord] = useState('');
   const [error, setError] = useState<Error | null>(null);
   const [status, setStatus] = useState('typing');
   const [wordList, setwordList] = useState<string[] | null>(null);
-  const [result, setResult] = useState(['']);
+  const [result, setResult] = useState<string[]>([]);
 
   const err = (e:string) => {throw new Error(e + '!')};
 
-  function get_matching_words(match_str: string): string[]{
-    console.log("getting matching words for " + match_str)
-    let ret = [];
-    if (wordList === null) {throw new Error("word list is unexpectedly null")}
-    for (const candidate of wordList){
+  function get_matching_words(match_str: string, list: string[]): string[]{
+    console.debug("getting matching words for " + match_str)
+    const ret: string[] = [];
+    for (const candidate of list){
       if (candidate.includes(match_str)){
         ret.push(candidate);
       }
     }
-    console.log("got " + ret.length + " matching words")
+    console.log("got " + ret.length + " matching words for " + match_str)
     return ret;
     }
 
   async function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
-      console.log("handling submit")
+      console.debug("handling submit")
 
       event.preventDefault();
       setStatus('submitting');
@@ -42,16 +43,17 @@ export default function WordiplySolver() {
         }
         setStatus('success');
       
-        console.log("validated input, fetching word list")
-        const fileUrl = "/assets/words.txt";
+        console.debug("validated input, fetching word list")
         const response = (await fetch(fileUrl))
-        if (!response.ok) err("File not found");
+        if (!response.ok) err("Internal word list not found");
         const text = await response.text();
-        console.log("got word list. character count: " + text.length + " word count: " + text.split("\n").length)
-        setwordList(text.split("\n"));
-        console.log(wordList === null ? "word list is null" : "word list is not null")
-        console.log("got word list of length " + wordList?.length)
-        setResult(get_matching_words(answer));
+        const words = text.split("\n");
+        console.log(
+          "got word list. character count: " + text.length +
+          " word count: " + words.length
+        )
+        setwordList(words);
+        setResult(get_matching_words(answer, words));
       }
 
       catch (er: any) {
@@ -88,11 +90,27 @@ export default function WordiplySolver() {
 
         {
           error !== null &&
-          <p color= "red" className="Error"> {error.message} </p>
+          <p color="red" className="Error">{error.message}</p>
         }
       
     </form>
-    {result}
+
+    {status === 'submitting' && <p>Fetching word list…</p>}
+
+    {status === 'success' && (
+      <section>
+        <h3>Matches</h3>
+        {result.length > 0 ? (
+          <ul>
+            {result.map((candidate) => (
+              <li key={candidate}>{candidate}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>No matching words found.</p>
+        )}
+      </section>
+    )}
     </>
 
   )
