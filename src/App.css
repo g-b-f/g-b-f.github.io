@@ -1,5 +1,5 @@
-.small_pad {
-  padding:0.5rem
+.small-margin {
+  margin:0.1rem 0.5rem;
 }
 
 .counter {
@@ -46,6 +46,10 @@
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
+}
+
+.no-bullets {
+  list-style-type: none;
 }
 
 .nav-link {

@@ -6,7 +6,7 @@ export default function WordiplySolver() {
   const [word, setWord] = useState('');
   const [error, setError] = useState<Error | null>(null);
   const [status, setStatus] = useState('typing');
-  const [wordList, setwordList] = useState<string[] | null>(null);
+  // const [wordList, setwordList] = useState<string[] | null>(nulrl);
   const [result, setResult] = useState<string[]>([]);
 
   const err = (e:string) => {throw new Error(e + '!')};
@@ -53,7 +53,7 @@ export default function WordiplySolver() {
           "got word list. character count: " + text.length +
           " word count: " + words.length
         )
-        setwordList(words);
+        // setwordList(words);
         setResult(get_matching_words(answer, words));
       }
 
@@ -76,7 +76,7 @@ export default function WordiplySolver() {
     <form onSubmit={handleSubmit}>
 
         <input
-          // className="small_pad"
+          className="small-margin"
           value={word}
           onChange={handleTextareaChange}
           disabled={status === 'submitting'}
@@ -102,7 +102,7 @@ export default function WordiplySolver() {
       <section>
         <h3>Matches</h3>
         {result.length > 0 ? (
-          <ul>
+          <ul className="no-bullets">
             {result.map((candidate) => (
               <li key={candidate}>{candidate}</li>
             ))}
