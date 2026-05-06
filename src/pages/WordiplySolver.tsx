@@ -1,7 +1,9 @@
 import { useState, type ChangeEvent, type ReactElement} from 'react';
 const fileUrl = "/assets/words.txt";
 
-// TODO: load wordList on first page load, block get_matching_words() until wordList not null
+/* TODO:
+  - Load wordList on first page load, block get_matching_words() until wordList not null
+*/
 
 export default function WordiplySolver() {
   const [word, setWord] = useState('');
@@ -26,43 +28,44 @@ export default function WordiplySolver() {
   }
 
   async function handleSubmit(event: ChangeEvent<HTMLFormElement>){
-      console.debug("handling submit")
+    console.debug("handling submit")
 
-      event.preventDefault();
-      setStatus('submitting');
+    event.preventDefault();
+    setStatus('submitting');
 
-      try {
-        const answer = word.toLowerCase()
-        if (! /^[A-Za-z]+$/.test(answer)){
-          err("Must be letters only");
-        }
-        else if (answer.length <1 ){
-          err("Too few letters");
-        }
-        else if (answer.length >9 ){
-          err("Too many letters");
-        }
-      
-        console.debug("validated input, fetching word list")
-        const response = (await fetch(fileUrl))
-        if (!response.ok) err("Internal word list not found");
-        const text = await response.text();
-        const words = text.split("\n");
-        console.log(
-          "got word list. character count: " + text.length +
-          " word count: " + words.length
-        )
-        // setwordList(words);
-        setResult(get_matching_words(answer, words));
+    try {
+      const answer = word.toLowerCase()
+      if (! /^[A-Za-z]+$/.test(answer)){
+        err("Must be letters only");
       }
-
-      catch (er: any) {
-        setStatus('typing');
-        setError(er);
-        console.error(er)
-        return
+      else if (answer.length <2 ){
+        err("Too few letters");
       }
-      setStatus('success');
+      else if (answer.length >9 ){
+        err("Too many letters");
+      }
+    
+      console.debug("validated input, fetching word list")
+      const response = (await fetch(fileUrl))
+      if (!response.ok) err("Internal word list not found");
+      const text = await response.text();
+      const words = text.split("\n");
+      console.log(
+        "got word list. character count: " + text.length +
+        " word count: " + words.length
+      )
+      // setwordList(words);
+      setResult(get_matching_words(answer, words));
+    }
+
+    catch (er: any) {
+      setStatus('typing');
+      setError(er);
+      console.error(er)
+      return
+    }
+    setStatus('success');
+    setError(null);
   }
 
   const handleTextareaChange = (e: ChangeEvent<HTMLInputElement>) => setWord(e.target.value);
