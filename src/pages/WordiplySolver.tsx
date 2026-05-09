@@ -1,4 +1,5 @@
 import { useState, useRef, type ChangeEvent, type ReactElement} from 'react';
+import { Stopwatch } from '../Utils.tsx'
 const fileUrl = "/assets/words.txt";
 
 export default function WordiplySolver() {
@@ -19,16 +20,15 @@ export default function WordiplySolver() {
   }
 
   async function get_word_list(): Promise<string[]>{
-      const start_time = performance.now();
+      const stopwatch = new Stopwatch()
       const response = (await fetch(fileUrl))
       if (!response.ok) err("Internal word list not found");
       const text = await response.text();
       const word_list = text.split("\n");
-      const end_time = performance.now();
       console.debug(
         "got word list. character count: " + text.length +
         " word count: " + word_list.length +
-        " took: " + Math.round(end_time - start_time) + " ms"
+        " took: " + stopwatch.time_taken + " ms"
       );
       return word_list;
   }
@@ -48,7 +48,7 @@ export default function WordiplySolver() {
 
   async function handleSubmit(event: ChangeEvent<HTMLFormElement>){
     console.debug("handling submit")
-    const start_time = performance.now();
+    const stopwatch = new Stopwatch()
 
     event.preventDefault();
     setStatus('submitting');
@@ -78,8 +78,7 @@ export default function WordiplySolver() {
     }
     setStatus('success');
     setError(null);
-    const end_time = performance.now();
-    console.debug("Calulated in " + Math.round(end_time - start_time) + " ms")
+    stopwatch.log("handled submit in: ")
   }
 
   const handleTextareaChange = (e: ChangeEvent<HTMLInputElement>) => setWord(e.target.value);
