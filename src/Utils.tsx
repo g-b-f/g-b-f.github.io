@@ -73,9 +73,9 @@ export class LoremIpsum{
         if (this.ipsum_paragraphs.length < count){
             console.warn(
                 "Requested " + count + " paragraphs, but only " +
-                this.ipsum_paragraphs.length + " are available. Returning all paragraphs."
+                this.ipsum_paragraphs.length + " are available."
         )
-        return this.ipsum_paragraphs.slice(0, count).join(separator)
-        }
+    }
+    return this.ipsum_paragraphs.slice(0, count).join(separator)
     }
 }

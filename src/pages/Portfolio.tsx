@@ -9,7 +9,7 @@ export default function Portfolio() {
             <h2>A good programmer, who is brilliant and smart (and made this website)</h2>
         </section>
         <section className='intro'>
-            <p>{new LoremIpsum().ipsum_text}</p>
+            <p>{new LoremIpsum().paragraphs(1)}</p>
         </section>
     </section>
   );
