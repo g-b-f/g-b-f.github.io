@@ -46,3 +46,14 @@ export class Stopwatch{
         }
     }
 }
+
+export class LoremIpsum{
+    readonly ipsum_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor arcu eu ex gravida, sit amet lobortis elit fringilla. Phasellus ornare vestibulum odio, eu pellentesque ex mollis in. Praesent gravida porttitor metus ut mattis. Quisque eleifend cursus eros, in posuere dolor pulvinar id. Aenean elementum magna eget imperdiet ornare. Duis efficitur nisl ipsum, a ultrices lacus suscipit nec. Morbi scelerisque sapien felis, luctus aliquet libero ornare vitae. Aenean vel erat id dolor placerat rutrum ut consequat est. Praesent ut lectus et mauris suscipit aliquet. Etiam eget iaculis felis. Curabitur non rutrum dolor. Nulla sem dui, rhoncus sit amet sodales in, laoreet non ante."
+    words(count: number){
+        const split_ipsum = this.ipsum_text.split(" ")
+        return split_ipsum.slice(0, count).join(" ")
+    }
+    letters(count: number){
+        return this.ipsum_text.slice(0, count)
+    } 
+}
