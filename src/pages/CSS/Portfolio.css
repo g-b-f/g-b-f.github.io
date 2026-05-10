@@ -1,0 +1,20 @@
+*{
+    text-align: left;
+}
+#intro {
+    /* text-align: left; */
+    line-height: normal;
+}
+#description p{
+    font-size: 1.25rem;
+    font-family:'Times New Roman', Times, serif
+}
+#intro h1 {
+    /* overflow: hidden; */
+    margin-bottom: 0rem;
+    margin-top: -1rem;
+    font-size: 5rem;
+}
+#intro h2 {
+    font-size: 3rem;
+}
