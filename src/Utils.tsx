@@ -64,20 +64,7 @@ export class LoremIpsum{
     ]
     readonly ipsum_text = this.ipsum_paragraphs.join(" ")
 
-    words(count: number){
-        let ipsum_text = this.ipsum_text
-        const split_text = ipsum_text.split(" ")
-        if (count > split_text.length){
-            console.log("Not enough words in ipsum, repeating text to reach count")
-            let repeated_text = ipsum_text
-            while (repeated_text.split(" ").length < count){
-                ipsum_text += " " + this.ipsum_text
-            }
-        }
-        return ipsum_text.split(" ").slice(0, count).join(" ")
-    }
-
-    letters(count: number){
+    letters(count: number): string{
         let ipsum_text = this.ipsum_text
         if (count > this.ipsum_text.length){
             console.log("Not enough letters in ipsum, repeating text to reach count")
@@ -89,15 +76,27 @@ export class LoremIpsum{
         return ipsum_text.slice(0, count)
     }
 
-    sentences(count: number, separator=". "){
-        const split_ipsum = this.ipsum_text.split(". ")
+    words(count: number): string{
+        const split_ipsum = this.ipsum_text.split(" ")
+        if (count > split_ipsum.length){
+            console.log("Not enough words in ipsum, repeating text to reach count")
+            while (split_ipsum.length < count){
+                split_ipsum.push(...this.ipsum_text.split(" "))
+            }
+        }
+        return split_ipsum.slice(0, count).join(" ")
+    }
+
+    sentences(count: number): string{
+        const sep = ". "
+        const split_ipsum = this.ipsum_text.split(sep)
         if (split_ipsum.length < count){
             console.log("Not enough sentences in ipsum, repeating sentences to reach count")
             while (split_ipsum.length < count){
-                split_ipsum.push(...this.ipsum_text.split(". "))
+                split_ipsum.push(...this.ipsum_text.split(sep))
             }
         }
-        return split_ipsum.slice(0, count).join(separator)
+        return split_ipsum.slice(0, count).join(sep) + sep
     }
 
     paragraphs(count: number): ReactElement{
