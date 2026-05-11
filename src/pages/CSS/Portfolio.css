@@ -18,5 +18,18 @@
 .intro{
     font-size: 1.25rem;
     font-size: clamp(1rem, 6vw, 1.25rem);
-    font-family:'Times New Roman', Times, serif
+    font-family:'Times New Roman', Times, serif;
+}
+
+.images {
+    float: right;
+    width: min(100%, 24rem);
+    margin: 0 0 1rem 1.5rem;
+    shape-outside: inset(0);
+}
+
+.images > * {
+    display: block;
+    width: 100%;
+    height: auto;
 }

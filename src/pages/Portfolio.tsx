@@ -1,4 +1,5 @@
 import './CSS/Portfolio.css';
+import { DummyImage } from 'react-simple-placeholder-image'
 import { LoremIpsum } from '../Utils';
 
 export default function Portfolio() {
@@ -11,7 +12,7 @@ export default function Portfolio() {
         <section className='intro'>
             <p>{new LoremIpsum().paragraphs(1)}</p>
             <div className='images'>
-                // TODO: add images
+                <DummyImage width={500} height={500} shape='image' />
             </div>
         </section>
     </section>
