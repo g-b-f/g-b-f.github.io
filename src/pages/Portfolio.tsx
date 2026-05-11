@@ -10,7 +10,7 @@ export default function Portfolio() {
             <h2>A good programmer, who is brilliant and smart (and made this website)</h2>
         </section>
         <section className='intro'>
-            <p>{new LoremIpsum().paragraphs(1)}</p>
+            {new LoremIpsum().paragraphs(1)}
             <div className='images'>
                 <DummyImage width={2000} height={2000} shape='image' />
             </div>

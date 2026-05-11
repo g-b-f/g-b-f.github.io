@@ -1,3 +1,5 @@
+import type { ReactElement } from "react";
+
 const dev_mode = import.meta.env.DEV
 
 export class Stopwatch{
@@ -98,8 +100,7 @@ export class LoremIpsum{
         return split_ipsum.slice(0, count).join(separator)
     }
 
-    // TODO: fix \n seperator not working
-    paragraphs(count: number, separator="\n\n"){
+    paragraphs(count: number): ReactElement{
         const ipsum_paragraphs = this.ipsum_paragraphs
         if (this.ipsum_paragraphs.length < count){
             console.log("Not enough paragraphs in ipsum, repeating paragraphs to reach count")
@@ -107,6 +108,8 @@ export class LoremIpsum{
                 ipsum_paragraphs.push(...this.ipsum_paragraphs)
             }
      }
-        return ipsum_paragraphs.slice(0, count).join(separator)
+        return <>
+        {ipsum_paragraphs.slice(0, count).map((p, i) => <><p key={i}>{p}</p><br /></>)}
+        </>
     }
 }
