@@ -63,19 +63,50 @@ export class LoremIpsum{
     readonly ipsum_text = this.ipsum_paragraphs.join(" ")
 
     words(count: number){
-        const split_ipsum = this.ipsum_text.split(" ")
-        return split_ipsum.slice(0, count).join(" ")
+        let ipsum_text = this.ipsum_text
+        const split_text = ipsum_text.split(" ")
+        if (count > split_text.length){
+            console.log("Not enough words in ipsum, repeating text to reach count")
+            let repeated_text = ipsum_text
+            while (repeated_text.split(" ").length < count){
+                ipsum_text += " " + this.ipsum_text
+            }
+        }
+        return ipsum_text.split(" ").slice(0, count).join(" ")
     }
+
     letters(count: number){
-        return this.ipsum_text.slice(0, count)
-    } 
-    paragraphs(count: number, separator="\n"){
-        if (this.ipsum_paragraphs.length < count){
-            console.warn(
-                "Requested " + count + " paragraphs, but only " +
-                this.ipsum_paragraphs.length + " are available."
-        )
+        let ipsum_text = this.ipsum_text
+        if (count > this.ipsum_text.length){
+            console.log("Not enough letters in ipsum, repeating text to reach count")
+            let repeated_text = this.ipsum_text
+            while (repeated_text.length < count){
+                ipsum_text += " " + this.ipsum_text
+            }
+        }
+        return ipsum_text.slice(0, count)
     }
-    return this.ipsum_paragraphs.slice(0, count).join(separator)
+
+    sentences(count: number, separator=". "){
+        const split_ipsum = this.ipsum_text.split(". ")
+        if (split_ipsum.length < count){
+            console.log("Not enough sentences in ipsum, repeating sentences to reach count")
+            while (split_ipsum.length < count){
+                split_ipsum.push(...this.ipsum_text.split(". "))
+            }
+        }
+        return split_ipsum.slice(0, count).join(separator)
+    }
+
+    // TODO: fix \n seperator not working
+    paragraphs(count: number, separator="\n\n"){
+        const ipsum_paragraphs = this.ipsum_paragraphs
+        if (this.ipsum_paragraphs.length < count){
+            console.log("Not enough paragraphs in ipsum, repeating paragraphs to reach count")
+            while (ipsum_paragraphs.length < count){
+                ipsum_paragraphs.push(...this.ipsum_paragraphs)
+            }
+     }
+        return ipsum_paragraphs.slice(0, count).join(separator)
     }
 }
