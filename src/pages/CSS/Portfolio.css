@@ -13,17 +13,18 @@
 .hero h2 {
     font-size: 3rem;
     font-size: clamp(2.5rem, 6vw, 3rem);
-    margin-bottom: 1rex;
+    margin-bottom: 2rem;
     /* padding-right: clamp(20rem, 6vw, 0rem); */
 }
 .intro{
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     gap: 1.5rem;
     font-size: 1.25rem;
     font-size: clamp(1rem, 6vw, 1.25rem);
     font-family:'Times New Roman', Times, serif;
+    align-items: center;
 }
 
 .intro > p {
@@ -32,13 +33,17 @@
 }
 
 .images {
-    /* flex: 0 0 clamp(19rem, 40%, 24rem); */
-    /* width: clamp(21rem, 40%, 26rem); */
-    /* width: min(20rem, 40%); */
-    /* width: max(560px, 40%); */
+    width: 50%;    
+}
 
-    margin: 0;
-    
+@media (max-width: 700px) {
+    .images {
+        width: 100%;
+        /* width: 95%; */
+        align-items: center;
+        /* float: ; */
+        /* margin: 4rem; */
+    }
 }
 
 .images > * {

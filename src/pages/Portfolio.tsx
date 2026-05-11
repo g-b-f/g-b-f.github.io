@@ -12,7 +12,7 @@ export default function Portfolio() {
         <section className='intro'>
             <p>{new LoremIpsum().paragraphs(1)}</p>
             <div className='images'>
-                <DummyImage width={500} height={500} shape='image' />
+                <DummyImage width={2000} height={2000} shape='image' />
             </div>
         </section>
     </section>
