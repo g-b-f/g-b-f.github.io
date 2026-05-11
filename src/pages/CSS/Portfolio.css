@@ -13,6 +13,7 @@
 .hero h2 {
     font-size: 3rem;
     font-size: clamp(2.5rem, 6vw, 3rem);
+    /* padding-right: clamp(20rem, 6vw, 0rem); */
 }
 .intro{
     font-size: 1.25rem;

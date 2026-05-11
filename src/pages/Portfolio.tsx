@@ -10,6 +10,9 @@ export default function Portfolio() {
         </section>
         <section className='intro'>
             <p>{new LoremIpsum().paragraphs(1)}</p>
+            <div className='images'>
+                // TODO: add images
+            </div>
         </section>
     </section>
   );
