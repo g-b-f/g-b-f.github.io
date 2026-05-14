@@ -3,16 +3,31 @@ import { DummyImage } from 'react-simple-placeholder-image'
 import { LoremIpsum } from '../Utils';
 
 export default function Portfolio() {
-  return (
+    const lorem_ipsum = new LoremIpsum()
+    return (
     <section className='portfolio'>
         <section className='hero'>
             <h1>Gabriel Birkbeck Frazer</h1>
             <h2>A good programmer, who is brilliant and smart (and made this website)</h2>
         </section>
         <section className='intro'>
-            {new LoremIpsum().paragraphs(1)}
-            <div className='images'>
-                <DummyImage width={2000} height={2000} shape='image' />
+            <div className='image-text'>
+                <p>{lorem_ipsum.first_paragraph}</p>
+                <div className='images'>
+                    <DummyImage width={2000} height={2000} shape='image' />
+                </div>
+            </div>
+            <div className='image-text'>
+                <p>{lorem_ipsum.second_paragraph}</p>
+                <div className='images'>
+                    <DummyImage width={2000} height={2000} shape='avatar' />
+                </div>
+            </div>
+            <div className='image-text'>
+                <p>{lorem_ipsum.third_paragraph}</p>
+                <div className='images'>
+                    <DummyImage width={2000} height={2000} shape='image' />
+                </div>
             </div>
         </section>
     </section>
