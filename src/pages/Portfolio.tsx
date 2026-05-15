@@ -1,6 +1,6 @@
 import './CSS/Portfolio.css';
 import { DummyImage } from 'react-simple-placeholder-image'
-import { LoremIpsum } from '../Utils';
+import { LoremIpsum } from '../utils/Misc';
 import FadeIn from '../modules/FadeIn';
 
 export default function Portfolio() {
