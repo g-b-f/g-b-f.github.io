@@ -3,6 +3,13 @@ import { useEffect, useRef, useState } from "react"
 const svgUrl = "/assets/London-boroughs.svg"
 const ITERATIONS = 10
 
+class SvgError extends Error {
+    constructor(message: string) {
+        super(message)
+        this.name = "SvgError"
+    }
+}
+
 export default function LondonBoroughs() {
     const [selected_borough, set_selected_borough] = useState("")
     const svgContainer = useRef<HTMLDivElement>(null)
@@ -12,11 +19,11 @@ export default function LondonBoroughs() {
 
     function get_random_borough(svg: SVGElement): string {
         const boroughsGroup = svg.querySelector<SVGElement>("#Boroughs")
-        if (!boroughsGroup) throw new Error("SVG does not contain a group with id 'Boroughs'")
+        if (!boroughsGroup) throw new SvgError("SVG does not contain a group with id 'Boroughs'")
         const boroughs = Array.from(boroughsGroup.children)
 
         console.debug("got " + boroughs.length + " boroughs from SVG")
-        if (boroughs.length === 0) throw new Error("No boroughs found in SVG")
+        if (boroughs.length === 0) throw new SvgError("No boroughs found in SVG")
 
         const randomIndex = Math.floor(Math.random() * boroughs.length)
         const ret = boroughs[randomIndex].id
@@ -26,7 +33,7 @@ export default function LondonBoroughs() {
 
     function reset_svg(svg: SVGElement) {
         const boroughsGroup = svg.querySelector<SVGElement>("#Boroughs")
-        if (!boroughsGroup) throw new Error("SVG does not contain a group with id 'Boroughs'")
+        if (!boroughsGroup) throw new SvgError("SVG does not contain a group with id 'Boroughs'")
         const boroughs = Array.from(boroughsGroup.children) as SVGElement[]
         for (const borough of boroughs) {
             borough.style.fill = ""
@@ -37,13 +44,13 @@ export default function LondonBoroughs() {
 
     function highlight_borough(svg: SVGElement, boroughName: string) {
         const borough = svg.querySelector<SVGElement>("#" + boroughName)
-        if (!borough) throw new Error("Borough with id '" + boroughName + "' not found in SVG")
+        if (!borough) throw new SvgError("Borough with id '" + boroughName + "' not found in SVG")
         borough.style.fill = "red"
     }
 
     function load_svg() {
         fetch(svgUrl).then((res) => res.text()).then((svgText) => {
-            if (!svgContainer.current) throw new Error("SVG container not found")
+            if (!svgContainer.current) throw new SvgError("SVG container not found")
             svgContainer.current.innerHTML = svgText
             const svgElement = get_svg_element()
             svgElement.style.width = "100%"
@@ -53,7 +60,7 @@ export default function LondonBoroughs() {
 
     function get_svg_element(): SVGElement{
         const svgElement = svgContainer.current?.querySelector("svg")
-        if (!svgElement) { throw new Error("SVG element not found") }
+        if (!svgElement) throw new SvgError("SVG element not found")
         return svgElement
     }
 
@@ -71,7 +78,7 @@ export default function LondonBoroughs() {
         lock.current = true
         set_selected_borough("")
         for (let i = 0; i < ITERATIONS; i++) {
-            await sleep(200)
+            await sleep(100)
             borough  = select_borough()
         }
         set_selected_borough(borough)
