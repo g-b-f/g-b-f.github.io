@@ -24,6 +24,7 @@ export default function LondonBoroughs() {
     }
 
     function reset_svg(svg: SVGElement) {
+        const boroughsGroup = svg.querySelector<SVGElement>('#Boroughs');
         if (!boroughsGroup) { throw new Error("SVG does not contain a group with id 'Boroughs'"); }
         const boroughs = Array.from(boroughsGroup.children) as SVGElement[]
         for (const borough of boroughs) {
@@ -64,6 +65,16 @@ export default function LondonBoroughs() {
         const borough = get_random_borough(svgElement);
         reset_svg(svgElement)
         highlight_borough(svgElement, borough);
+        return borough;
+    }
+    
+    async function visual_pick(){
+        let borough = "";
+        set_selected_borough("");
+        for (let i = 0; i < ITERATIONS; i++) {
+            await sleep(200)
+            borough  = select_borough()
+        }
         set_selected_borough(borough);
     }
 
@@ -72,13 +83,7 @@ export default function LondonBoroughs() {
         <div>
             <h1>London Boroughs Picker</h1>
             <div ref={svgContainer} style={{ border: '1px solid black', marginBottom: '20px' }}></div>
-            <button onClick={() => {
-		for (let i = 0; i < ITERATIONS; i++) {
-		    await sleep(500)
-		    select_borough()
-		}
-            }}
-            >Pick a random borough</button>
+            <button onClick={async () => await visual_pick()} >Pick a random borough</button>
             {selected_borough && <p>You should visit: <strong>{selected_borough}</strong></p>}
         </div>
     );
