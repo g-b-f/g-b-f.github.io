@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
 const svgUrl = "/assets/London-boroughs.svg"
+const ITERATIONS = 10
 
 export default function LondonBoroughs() {
     const [selected_borough, set_selected_borough] = useState("")
     const svgContainer = useRef<HTMLDivElement>(null);
+    const sleep = (ms:number) => new Promise(r => setTimeout(r, ms));
 
 
     function get_random_borough(svg: SVGElement): string {
@@ -22,8 +24,6 @@ export default function LondonBoroughs() {
     }
 
     function reset_svg(svg: SVGElement) {
-        
-        
         if (!boroughsGroup) { throw new Error("SVG does not contain a group with id 'Boroughs'"); }
         const boroughs = Array.from(boroughsGroup.children) as SVGElement[]
         for (const borough of boroughs) {
@@ -59,17 +59,24 @@ export default function LondonBoroughs() {
         return svgElement
     }
 
+    function select_borough(){	
+        const svgElement = get_svg_element()
+        const borough = get_random_borough(svgElement);
+        reset_svg(svgElement)
+        highlight_borough(svgElement, borough);
+        set_selected_borough(borough);
+    }
+
     useEffect(() => load_svg, [svgUrl]);
     return (
         <div>
             <h1>London Boroughs Picker</h1>
             <div ref={svgContainer} style={{ border: '1px solid black', marginBottom: '20px' }}></div>
             <button onClick={() => {
-                const svgElement = get_svg_element()
-                const borough = get_random_borough(svgElement);
-                reset_svg(svgElement)
-                highlight_borough(svgElement, borough);
-                set_selected_borough(borough);
+		for (let i = 0; i < ITERATIONS; i++) {
+		    await sleep(500)
+		    select_borough()
+		}
             }}
             >Pick a random borough</button>
             {selected_borough && <p>You should visit: <strong>{selected_borough}</strong></p>}
