@@ -16,15 +16,10 @@ export default function LondonBoroughs() {
     const lock = useRef(false)
     const sleep = (ms:number) => new Promise(r => setTimeout(r, ms))
 
-
     function get_random_borough(svg: SVGElement): string {
-        const boroughsGroup = svg.querySelector<SVGElement>("#Boroughs")
-        if (!boroughsGroup) throw new SvgError("SVG does not contain a group with id 'Boroughs'")
+        const boroughsGroup = select_svg_by_id(svg, "Boroughs")
         const boroughs = Array.from(boroughsGroup.children)
-
-        console.debug("got " + boroughs.length + " boroughs from SVG")
-        if (boroughs.length === 0) throw new SvgError("No boroughs found in SVG")
-
+        
         const randomIndex = Math.floor(Math.random() * boroughs.length)
         const ret = boroughs[randomIndex].id
         console.log("picked random borough: " + ret)
@@ -32,8 +27,7 @@ export default function LondonBoroughs() {
     }
 
     function reset_svg(svg: SVGElement) {
-        const boroughsGroup = svg.querySelector<SVGElement>("#Boroughs")
-        if (!boroughsGroup) throw new SvgError("SVG does not contain a group with id 'Boroughs'")
+        const boroughsGroup = select_svg_by_id(svg, "Boroughs")
         const boroughs = Array.from(boroughsGroup.children) as SVGElement[]
         for (const borough of boroughs) {
             borough.style.fill = ""
@@ -42,10 +36,10 @@ export default function LondonBoroughs() {
         }
     }
 
-    function highlight_borough(svg: SVGElement, boroughName: string) {
-        const borough = svg.querySelector<SVGElement>("#" + boroughName)
-        if (!borough) throw new SvgError("Borough with id '" + boroughName + "' not found in SVG")
-        borough.style.fill = "red"
+    function select_svg_by_id(svg: SVGElement, id: string): SVGElement {
+        const elem = svg.querySelector<SVGElement>("#" + id)
+        if (!elem) throw new SvgError("id '" + id + "' not found in SVG")
+        return elem
     }
 
     function load_svg() {
@@ -68,7 +62,7 @@ export default function LondonBoroughs() {
         const svgElement = get_svg_element()
         const borough = get_random_borough(svgElement)
         reset_svg(svgElement)
-        highlight_borough(svgElement, borough)
+        select_svg_by_id(svgElement, borough).style.fill = "red"
         return borough
     }
     
@@ -85,12 +79,15 @@ export default function LondonBoroughs() {
         lock.current = false
     }
 
-    useEffect(() => load_svg, [svgUrl])
+    useEffect(() => load_svg, [])
     return (
         <div>
             <h1>London Boroughs Picker</h1>
             <div ref={svgContainer} style={{ border: "1px solid black", marginBottom: "20px" }}></div>
-            <button onClick={async () => await visual_pick()} >Pick a random borough</button>
+            <button 
+                onClick={async () => await visual_pick()}
+                disabled={lock.current}
+            >Pick a random borough</button>
             {selected_borough && <p>You should visit: <strong>{selected_borough.replaceAll("_"," ")}</strong></p>}
         </div>
     )
