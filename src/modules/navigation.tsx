@@ -13,6 +13,6 @@ type Route = {
 export const routes: Route[] = [
   { path: "/", label: "Home", component: lazyPage("Home") },
   { path: "/london", label: "Boroughs Picker", component: lazyPage("LondonBoroughs")},
-  { path: "/portfolio", label: "Portfolio", component: lazyPage("Portfolio") },
+  { path: "/portfolio", label: "Portfolio", component: lazyPage("Portfolio"), showInNav: false },
   { path: "/solver", label: "Wordiply Solver", component: lazyPage("WordiplySolver")},
 ];
