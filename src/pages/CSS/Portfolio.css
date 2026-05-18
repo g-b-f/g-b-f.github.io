@@ -1,0 +1,60 @@
+.portfolio{
+    text-align: left;
+}
+.hero {
+    line-height: normal;
+}
+.hero h1 {
+    /* overflow: hidden; */
+    margin-bottom: 0rem;
+    margin-top: -1rem;
+    font-size: clamp(4rem, 6vw, 5rem);
+}
+.hero h2 {
+    font-size: 3rem;
+    font-size: clamp(2.5rem, 6vw, 3rem);
+    margin-bottom: 2rem;
+    /* padding-right: clamp(20rem, 6vw, 0rem); */
+}
+.intro{
+    font-size: 1.25rem;
+    font-size: clamp(1rem, 6vw, 1.5rem);
+    font-family:'Times New Roman', Times, serif;
+}
+
+.image-text{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 1rem;
+}
+
+.image-text > p {
+    flex: 1 1 0;
+    min-width: 18rem;
+    color: white;
+}
+
+.images {
+    flex: 0 0 32rem;
+    width: 100%;
+    max-width: 32rem;
+}
+
+@media (max-width: 872px) {
+    .image-text {
+        flex-direction: column;
+        margin: 0.5rem;
+    }
+
+    .images {
+        max-width: 100%;
+    }
+}
+
+.images > * {
+    display: block;
+    width: 100%;
+    height: auto;
+}

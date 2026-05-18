@@ -1,5 +1,5 @@
 import { useState, useRef, type ChangeEvent, type ReactElement} from 'react';
-import { Stopwatch } from '../Utils.tsx'
+import { Stopwatch } from '../utils/Misc.tsx'
 const fileUrl = "/assets/words.txt";
 
 export default function WordiplySolver() {
