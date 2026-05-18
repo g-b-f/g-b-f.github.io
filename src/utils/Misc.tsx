@@ -1,5 +1,3 @@
-import type { ReactElement } from "react";
-
 const dev_mode = import.meta.env.DEV
 
 export class Stopwatch{
