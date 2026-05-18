@@ -13,6 +13,5 @@ type Route = {
 export const routes: Route[] = [
   { path: "/", label: "Home", component: lazyPage("Home") },
   { path: "/portfolio", label: "Portfolio", component: lazyPage("Portfolio"), showInNav: false },
-  { path: "/calculator", label: "Calculator", component: lazyPage("Calculator"), showInNav: false },
   { path: "/solver", label: "Wordiply Solver", component: lazyPage("WordiplySolver")},
 ];
