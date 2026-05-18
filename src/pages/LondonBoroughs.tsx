@@ -79,7 +79,7 @@ export default function LondonBoroughs() {
         })
     }
 
-    useEffect(() => load_svg, [])
+    useEffect(() => load_svg(), [])
     return (
         <div>
             <h1>London Boroughs Picker</h1>
