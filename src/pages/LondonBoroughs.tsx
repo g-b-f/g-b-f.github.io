@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react"
-import svgUrl from "/assets/London-boroughs.svg"
 
-// const svgUrl = "/assets/London-boroughs.svg"
+const SVG_URL = "/assets/London-boroughs.svg"
 const ITERATIONS = 10
 
 class SvgError extends Error {
@@ -71,7 +70,7 @@ export default function LondonBoroughs() {
     }
 
     function load_svg() {
-        fetch(svgUrl).then((res) => res.text()).then((svgText) => {
+        fetch(SVG_URL).then((res) => res.text()).then((svgText) => {
             if (!svgContainer.current) throw new SvgError("SVG container not found")
             svgContainer.current.innerHTML = svgText
             const svgElement = get_svg_element()
