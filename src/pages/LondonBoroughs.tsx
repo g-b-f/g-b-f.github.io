@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
+import svgUrl from "/assets/London-boroughs.svg"
 
-const svgUrl = "/assets/London-boroughs.svg"
+// const svgUrl = "/assets/London-boroughs.svg"
 const ITERATIONS = 10
 
 class SvgError extends Error {
