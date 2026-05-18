@@ -6,6 +6,7 @@ const ITERATIONS = 10
 export default function LondonBoroughs() {
     const [selected_borough, set_selected_borough] = useState("")
     const svgContainer = useRef<HTMLDivElement>(null)
+    const lock = useRef(false)
     const sleep = (ms:number) => new Promise(r => setTimeout(r, ms))
 
 
@@ -14,7 +15,7 @@ export default function LondonBoroughs() {
         if (!boroughsGroup) throw new Error("SVG does not contain a group with id 'Boroughs'")
         const boroughs = Array.from(boroughsGroup.children)
 
-        console.log("got " + boroughs.length + " boroughs from SVG")
+        console.debug("got " + boroughs.length + " boroughs from SVG")
         if (boroughs.length === 0) throw new Error("No boroughs found in SVG")
 
         const randomIndex = Math.floor(Math.random() * boroughs.length)
@@ -65,13 +66,16 @@ export default function LondonBoroughs() {
     }
     
     async function visual_pick(){
+        if (lock.current) return
         let borough = ""
+        lock.current = true
         set_selected_borough("")
         for (let i = 0; i < ITERATIONS; i++) {
             await sleep(200)
             borough  = select_borough()
         }
         set_selected_borough(borough)
+        lock.current = false
     }
 
     useEffect(() => load_svg, [svgUrl])
@@ -80,7 +84,7 @@ export default function LondonBoroughs() {
             <h1>London Boroughs Picker</h1>
             <div ref={svgContainer} style={{ border: "1px solid black", marginBottom: "20px" }}></div>
             <button onClick={async () => await visual_pick()} >Pick a random borough</button>
-            {selected_borough && <p>You should visit: <strong>{selected_borough}</strong></p>}
+            {selected_borough && <p>You should visit: <strong>{selected_borough.replaceAll("_"," ")}</strong></p>}
         </div>
     )
 }
