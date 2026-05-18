@@ -7,13 +7,13 @@ export default function LondonBoroughs() {
     const svgContainer = useRef<HTMLDivElement>(null);
 
 
-    function get_random_borough(svg: SVGElement): string | null {
+    function get_random_borough(svg: SVGElement): string {
         const boroughsGroup = svg.querySelector<SVGElement>('#Boroughs');
         if (!boroughsGroup) { throw new Error("SVG does not contain a group with id 'Boroughs'"); }
         const boroughs = Array.from(boroughsGroup.children);
 
         console.log('got ' + boroughs.length + ' boroughs from SVG');
-        if (boroughs.length === 0) return null;
+        if (boroughs.length === 0) throw new Error("No boroughs found in SVG");
 
         const randomIndex = Math.floor(Math.random() * boroughs.length);
         const ret = boroughs[randomIndex].id;
@@ -22,7 +22,8 @@ export default function LondonBoroughs() {
     }
 
     function reset_svg(svg: SVGElement) {
-        const boroughsGroup = svg.querySelector<SVGElement>('#Boroughs');
+        
+        
         if (!boroughsGroup) { throw new Error("SVG does not contain a group with id 'Boroughs'"); }
         const boroughs = Array.from(boroughsGroup.children) as SVGElement[]
         for (const borough of boroughs) {
@@ -34,37 +35,38 @@ export default function LondonBoroughs() {
 
     function highlight_borough(svg: SVGElement, boroughName: string) {
         const borough = svg.querySelector<SVGElement>('#' + boroughName);
-        if (!borough) { throw new Error("Borough with id '" + boroughName + "' not found in SVG"); }
+        if (!borough) throw new Error("Borough with id '" + boroughName + "' not found in SVG");
         borough.style.fill = 'red';
         borough.style.stroke = 'black';
         // borough.style.strokeWidth = '5px';
     }
-    
-    useEffect(() => {
+
+    function load_svg() {
         fetch(svgUrl)
         .then((res) => res.text())
         .then((svgText) => {
-            if (svgContainer.current) {
-                    svgContainer.current.innerHTML = svgText;      
-
-            const svgElement = svgContainer.current.querySelector('svg');
-            if (svgElement) {
+            if (!svgContainer.current){throw new Error("SVG container not found");}
+                svgContainer.current.innerHTML = svgText;      
+                const svgElement = get_svg_element()
                 svgElement.style.width = '100%';
                 svgElement.style.height = 'auto';
-            }
-        }
         })
-    }, [svgUrl]);
+    }
 
+    function get_svg_element(): SVGElement{
+        const svgElement = svgContainer.current?.querySelector('svg');
+        if (!svgElement) { throw new Error("SVG element not found"); }
+        return svgElement
+    }
+
+    useEffect(() => load_svg, [svgUrl]);
     return (
         <div>
             <h1>London Boroughs Picker</h1>
             <div ref={svgContainer} style={{ border: '1px solid black', marginBottom: '20px' }}></div>
             <button onClick={() => {
-                const svgElement = svgContainer.current?.querySelector('svg');
-                if (!svgElement) { throw new Error("SVG element not found"); }
+                const svgElement = get_svg_element()
                 const borough = get_random_borough(svgElement);
-                if (!borough) { throw new Error("No boroughs found in SVG"); }
                 reset_svg(svgElement)
                 highlight_borough(svgElement, borough);
                 set_selected_borough(borough);
