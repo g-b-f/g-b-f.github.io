@@ -42,16 +42,6 @@ export default function LondonBoroughs() {
         return elem
     }
 
-    function load_svg() {
-        fetch(svgUrl).then((res) => res.text()).then((svgText) => {
-            if (!svgContainer.current) throw new SvgError("SVG container not found")
-            svgContainer.current.innerHTML = svgText
-            const svgElement = get_svg_element()
-            svgElement.style.width = "100%"
-            svgElement.style.height = "auto"
-        })
-    }
-
     function get_svg_element(): SVGElement{
         const svgElement = svgContainer.current?.querySelector("svg")
         if (!svgElement) throw new SvgError("SVG element not found")
@@ -79,16 +69,28 @@ export default function LondonBoroughs() {
         lock.current = false
     }
 
+    function load_svg() {
+        fetch(svgUrl).then((res) => res.text()).then((svgText) => {
+            if (!svgContainer.current) throw new SvgError("SVG container not found")
+            svgContainer.current.innerHTML = svgText
+            const svgElement = get_svg_element()
+            svgElement.style.width = "100%"
+            svgElement.style.height = "auto"
+        })
+    }
+
     useEffect(() => load_svg, [])
     return (
         <div>
             <h1>London Boroughs Picker</h1>
-            <div ref={svgContainer} style={{ border: "1px solid black", marginBottom: "20px" }}></div>
+            <h2>Where in London Should I visit?</h2>
+            <div ref={svgContainer}></div>
             <button 
                 onClick={async () => await visual_pick()}
                 disabled={lock.current}
             >Pick a random borough</button>
-            {selected_borough && <p>You should visit: <strong>{selected_borough.replaceAll("_"," ")}</strong></p>}
+            {selected_borough && 
+            <p>You should visit: <strong>{selected_borough.replaceAll("_"," ")}</strong></p>}
         </div>
     )
 }
