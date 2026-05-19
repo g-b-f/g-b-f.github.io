@@ -83,7 +83,7 @@ export default function LondonBoroughs() {
     return (
         <div>
             <h1>London Boroughs Picker</h1>
-            <h2>Where in London Should I visit?</h2>
+            <h2>Where in London should I visit?</h2>
             <div ref={svgContainer}></div>
             <button 
                 onClick={async () => await visual_pick()}

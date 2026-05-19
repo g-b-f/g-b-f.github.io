@@ -1,3 +1,7 @@
+* {
+ line-height: normal; 
+}
+
 .small-margin {
   margin:0.1rem 0.5rem;
 }
