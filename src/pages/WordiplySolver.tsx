@@ -110,8 +110,10 @@ export default function WordiplySolver() {
 
   return (
     <>
-    <h2>Wordiply Solver</h2>
-    <p>Input word from Wordiply</p>
+    <section className="hero">
+    <h1>Wordiply Solver</h1>
+    <h2>Input word from Wordiply to calculate all containing words</h2>
+    </section>
 
     <form onSubmit={handleSubmit}>
         <input

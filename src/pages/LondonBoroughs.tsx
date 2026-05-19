@@ -13,7 +13,7 @@ class SvgError extends Error {
 export default function LondonBoroughs() {
     const [selected_borough, set_selected_borough] = useState("")
     const svgContainer = useRef<HTMLDivElement>(null)
-    const lock = useRef(false)
+    const [lock, set_lock] = useState(false)
     const sleep = (ms:number) => new Promise(r => setTimeout(r, ms))
 
     function get_random_borough(svg: SVGElement): string {
@@ -22,7 +22,7 @@ export default function LondonBoroughs() {
         
         const randomIndex = Math.floor(Math.random() * boroughs.length)
         const ret = boroughs[randomIndex].id
-        console.log("picked random borough: " + ret)
+        console.debug("picked random borough: " + ret)
         return ret
     }
 
@@ -57,40 +57,41 @@ export default function LondonBoroughs() {
     }
     
     async function visual_pick(){
-        if (lock.current) return
+        if (lock) return
         let borough = ""
-        lock.current = true
+        set_lock(true)
         set_selected_borough("")
         for (let i = 0; i < ITERATIONS; i++) {
             await sleep(100)
             borough  = select_borough()
         }
         set_selected_borough(borough)
-        lock.current = false
+        set_lock(false)
     }
 
-    function load_svg() {
+    useEffect(() => {
         fetch(SVG_URL).then((res) => res.text()).then((svgText) => {
             if (!svgContainer.current) throw new SvgError("SVG container not found")
             svgContainer.current.innerHTML = svgText
-            const svgElement = get_svg_element()
-            svgElement.style.width = "100%"
-            svgElement.style.height = "auto"
         })
-    }
-
-    useEffect(() => load_svg(), [])
+    }, [])
+    
     return (
         <div>
-            <h1>London Boroughs Picker</h1>
-            <h2>Where in London should I visit?</h2>
-            <div ref={svgContainer}></div>
+            <section className="hero">
+                <h1>London Boroughs Picker</h1>
+                <h2>Where in London should I visit?</h2>
+            </section>
             <button 
                 onClick={async () => await visual_pick()}
-                disabled={lock.current}
+                disabled={lock}
             >Pick a random borough</button>
-            {selected_borough && 
-            <p>You should visit: <strong>{selected_borough.replaceAll("_"," ")}</strong></p>}
+            {
+            selected_borough ? 
+            <p>You should visit: <strong>{selected_borough.replaceAll("_"," ")}</strong></p> :
+            <p><br></br></p>
+            }
+            <div className="fullScreen-svg" ref={svgContainer}></div>
         </div>
     )
 }

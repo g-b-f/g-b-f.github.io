@@ -2,6 +2,27 @@
  line-height: normal; 
 }
 
+.hero h1 {
+    margin-bottom: 0rem;
+    margin-top: -1rem;
+}
+
+p {
+    margin: 0.5rem 0;
+}
+
+.fullScreen-svg {
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+@media (max-width: 872px) {
+  .fullScreen-svg {
+    width: 100%;
+  }
+}
 .small-margin {
   margin:0.1rem 0.5rem;
 }
