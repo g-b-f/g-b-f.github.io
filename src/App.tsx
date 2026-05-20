@@ -2,7 +2,7 @@ import './App.css'
 import { Suspense } from 'react';
 import { HashRouter, Routes, Route, NavLink } from 'react-router';
 
-import { routes } from './modules/navigation.tsx'
+import { routes } from './modules/Navigation.tsx'
 
 function App() {
   return (

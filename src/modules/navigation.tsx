@@ -1,18 +1,18 @@
 import { lazy } from 'react';
 const pages = import.meta.glob('../pages/*.tsx');
 
-const lazyPage = (name: string) => lazy(pages[`../pages/${name}.tsx`] as any);
+const lazyLoad = (name: string) => lazy(pages[`../pages/${name}.tsx`] as any);
 
-type Route = {
+type RouteType = {
   path: string;
   label: string;
   component: React.ComponentType;
   showInNav?: boolean;
 };
 
-export const routes: Route[] = [
-  { path: "/", label: "Home", component: lazyPage("Home") },
-  { path: "/london", label: "Boroughs Picker", component: lazyPage("LondonBoroughs")},
-  { path: "/portfolio", label: "Portfolio", component: lazyPage("Portfolio"), showInNav: false },
-  { path: "/solver", label: "Wordiply Solver", component: lazyPage("WordiplySolver")},
+export const routes: RouteType[] = [
+  { path: "/", label: "Home", component: lazyLoad("Home") },
+  { path: "/london", label: "Boroughs Picker", component: lazyLoad("LondonBoroughs")},
+  { path: "/portfolio", label: "Portfolio", component: lazyLoad("Portfolio"), showInNav: false },
+  { path: "/solver", label: "Wordiply Solver", component: lazyLoad("WordiplySolver")},
 ];
