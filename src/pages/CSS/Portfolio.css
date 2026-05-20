@@ -1,8 +1,44 @@
-.portfolio{
-    text-align: left;
+:root {
+  --text: black;
+  --text-h: black;
+  --bg: #ffdb58;
+  --border: black;
+  --component-bg: white;
+  /* --code-bg: #f4f3ec; */
+  /* --accent: #aa3bff; */
+  /* --accent-bg: rgba(170, 59, 255, 0.1); */
+  /* --accent-border: rgba(170, 59, 255, 0.5); */
+  /* --social-bg: rgba(244, 243, 236, 0.5); */
+  --shadow: black;
+
+  /* --sans: system-ui, 'Segoe UI', Roboto, sans-serif; */
+  /* --heading: system-ui, 'Segoe UI', Roboto, sans-serif; */
+  /* --mono: ui-monospace, Consolas, monospace; */
+
+  /* font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+
+}
+* {
+    line-height: normal;
 }
 .hero {
-    line-height: normal;
+    background-color: var(--component-bg);
+    align-items: center;
+
+    border: var(--border);
+    border-style: solid;
+    border-radius: 10px;
+    /* box-shadow: 10px 10px var(--border); */
+    box-shadow: 4px 6px var(--border);
+    font-family: var(--sans);
 }
 .hero h1 {
     /* overflow: hidden; */
@@ -28,12 +64,18 @@
     gap: 1.5rem;
     align-items: center;
     margin: 1rem;
+
+    border: var(--border);
+    border-style: solid;
+    border-radius: 10px;
+    box-shadow: 4px 6px var(--border);
+    font-family: var(--sans);
 }
 
 .image-text > p {
     flex: 1 1 0;
     min-width: 18rem;
-    color: white;
+    /* color: white; */
 }
 
 .images {
