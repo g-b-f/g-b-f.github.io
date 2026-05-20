@@ -1,34 +1,23 @@
-:root {
+body {
+  --bg: #ffdb58;
   --text: black;
   --text-h: black;
-  --bg: #ffdb58;
   --border: black;
   --component-bg: white;
-  /* --code-bg: #f4f3ec; */
-  /* --accent: #aa3bff; */
-  /* --accent-bg: rgba(170, 59, 255, 0.1); */
-  /* --accent-border: rgba(170, 59, 255, 0.5); */
-  /* --social-bg: rgba(244, 243, 236, 0.5); */
   --shadow: black;
 
-  /* --sans: system-ui, 'Segoe UI', Roboto, sans-serif; */
-  /* --heading: system-ui, 'Segoe UI', Roboto, sans-serif; */
-  /* --mono: ui-monospace, Consolas, monospace; */
-
-  /* font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
   background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  color: var(--text);
 
 }
 
 #root {
       border-inline:unset;
+}
+
+.nav-container {
+    background-color: unset;
+    border-bottom: unset;
 }
 
 .hero {
@@ -40,8 +29,9 @@
 .hero h1,
 .hero h2,
 .images,
-.image-text p
+.image-text p,
 /* .nav-container */
+.nav-button
 {
     border: var(--border);
     border-style: solid;
@@ -50,8 +40,20 @@
     font-family: var(--sans);
     background-color: var(--component-bg);
     display: flex;
-    
+    color: var(--text);
+
 }
+
+/* .nav-button:focus {
+    border-style: inset;
+} */
+
+h1,
+h2,
+p {
+ padding: 1rem;
+}
+
 .hero h1 {
     margin-bottom: 1rem;
     margin-top: -1rem;
@@ -64,18 +66,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
 }
 .hero h2 {
     width: clamp(30rem, 20vw, 50rem);
-    /* font-size: 3rem; */
     font-size: clamp(2rem, 6vw, 2.5rem);
     margin-bottom: 2rem;
     min-width: 70vw;
     max-width: 75vw;
-
-    /* padding-right: clamp(20rem, 6vw, 0rem); */
-
 }
 .intro{
     font-size: 1.25rem;
@@ -94,13 +91,10 @@
 .image-text p {
     flex: 1 1 0;
     min-width: 18rem;
-    /* color: white; */
-    /* overflow: hidden; */
 }
 
 .images {
     flex: 0 0 32rem;
-    /* width: 100%; */
     max-width: 32rem;
     overflow: hidden;
 }
