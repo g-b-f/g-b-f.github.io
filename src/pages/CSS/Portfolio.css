@@ -26,31 +26,55 @@
   -moz-osx-font-smoothing: grayscale; */
 
 }
-* {
-    line-height: normal;
-}
-.hero {
-    background-color: var(--component-bg);
-    align-items: center;
 
+#root {
+      border-inline:unset;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.hero h1,
+.hero h2,
+.image-text
+/* .nav-container */
+{
     border: var(--border);
     border-style: solid;
     border-radius: 10px;
-    /* box-shadow: 10px 10px var(--border); */
     box-shadow: 4px 6px var(--border);
     font-family: var(--sans);
+    background-color: var(--component-bg);
+    display: flex;
+    
 }
 .hero h1 {
-    /* overflow: hidden; */
-    margin-bottom: 0rem;
+    margin-bottom: 1rem;
     margin-top: -1rem;
     font-size: clamp(4rem, 6vw, 5rem);
+    /* width: clamp(35rem, 100vw, 60rem); */
+    min-width: 75vw;
+    max-width: 80vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
 }
 .hero h2 {
-    font-size: 3rem;
-    font-size: clamp(2.5rem, 6vw, 3rem);
+    width: clamp(30rem, 20vw, 50rem);
+    /* font-size: 3rem; */
+    font-size: clamp(2rem, 6vw, 2.5rem);
     margin-bottom: 2rem;
+    min-width: 70vw;
+    max-width: 75vw;
+
     /* padding-right: clamp(20rem, 6vw, 0rem); */
+
 }
 .intro{
     font-size: 1.25rem;
@@ -64,23 +88,19 @@
     gap: 1.5rem;
     align-items: center;
     margin: 1rem;
-
-    border: var(--border);
-    border-style: solid;
-    border-radius: 10px;
-    box-shadow: 4px 6px var(--border);
-    font-family: var(--sans);
+    background-color: var(--component-bg);
 }
 
-.image-text > p {
+.image-text p {
     flex: 1 1 0;
     min-width: 18rem;
     /* color: white; */
+    /* overflow: hidden; */
 }
 
 .images {
     flex: 0 0 32rem;
-    width: 100%;
+    /* width: 100%; */
     max-width: 32rem;
 }
 
