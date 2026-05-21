@@ -2,6 +2,31 @@ import { useState, useRef, type ChangeEvent, type ReactElement} from 'react';
 import { Stopwatch } from '../utils/Misc.tsx'
 const fileUrl = "/assets/words.txt";
 
+function ResultText(props: { status: string, result: string[] }): ReactElement {
+  if (props.status === 'typing') return <></>;
+  if (props.status === 'submitting') return <p>Fetching results...</p>;
+  if (props.status === 'success') {
+    if (props.result.length === 0) return <p>No matching words found.</p>;
+
+    return (<>
+      <section className="wordiply-result">
+        <h3>Matches</h3>
+          <table><tbody>
+            {
+              props.result.map((res) => (
+                <tr key={res}>
+                  <td>{res.length}</td>
+                  <td>{res}</td>
+                </tr>
+              ))
+            }
+          </tbody></table>
+      </section>
+    </>)
+  }
+  throw new Error("Invalid status: " + props.status);
+}
+
 export default function WordiplySolver() {
   const [word, setWord] = useState('');
   const [error, setError] = useState<Error | null>(null);
@@ -82,31 +107,6 @@ export default function WordiplySolver() {
   }
 
   const handleTextareaChange = (e: ChangeEvent<HTMLInputElement>) => setWord(e.target.value);
-  
-  function get_result_text(): ReactElement {
-    if (status === 'typing') return <></>;
-    if (status === 'submitting') return <p>Fetching results...</p>;
-    if (status === 'success') {
-      if (result.length === 0) return <p>No matching words found.</p>;
-
-      return (<>
-        <section className="wordiply-result">
-          <h3>Matches</h3>
-            <table><tbody>
-              {
-                result.map((res) => (
-                  <tr key={res}>
-                    <td>{res.length}</td>
-                    <td>{res}</td>
-                  </tr>
-                ))
-              }
-            </tbody></table>
-        </section>
-      </>)
-    }
-    throw new Error("Invalid status: " + status);
-  }
 
   return (
     <>
@@ -137,8 +137,7 @@ export default function WordiplySolver() {
         }
     </form>
 
-    {get_result_text()}
+    <ResultText {...{ status, result }} />
     </>
   )
 }
-

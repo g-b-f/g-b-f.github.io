@@ -8,26 +8,26 @@ const languages = {
   "React": 5
 }
 
-function languageTable(languages: Record<string, number>) {
-  const languageEntries = Object.entries(languages).sort((a, b) => b[1] - a[1]);
+function LanguageTable(props: Record<string, number>) {
+  const languageEntries = Object.entries(props).sort((a, b) => b[1] - a[1]);
   return (
     <table>
-    <tbody>
-      {languageEntries.map(([language, value]) => (
-        <tr key={language}>
-          <td>{language}</td>
-          <td>
-            <progress id={language + "_progress"} value={value} max="10">{value}</progress>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-  )
+      <tbody>
+        {languageEntries.map(([language, value]) => (
+          <tr key={language}>
+            <td>{language}</td>
+            <td>
+              <progress id={language + "_progress"} value={value} max="10">{value}</progress>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 }
 
 export default function Portfolio() {
-    return (
+  return (
     <section className="portfolio">
         <section className="hero">
             <h1>Gabriel Birkbeck Frazer</h1>
@@ -48,7 +48,7 @@ export default function Portfolio() {
           </div>
           <div className="languages">
             {/* <h3>Programming languages</h3> */}
-            {languageTable(languages)}
+            <LanguageTable {...languages} />
           </div>
         </section>
         <br></br>
