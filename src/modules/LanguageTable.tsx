@@ -1,4 +1,6 @@
 import { Fragment, useState } from 'react';
+import { isTouchScreen } from '../utils/Misc';
+
 
 /**
 * Defines the structure for programming language knowledge, including proficiency level and related libraries.
@@ -23,7 +25,7 @@ export function LanguageTable(props: Record<string, LanguageInfo>) {
       <table>
         <thead>
             <th colSpan={2}>
-                Languages (click to show libraries)
+                Languages ({isTouchScreen ? "tap": "click"} to show libraries)
             </th>
         </thead>
         <tbody>

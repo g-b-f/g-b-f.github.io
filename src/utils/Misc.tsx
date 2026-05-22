@@ -1,6 +1,12 @@
 const dev_mode = import.meta.env.DEV
 
-export class Stopwatch{
+export const isTouchScreen = typeof window !== "undefined" && (
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    (navigator as any).msMaxTouchPoints > 0
+);
+
+export class Stopwatch {
     /**
      * Stopwatch timer for development.
      */
