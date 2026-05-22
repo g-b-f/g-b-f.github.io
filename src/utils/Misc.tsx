@@ -1,4 +1,4 @@
-const dev_mode = import.meta.env.DEV
+export const dev_mode = import.meta.env.DEV
 
 export const isTouchScreen = typeof window !== "undefined" && (
     "ontouchstart" in window ||
@@ -6,28 +6,31 @@ export const isTouchScreen = typeof window !== "undefined" && (
     (navigator as any).msMaxTouchPoints > 0
 );
 
+export const tapOrClick = isTouchScreen ? "tap" : "click";
+export const tapOrClickCap = isTouchScreen ? "Tap" : "Click";
+
 export class Stopwatch {
     /**
      * Stopwatch timer for development.
      */
-    start_time = performance.now();
+    start_time = 0;
     end_time: number|null = null;
 
-    now(){
+    now(): number{
         /**
-         * In production builds, don't call anything. 
-         * This should hopefully hint to the ts compiler to remove the dead code
+         * Returns the current time in milliseconds.
+         * In production builds, just returns `1` to avoid performance overhead
          */
         return dev_mode ? performance.now() : 1
     }
     constructor(){
         this.start_time = this.now()
     }
-    begin(){
+    begin(): number{
         this.start_time = this.now()
         return this.start_time
     }
-    end(){
+    end(): number{
         this.end_time = this.now()
         return this.end_time
     }
@@ -37,12 +40,12 @@ export class Stopwatch {
 
     /**
      * Logs the time taken with a custom message and log level.
-     * @param words - The prefix message for the log output. Defaults to "Time taken: "
+     * @param msg_prefix - The prefix message for the log output. Defaults to "Time taken: "
      * @param level - The log level (debug, log, warn, error). Defaults to "debug"
      */
-    log(words= "Time taken: ", level= "debug"){
-        if (dev_mode) return;
-        const message = words + this.time_taken + " ms"
+    log(msg_prefix= "Time taken: ", level= "debug"){
+        if (!dev_mode) return;
+        const message = msg_prefix + this.time_taken.toFixed(1) + " ms"
         switch (level.toLowerCase()) {
             case "debug": console.debug(message); break;
             case "log": console.log(message); break;

@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { isTouchScreen } from '../utils/Misc';
+import { tapOrClick, tapOrClickCap } from '../utils/Misc';
 
 
 /**
@@ -7,12 +7,13 @@ import { isTouchScreen } from '../utils/Misc';
 * - `level`: A number from 0 to 10 indicating proficiency in the language.
 * - `libraries`: An array of strings listing libraries or frameworks associated with the language.
 */
-export type LanguageInfo = {
+type LanguageInfo = {
   level: number;
   libraries: string[];
 };
+export type LanguageTableProps = Record<string, LanguageInfo>;
 
-export function LanguageTable(props: Record<string, LanguageInfo>) {
+export function LanguageTable(props: LanguageTableProps) {
   const [openLanguage, setOpenLanguage] = useState<string | null>(null);
   const languageEntries = Object.entries(props).sort(([, a], [, b]) => b.level - a.level);
 
@@ -24,9 +25,11 @@ export function LanguageTable(props: Record<string, LanguageInfo>) {
     <div className="languages">
       <table>
         <thead>
-            <th colSpan={2}>
-                Languages ({isTouchScreen ? "tap": "click"} to show libraries)
-            </th>
+            <tr>
+                <th colSpan={2}>
+                    Languages ({tapOrClick} to show libraries)
+                </th>
+            </tr>
         </thead>
         <tbody>
           {languageEntries.map(([language, info]) => (
@@ -39,7 +42,7 @@ export function LanguageTable(props: Record<string, LanguageInfo>) {
                     value={info.level}
                     max="10"
                     onClick={() => toggleLanguage(language)}
-                    title="Click to view related libraries"
+                    title={tapOrClickCap + " to view related libraries"}
                   >
                     {info.level}
                   </progress>

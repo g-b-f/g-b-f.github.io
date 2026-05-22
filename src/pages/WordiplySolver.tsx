@@ -50,11 +50,10 @@ export default function WordiplySolver() {
       if (!response.ok) err("Internal word list not found");
       const text = await response.text();
       const word_list = text.split("\n");
-      console.debug(
-        "got word list. character count: " + text.length +
-        " word count: " + word_list.length +
-        " took: " + stopwatch.time_taken + " ms"
-      );
+      stopwatch.log(
+        `Got word list. Character count: ${text.length}, `+
+        `word count: ${word_list.length}. Took: `
+      )
       return word_list;
   }
 
@@ -112,7 +111,7 @@ export default function WordiplySolver() {
     <>
     <section className="hero">
     <h1>Wordiply Solver</h1>
-    <h2>Input word from Wordiply to calculate all containing words</h2>
+    <h2>Input word from <a href="https://www.wordiply.com/">Wordiply</a> to calculate all containing words</h2>
     </section>
 
     <form onSubmit={handleSubmit}>

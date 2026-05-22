@@ -1,9 +1,9 @@
 import "./CSS/Portfolio.css";
-import { LanguageTable, type LanguageInfo } from "../modules/LanguageTable";
+import { LanguageTable, type LanguageTableProps } from "../modules/LanguageTable";
 
-const languages: Record<string, LanguageInfo> = {
+const languages: LanguageTableProps = {
   Python: { level: 10, libraries: [
-    "pandas", "numpy", "scikit-learn", "matplotlib", "pytest", "flask"
+    "pandas", "numpy", "scikit-learn", "matplotlib", "pytest", "flask", "fastAPI"
   ] },
   Java: { level: 7, libraries: ["Spring", "mockito", "JUnit", "Maven"] },
   "C/C++": { level: 7, libraries: ["platformio"] },
@@ -17,9 +17,9 @@ export default function Portfolio() {
   return (
     <section className="portfolio">
         <section className="hero">
-            <h1>Gabriel Birkbeck Frazer</h1>
-            <h2>Software engineer with experience in Data Science, Bioinformatics,
-              and Data Engineering</h2>
+          <h1>Gabriel Birkbeck Frazer</h1>
+          <h2>Software engineer with experience in Data Science, Bioinformatics,
+            and Data Engineering</h2>
         </section>
         <section className="intro">
           <div className="description">
@@ -36,10 +36,10 @@ export default function Portfolio() {
           <LanguageTable {...languages} />
         </section>
         <br></br>
-        <i>
+        <i className="WIP-disclaimer">
           This portfolio is very much a work in progress,
-          but in the meantime you"re welcome to look at the mini webapps
-          I"ve made, above.
+          but in the meantime you're welcome to look at the mini webapps
+          I've made, above.
         </i>
     </section>
   );
