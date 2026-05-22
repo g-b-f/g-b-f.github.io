@@ -12,6 +12,69 @@
 
 .languages {
     margin: 1rem auto;
+    max-width: 36rem;
+}
+
+.languages table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.languages td {
+    padding: 0.5rem 0.25rem;
+    vertical-align: middle;
+}
+.languages th {
+    text-align: center;
+}
+
+.language-row td:first-child {
+    width: 30%;
+    font-weight: 600;
+    color: var(--text-h);
+}
+
+.languages progress {
+    margin-left: 1rem;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.language-row progress:hover {
+    filter: brightness(1.05);
+}
+
+.language-libraries td {
+    padding: 0;
+}
+
+.library-dropdown {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow);
+    color: var(--text);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-0.35rem);
+    transition: max-height 300ms ease, opacity 300ms ease, transform 300ms ease, padding 300ms ease;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.language-libraries.open .library-dropdown {
+    max-height: 14rem;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 0.85rem;
+}
+
+.library-dropdown ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    list-style-type: none;
+    font-family: var(--mono);
 }
 
 .intro > .description {
@@ -21,11 +84,6 @@
     text-wrap: pretty;
     hyphens: auto;
     hyphenate-limit-chars: 10 6 3;
-}
-
-.languages progress{
-    margin-left: 1rem;
-    accent-color: var(--accent);
 }
 
 .hero h1 {

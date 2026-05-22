@@ -1,35 +1,17 @@
-import './CSS/Portfolio.css';
+import "./CSS/Portfolio.css";
+import { LanguageTable, type LanguageInfo } from "../modules/LanguageTable";
 
-const languages = {
-  "Python": 10,
-  "Java": 7,
-  "C/C++": 7,
-  "Bash": 8,
-  "React": 5
-}
+const languages: Record<string, LanguageInfo> = {
+  Python: { level: 10, libraries: [
+    "pandas", "numpy", "scikit-learn", "matplotlib", "pytest", "flask"
+  ] },
+  Java: { level: 7, libraries: ["Spring", "mockito", "JUnit", "Maven"] },
+  "C/C++": { level: 7, libraries: ["platformio"] },
+  Bash: { level: 8, libraries: ["GNU coreutils"] },
+  React: { level: 5, libraries: ["React Router", "Vite"] },
+  SQL: { level: 4.5, libraries: ["PostgreSQL", "MySQL", "SQLite"] }
+};
 
-function LanguageTable(props: Record<string, number>) {
-  const languageEntries = Object.entries(props).sort((a, b) => b[1] - a[1]);
-  return (
-  <div className="languages">
-    {/* <h3>Programming languages</h3> */}
-    <table>
-      <tbody>
-        {languageEntries.map(([language, value]) => (
-          <tr key={language}>
-            <td>{language}</td>
-            <td>
-              <progress
-                id={language + "_progress"} value={value} max="10">{value}
-              </progress>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-  );
-}
 
 export default function Portfolio() {
   return (
@@ -56,8 +38,8 @@ export default function Portfolio() {
         <br></br>
         <i>
           This portfolio is very much a work in progress,
-          but in the meantime you're welcome to look at the mini webapps
-          I've made, above.
+          but in the meantime you"re welcome to look at the mini webapps
+          I"ve made, above.
         </i>
     </section>
   );
