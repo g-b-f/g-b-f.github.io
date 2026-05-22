@@ -1,0 +1,10 @@
+.contact-links {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* border: 0.5rem solid white; */
+}
+
+.contact-link-image img{
+    max-width:20rem;
+    /* border: 0.5rem solid white; */
+}

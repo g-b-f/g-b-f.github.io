@@ -1,5 +1,7 @@
 export const dev_mode = import.meta.env.DEV
 
+export const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+
 export const isTouchScreen = typeof window !== "undefined" && (
     "ontouchstart" in window ||
     navigator.maxTouchPoints > 0 ||
