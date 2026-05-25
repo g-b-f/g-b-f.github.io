@@ -4,7 +4,6 @@
     /* border: 0.5rem solid white; */
 }
 
-.contact-link-image img{
+.contact-link-image > *{
     max-width:20rem;
-    /* border: 0.5rem solid white; */
 }

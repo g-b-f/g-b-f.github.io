@@ -1,5 +1,10 @@
 import { isDarkMode } from "../utils/Misc"
+import { RenderSVG } from "../utils/SVGtools"
+
 import "../pages/CSS/Contact.css";
+
+const SVG_URL = "/assets/logos/LinkedIn.svg"
+
 
 export default function Contact() {
   return (
@@ -16,11 +21,13 @@ export default function Contact() {
               "/assets/logos/GitHub_White.svg" : "/assets/logos/GitHub_Black.svg"} />
           </a>
         </div>
-        <div className="contact-link-image">
+        {/* <div className="contact-link-image">
           <a href="https://www.linkedin.com/in/gabebf/">
             <img src={"/assets/logos/LinkedIn.svg"} />
           </a>
-        </div>
+        </div> */}
+        <RenderSVG svg_url={SVG_URL} />
+
         {/* <div className="contact-link">email</div> */}
       </section>
     </section>
