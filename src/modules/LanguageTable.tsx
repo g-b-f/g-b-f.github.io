@@ -34,14 +34,13 @@ export function LanguageTable(props: LanguageTableProps) {
         <tbody>
           {languageEntries.map(([language, info]) => (
             <Fragment key={language}>
-              <tr className="language-row">
+              <tr className="language-row" onClick={() => toggleLanguage(language)} >
                 <td>{language}</td>
                 <td>
                   <progress
                     id={`${language}_progress`}
                     value={info.level}
                     max="10"
-                    onClick={() => toggleLanguage(language)}
                     title={tapOrClickCap + " to view related libraries"}
                   >
                     {info.level}

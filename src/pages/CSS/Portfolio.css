@@ -38,6 +38,8 @@
     margin-left: 1rem;
     accent-color: var(--accent);
     cursor: pointer;
+    height: 2rem;
+    margin-top: 0.15rem
 }
 
 .language-row progress:hover {
