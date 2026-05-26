@@ -2,14 +2,20 @@ import { RenderSVG } from "../utils/SVGtools"
 
 import "../pages/CSS/Contact.css";
 
-const contact_links = [
+type ContactLinkType = {
+  site: string;
+  path: string;
+  link: string;
+}
+
+const contact_links: ContactLinkType[] = [
   {
-    name: "GitHub",
+    site: "GitHub",
     path: "/assets/logos/GitHub.svg",
     link: "https://github.com/g-b-f/",
   },
   {
-    name: "LinkedIn",
+    site: "LinkedIn",
     path: "/assets/logos/LinkedIn.svg",
     link: "https://www.linkedin.com/in/gabebf/",
   }
@@ -20,12 +26,12 @@ export default function Contact() {
     <section className="contact">
       <section className="hero">
         <h1>Contact</h1>
-        <h2>You can reach me at the following locations</h2>
+        <h2>You can reach me at the following locations:</h2>
       </section>
       <section className="contact-links-grid">
         <br />
-        {contact_links.map(({ name, path, link }) => (
-          <a key={name + "_profile"} href={link} title={name + " profile" }>
+        {contact_links.map(({ site, path, link }) => (
+          <a key={site + "_profile"} href={link} title={site + " profile" }>
             <RenderSVG svgUrl={path} className="contact-link-image" />
           </a>
         ))}
