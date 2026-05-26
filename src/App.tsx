@@ -2,9 +2,9 @@ import './App.css'
 import { Suspense } from 'react';
 import { HashRouter, Routes, Route, NavLink } from 'react-router';
 
-import { routes } from './modules/Navigation.tsx'
+import routes from './modules/Navigation.tsx'
 
-function App() {
+export default function App() {
   return (
     <HashRouter>
       <nav className="nav-container">
@@ -21,7 +21,7 @@ function App() {
         ))}
       </nav>
 
-      <main style={{ padding: '1.5rem' }}>
+      <main>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             {routes.map((route) => {
@@ -41,5 +41,3 @@ function App() {
     </HashRouter>
   );
 }
-
-export default App;

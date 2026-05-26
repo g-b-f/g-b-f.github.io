@@ -1,5 +1,7 @@
 import { useState, useRef, type ChangeEvent, type ReactElement} from 'react';
 import { Stopwatch } from '../utils/Misc.tsx'
+import "../pages/CSS/WordiplySolver.css";
+
 const fileUrl = "/assets/words.txt";
 
 function ResultText(props: { status: string, result: string[] }): ReactElement {
