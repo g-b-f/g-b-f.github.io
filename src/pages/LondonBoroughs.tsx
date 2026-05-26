@@ -1,14 +1,8 @@
 import { useEffect, useRef, useState } from "react"
+import { SvgError } from "../utils/SVGtools"
 
 const SVG_URL = "/assets/London-boroughs.svg"
 const ITERATIONS = 10
-
-class SvgError extends Error {
-    constructor(message: string) {
-        super(message)
-        this.name = "SvgError"
-    }
-}
 
 export default function LondonBoroughs() {
     const [selected_borough, set_selected_borough] = useState("")
