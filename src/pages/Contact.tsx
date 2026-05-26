@@ -1,5 +1,4 @@
 import { RenderSVG } from "../utils/SVGtools"
-
 import "../pages/CSS/Contact.css";
 
 type ContactLinkType = {
