@@ -4,6 +4,9 @@
     /* border: 0.5rem solid white; */
 }
 
-.contact-link-image > *{
+.contact-link-image svg{
     max-width:20rem;
+}
+.contact-link-image svg path {
+    fill: var(--text);
 }

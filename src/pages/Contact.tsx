@@ -20,14 +20,14 @@ export default function Contact() {
       load_svg(SVG_URL, linkedIn)
         .then(() => {
           console.log("SVG loaded, recolouring...")
-          recolour_svg(linkedIn, ".filled", "red")
+          // recolour_svg(linkedIn, ".filled", "red")
         })
         .catch((error) => {
           console.error("SVG load/recolour failed:", error)
         })
     } else {
       console.log("ref is not null, recolouring...")
-      recolour_svg(linkedIn, ".filled", "red")
+      // recolour_svg(linkedIn, ".filled", "red")
     }
   }, [])
 
