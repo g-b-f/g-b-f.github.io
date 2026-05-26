@@ -1,4 +1,4 @@
-import React, { type ReactElement } from "react"
+import React, { type ReactElement, useEffect, useRef } from "react"
 
 export class SvgError extends Error {
     constructor(message: string) {
@@ -26,23 +26,25 @@ export function load_svg(svg_url: string, svg_container: React.RefObject<HTMLDiv
         })
 }
 
-// interface RenderSVGProps {
-//     svg_url: string
-//     class_name?: string
-// }
-
-// export function RenderSVG({ svg_url, class_name = "contact-link-image" }: RenderSVGProps): ReactElement {
-//     const svgRef = useSVG(svg_url)
-//     return <div ref={svgRef} className={class_name}></div>
-// }
-
 interface RenderSVGProps {
-    svgRef: React.RefObject<HTMLDivElement | null>
-    className: string
+    svgUrl: string
+    className?: string
 }
 
-export function RenderSVG({ svgRef, className="contact-link-image" }: RenderSVGProps): ReactElement {
-    return <div ref={svgRef} className={className}></div>
+export function RenderSVG({ svgUrl, className = "contact-link-image" }: RenderSVGProps): ReactElement {
+    const svgRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        if (!svgRef.current || svgRef.current.querySelector("svg")) {
+            return
+        }
+
+        load_svg(svgUrl, svgRef).catch((error) => {
+            console.error("Unable to load SVG:", error)
+        })
+    }, [svgUrl])
+
+    return <div ref={svgRef} className={className} />
 }
 
 export class SVG {
