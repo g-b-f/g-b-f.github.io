@@ -12,6 +12,7 @@ type RouteType = {
 
 export const routes: RouteType[] = [
   { path: "/", label: "Home", component: lazyLoad("Portfolio") },
+  { path: "/contact", label: "Contact", component: lazyLoad("Contact") },
   { path: "/london", label: "Boroughs Picker", component: lazyLoad("LondonBoroughs")},
   // { path: "/portfolio", label: "Portfolio", component: lazyLoad("Portfolio"), showInNav: false },
   { path: "/solver", label: "Wordiply Solver", component: lazyLoad("WordiplySolver")},

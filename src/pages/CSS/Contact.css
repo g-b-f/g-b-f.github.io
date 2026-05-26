@@ -1,0 +1,15 @@
+section.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: row;
+    gap: 2rem;
+}
+section.contact-links-grid svg path {
+    fill: var(--text);
+}
+section.contact-links-grid img {
+    margin: 1rem;
+}
+section.contact-links-grid svg {
+    max-width:30rem;
+}
