@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-section.portfolio section.intro{
+.portfolio .intro {
     display: grid;
     grid-template-columns: auto auto auto;
     /* border: 0.5rem solid white; */
@@ -79,7 +79,7 @@ section.portfolio section.intro{
     font-family: var(--mono);
 }
 
-section.portfolio section.intro > .description {
+.portfolio .intro > .description {
     margin: auto 3rem;
     text-align: justify;
     text-justify: inter-word;
@@ -88,16 +88,17 @@ section.portfolio section.intro > .description {
     hyphenate-limit-chars: 10 6 3;
 }
 
-section.portfolio section.hero h1 {
-    margin-bottom: 0rem;
-    margin-top: -1rem;
+.portfolio .hero h1 {
+    margin-bottom: 1rem;
+    margin-top: 0rem;
     font-size: clamp(3rem, 6vw, 4rem);
+    line-height: 99%
 }
-section.portfolio section.hero h2 {
+.portfolio .hero h2 {
     font-size: clamp(2rem, 6vw, 2.5rem);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
-section.portfolio section.intro {
+.portfolio .intro {
     text-align: left;
     font-size: clamp(1rem, 6vw, 1.5rem);
     font-family:'Times New Roman', Times, serif;
@@ -137,17 +138,17 @@ section.image-text {
         max-width: 100%;
     }
 
-    .intro {
+    .portfolio .intro {
         display: inline;
     }
     .intro .languages {
         display: flex;
         justify-self: center;
-        max-width: fit-content;
+        /* max-width: fit-content; */
     }
-    .intro > .description {
-    margin: -1rem 0rem 0rem;
-    text-align: center;
-    hyphens: none;
+    .intro .description p {
+        margin: -1rem -3rem 1rem;
+        text-align: center;
+        hyphens: none;
     }
 }
