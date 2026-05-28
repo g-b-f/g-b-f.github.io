@@ -13,3 +13,9 @@ section.contact-links-grid img {
 section.contact-links-grid svg {
     max-width:30rem;
 }
+@media (max-width: 830px) {
+    section.contact-links-grid svg {
+	max-width: 80vw
+    }
+}
+
