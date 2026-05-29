@@ -16,7 +16,6 @@
 }
 
 .languages table {
-    width: 100%;
     border-collapse: collapse;
 }
 
@@ -39,7 +38,7 @@
     accent-color: var(--accent);
     cursor: pointer;
     height: 2rem;
-    margin-top: 0.15rem
+    margin-top: 0.15rem;
 }
 
 .language-row progress:hover {
@@ -144,11 +143,36 @@ section.image-text {
     .intro .languages {
         display: flex;
         justify-self: center;
-        /* max-width: fit-content; */
     }
     .intro .description p {
         margin: -1rem -3rem 1rem;
         text-align: center;
         hyphens: none;
+    }
+}
+
+@media (max-width: 340px) {
+    .intro .languages {
+        max-width: 80vw;
+        height: auto;
+        justify-content: center;
+    }
+    .intro .languages tbody {
+        align-items: center;
+    }
+    .intro .languages progress {
+        width: 40vw;
+        margin-left: 0.3rem;
+    }
+    .portfolio .hero h2 {
+        font-size: 1.5rem;
+    }
+    .portfolio .hero h1 {
+        font-size: 2.5rem;
+    }
+    .intro .library-dropdown li {
+        line-height: 120%;
+        list-style-type: disc;
+
     }
 }

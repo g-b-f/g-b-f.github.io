@@ -72,6 +72,10 @@ p {
   border: 0.1rem solid transparent;
   transition: border-color 0.3s;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &:hover {
     border-color: var(--accent-border);
   }
@@ -114,22 +118,26 @@ p {
   }
 }
 
-
-@media (max-width: 830px) {
+/* Two word buttons overflow at 516px */
+@media (max-width: 516px) {
   .nav-container {
-    gap: 0.5rem;
     padding: 1.5rem;
-    gap: clamp(0.2rem, 1vw, 2rem);
+  }
+  .nav-button{
+    min-height: 6rex;
   }
 }
 
 @media (max-width: 340px) {
   .nav-container {
     display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 1rem;
-    padding: 1rem;
-    flex-direction: column;
-    overflow: scroll;
+    /* grid-template-columns: auto auto auto; */
+    grid-template-rows: auto auto auto;
+
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  .nav-button {
+    min-height: auto;
   }
 }
