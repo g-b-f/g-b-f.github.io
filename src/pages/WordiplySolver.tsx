@@ -11,7 +11,7 @@ function ResultText(props: { status: string, result: string[] }): ReactElement {
     if (props.result.length === 0) return <p>No matching words found.</p>;
 
     return (<>
-      <section className="wordiply-result">
+      <section className="result">
         <h3>Matches</h3>
           <table><tbody>
             {
@@ -110,7 +110,7 @@ export default function WordiplySolver() {
   const handleTextareaChange = (e: ChangeEvent<HTMLInputElement>) => setWord(e.target.value);
 
   return (
-    <>
+    <section className="wordiply">
     <section className="hero">
     <h1>Wordiply Solver</h1>
     <h2>Input word from <a href="https://www.wordiply.com/">Wordiply</a> to calculate all containing words</h2>
@@ -139,6 +139,5 @@ export default function WordiplySolver() {
     </form>
 
     <ResultText {...{ status, result }} />
-    </>
-  )
+  </section>)
 }

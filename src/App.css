@@ -96,6 +96,10 @@ p {
   color: #481976;
 } */
 
+.hero a {
+  color: var(--text);
+}
+
 #center {
   display: flex;
   flex-direction: column;
