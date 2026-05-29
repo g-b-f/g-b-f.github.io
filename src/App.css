@@ -58,7 +58,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(0.25rem, 4vw, 2rem);
+  gap: clamp(0.3rem, var(--vw-squared), 2rem);
   padding: 1.5rem;
   background-color: #242424;
   border-bottom: 1px solid var(--accent-border);

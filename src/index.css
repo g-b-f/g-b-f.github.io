@@ -30,6 +30,28 @@
   }
 }
 
+:root {
+  /*************************
+  *** Non-linear Scaling ***
+  **************************/
+
+  --base-size: 50px;       /* Target size at baseline resolution */
+  --vw-baseline: 1000px;   /* Baseline screen width */
+  --vh-baseline: 800px;    /* Baseline screen height */
+
+  /* Normalized ratio (e.g., 1 unit at 1000px) */
+  --vw-ratio: calc(100vw / var(--vw-baseline));
+  --vh-ratio: calc(100vh / var(--vh-baseline));
+
+  /* Quadratic scaling */
+  --vw-squared: calc(var(--base-size) * pow(var(--vw-ratio), 2));
+  --vh-squared: calc(var(--base-size) * pow(var(--vh-ratio), 2));
+
+  /* Cubic scaling */
+  --vw-cubed: calc(var(--base-size) * pow(var(--vw-ratio), 3));
+  --vh-cubed: calc(var(--base-size) * pow(var(--vh-ratio), 3));
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     /* --text: #9ca3af; */
