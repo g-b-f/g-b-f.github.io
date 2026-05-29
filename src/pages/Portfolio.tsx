@@ -18,8 +18,8 @@ export default function Portfolio() {
     <section className="portfolio">
         <section className="hero">
           <h1>Gabriel Birkbeck Frazer</h1>
-          <h2>Software engineer with experience in Data Science, Bioinformatics,
-            and Data Engineering</h2>
+          <h2>Software engineer with experience in Data Science, Bio&shy;informatics,
+            and Data Engin&shy;eering</h2>
         </section>
         <section className="intro">
           <div className="description">
