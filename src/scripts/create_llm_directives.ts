@@ -34,5 +34,6 @@ const split = dir_name.split(path.sep).slice(0, -3)
 assert.strictEqual(split.at( - 1), "g-b-f.github.io", "script in wrong place!")
 split.push("public", LLM_FILE_NAME)
 
-fs.writeFileSync(split.join(path.sep), llm_file.join("\n"));
-console.log("saved!")
+const output_path = split.join(path.sep)
+fs.writeFileSync(output_path, llm_file.join("\n"));
+console.log(`saved ${LLM_FILE_NAME} to ${output_path}`)
