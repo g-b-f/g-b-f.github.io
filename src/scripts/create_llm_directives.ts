@@ -15,16 +15,17 @@ var llm_file = [
 "",
 "## Skills",
 "",
-"Gabriel's skills, relative proficiency, and associated libraries are as follows:",
+"### Programming Languages",
+"",
+"Gabriel's skill with programming languages, relative proficiency, "+
+"and associated libraries are as follows:",
 ]
 
 for (const [language, info] of Object.entries(languages)) {
-  let text = `- **${language}**: ${get_description(info.level)}`
-  llm_file.push("", text)
+  llm_file.push("", `- **${language}**: ${get_description(info.level)}`)
 
   for (const library of info.libraries) {
-    let text = `    - ${library}`
-    llm_file.push(text)
+    llm_file.push(`    - ${library}`)
   }
 }
 
