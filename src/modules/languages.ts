@@ -17,7 +17,7 @@ export const languages: LanguageTableProps = {
   Java: { level: 7, libraries: ["Spring", "mockito", "JUnit", "Maven"] },
   "C/C++": { level: 7, libraries: ["platformio"] },
   Bash: { level: 8, libraries: ["GNU coreutils"] },
-  React: { level: 5.5, libraries: ["React Router", "Vite"] },
+  "Front End": { level: 5.5, libraries: ["React", "Vite", "Typescript", "HTML", "CSS"] },
   SQL: { level: 5, libraries: ["PostgreSQL", "MySQL", "SQLite"] }
 };
 
