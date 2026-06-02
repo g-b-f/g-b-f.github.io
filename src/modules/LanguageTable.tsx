@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { tapOrClick, tapOrClickCap } from '../utils/Misc';
+import { tapOrClick, tapOrClickCap, titleCase } from '../utils/Misc';
 import { get_description, type LanguageTableProps } from './languages';
 
 export function LanguageTable(props: LanguageTableProps) {
@@ -30,8 +30,9 @@ export function LanguageTable(props: LanguageTableProps) {
                     id={`${language}_progress`}
                     value={info.level}
                     max="10"
-                    title={`${tapOrClickCap} to view related libraries`}
-                    aria-label={get_description(info.level)}
+                    title={`${language} - `+
+                    `${titleCase(get_description(info.level))} - `+
+                    `${tapOrClickCap} to view related libraries`}
                   >
                     {info.level}
                   </progress>

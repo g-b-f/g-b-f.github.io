@@ -11,6 +11,12 @@ export const isTouchScreen = typeof window !== "undefined" && (
 export const tapOrClick = isTouchScreen ? "tap" : "click";
 export const tapOrClickCap = isTouchScreen ? "Tap" : "Click";
 
+export function titleCase(str:string){
+    return str.replace(
+        /(^\w|\s\w)(\S*)/g, (_,m1,m2) => m1.toUpperCase()+m2.toLowerCase()
+    )
+}
+
 export class Stopwatch {
     /**
      * Stopwatch timer for development.

@@ -21,7 +21,9 @@ var llm_file = [
 "and associated libraries are as follows:",
 ]
 
-for (const [language, info] of Object.entries(languages)) {
+const languageEntries = Object.entries(languages).sort(([, a], [, b]) => b.level - a.level);
+
+for (const [language, info] of languageEntries) {
   llm_file.push("", `- **${language}**: ${get_description(info.level)}`)
   console.debug(`${language} - ${info.level} - ${get_description(info.level)}`)
 

@@ -27,6 +27,7 @@
     text-align: center;
 }
 
+/* Name of programming language */
 .language-row td:first-child {
     width: 30%;
     font-weight: 600;
