@@ -27,7 +27,7 @@ jobs:
         run: npm ci
       
       - name: Add LLM directives
-        run: npm directive
+        run: npm run directive
 
       - name: Build
         run: npm run build:gh
