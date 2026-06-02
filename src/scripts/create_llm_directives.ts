@@ -23,6 +23,7 @@ var llm_file = [
 
 for (const [language, info] of Object.entries(languages)) {
   llm_file.push("", `- **${language}**: ${get_description(info.level)}`)
+  console.debug(`${language} - ${info.level} - ${get_description(info.level)}`)
 
   for (const library of info.libraries) {
     llm_file.push(`    - ${library}`)
