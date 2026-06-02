@@ -1,16 +1,6 @@
 import "./CSS/Portfolio.css";
-import { LanguageTable, type LanguageTableProps } from "../modules/LanguageTable";
-
-const languages: LanguageTableProps = {
-  Python: { level: 10, libraries: [
-    "pandas", "numpy", "scikit-learn", "matplotlib", "pytest", "flask", "fastAPI"
-  ] },
-  Java: { level: 7, libraries: ["Spring", "mockito", "JUnit", "Maven"] },
-  "C/C++": { level: 7, libraries: ["platformio"] },
-  Bash: { level: 8, libraries: ["GNU coreutils"] },
-  React: { level: 5, libraries: ["React Router", "Vite"] },
-  SQL: { level: 4.5, libraries: ["PostgreSQL", "MySQL", "SQLite"] }
-};
+import { LanguageTable } from "../modules/LanguageTable";
+import { languages } from "../modules/languages";
 
 
 export default function Portfolio() {
