@@ -53,7 +53,7 @@
   --vh-cubed: calc(var(--base-size) * pow(var(--vh-ratio), 3));
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
     :root {
       --text: #6b6375;
       --text: black;
@@ -68,7 +68,7 @@
       --shadow:
         rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
     }
-}
+} */
 
 #root {
   width: 1126px;
