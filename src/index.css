@@ -1,6 +1,6 @@
 :root {
-    /* --text: #9ca3af; */
     --text:white;
+    --text-grey: #9ca3af;
     --text-h: #f3f4f6;
     --bg: #16171d;
     --border: #2e303a;
@@ -55,8 +55,8 @@
 
 /* @media (prefers-color-scheme: light) {
     :root {
-      --text: #6b6375;
       --text: black;
+      --text-grey: #6b6375;
       --text-h: #08060d;
       --bg: #fff;
       --border: #e5e4e7;
