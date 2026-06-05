@@ -1,6 +1,9 @@
 # Personal page created using React, TypeScript, and Vite
 
+Hosted here: https://g-b-f.github.io/
+
 More to come!
+
 
 <!-- # React + TypeScript + Vite
 
