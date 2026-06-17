@@ -20,33 +20,34 @@ export function DropDown(props: DropdownType) {
 
   return (
     <div className="languages">
-          {menuEntries.map(([label, routes]) => (
-            <Fragment key={label}>
-            <nav className="nav-container">
-
-            <nav
-                className="nav-button"
-                title={`${tapOrClickCap} to view items`}
-                onClick={() => toggleLanguage(label)}
-            > {label}</nav>
-              <div className={`language-libraries ${openMenu === label ? 'open' : ''}`}>
-                  <div className="library-dropdown">
-                            {routes.filter(r => r.showInNav !== false).map((route) => (
-                            <NavLink
-                                key={route.path}
-                                to={route.path}
-                                className={({ isActive }) =>
-                                isActive ? 'nav-link active' : 'nav-link'
-                                }
-                            >
-                                <nav className="nav-button"> {route.label} </nav>
-                            </NavLink>
-                            ))}
-                  </div>
+      {menuEntries.map(([label, routes]) => (
+        <Fragment key={label}>
+          <nav className="nav-container">
+          <nav
+              className="nav-button"
+              title={`${tapOrClickCap} to view items`}
+              onClick={() => toggleLanguage(label)}
+          >
+            {label}
+          </nav>
+          <div className={`language-libraries ${openMenu === label ? 'open' : ''}`}>
+            <div className="library-dropdown">
+              {routes.filter(r => r.showInNav !== false).map((route) => (
+                <NavLink
+                    key={route.path}
+                    to={route.path}
+                    className={({ isActive }) =>
+                    isActive ? 'nav-link active' : 'nav-link'
+                    }
+                >
+                  <nav className="nav-button"> {route.label} </nav>
+                </NavLink>
+                ))}
               </div>
-              </nav>
-            </Fragment>
-          ))}
+            </div>
+          </nav>
+        </Fragment>
+      ))}
     </div>
   );
 }
