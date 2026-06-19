@@ -105,6 +105,28 @@ p {
   color: var(--text);
 }
 
+.dropdown-links {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow);
+    color: var(--text);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-0.35rem);
+    transition: max-height 300ms ease, opacity 300ms ease, transform 300ms ease, padding 300ms ease;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.dropdown-container.open .dropdown-links {
+    max-height: 14rem;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 0.85rem;
+}
+
 #center {
   display: flex;
   flex-direction: column;
