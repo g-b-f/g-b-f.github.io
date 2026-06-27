@@ -64,6 +64,12 @@ p {
   border-bottom: 1px solid var(--accent-border);
 }
 
+/* .dropdown-group {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
 .nav-button{
   padding: 5px 10px;
   padding: 1vh 1vw;
@@ -105,7 +111,10 @@ p {
   color: var(--text);
 }
 
+/* Dropdown navigation bar */
+
 .dropdown-links {
+    flex-direction: column;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 0.75rem;

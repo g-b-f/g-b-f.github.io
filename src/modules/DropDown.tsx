@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { tapOrClickCap } from "../utils/Misc";
 import { type DropdownType } from "./Navigation";
 import { NavLink } from "react-router-dom";
@@ -14,7 +14,7 @@ export function DropDown(props: DropdownType) {
   return (
     <nav className="nav-container">
       {menuEntries.map(([label, routes]) => (
-        <Fragment key={label}>
+        <div className="dropdown-group" key={label}>
           <nav
             className="nav-button"
             title={`${tapOrClickCap} to view items`}
@@ -41,7 +41,7 @@ export function DropDown(props: DropdownType) {
                 ))}
             </div>
           </div>
-        </Fragment>
+        </div>
       ))}
     </nav>
   );
