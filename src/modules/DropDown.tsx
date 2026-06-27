@@ -1,7 +1,27 @@
 import { useState } from "react";
 import { tapOrClickCap } from "../utils/Misc";
-import { type DropdownType } from "./Navigation";
+import { type DropdownType, type RouteType } from "./Navigation";
 import { NavLink } from "react-router-dom";
+
+function DisplayLinks({ routes }: { routes: RouteType[] }) {
+  return (
+    <div className="dropdown-links">
+      {routes
+        .filter((r) => r.showInNav !== false)
+        .map((route) => (
+          <NavLink
+            key={route.path}
+            to={route.path}
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            <nav className="nav-button">{route.label}</nav>
+          </NavLink>
+        ))}
+    </div>
+  );
+}
 
 export function DropDown(props: DropdownType) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -22,24 +42,8 @@ export function DropDown(props: DropdownType) {
           >
             {label}
           </nav>
-          <div
-            className={`dropdown-container ${openMenu === label ? "open" : ""}`}
-          >
-            <div className="dropdown-links">
-              {routes
-                .filter((r) => r.showInNav !== false)
-                .map((route) => (
-                  <NavLink
-                    key={route.path}
-                    to={route.path}
-                    className={({ isActive }) =>
-                      isActive ? "nav-link active" : "nav-link"
-                    }
-                  >
-                    <nav className="nav-button"> {route.label} </nav>
-                  </NavLink>
-                ))}
-            </div>
+          <div className={`dropdown-container ${openMenu === label ? "open" : ""}`} >
+            <DisplayLinks routes={routes} />
           </div>
         </div>
       ))}
