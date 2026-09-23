@@ -64,7 +64,8 @@ As seen, the best message is explicit about coordinates without being excessive.
 
 With the out of bounds message optimised, at least for now, I turned my attention to model choice.
 
-- `llama-3.2-3b-q4_0`
+
+- `kaetemi/Llama-3.2-3B-Q4_0-GGUF`
     - pretty good
 
 | Trial | Seed | Context Size | Temperature | Frequency Penalty | Presence Penalty | Repeat Penalty | Min P | Comment |
@@ -87,11 +88,15 @@ Nemotron
 - Does give interesting responses
 - I'll give it like an hour so
 
+### MiniCPM
+
+Seems to listen to "you can't leave the tank", but not actually respect it.
+Reddit got my hopes up but it seems kinda dumb.
+
 ## Changing out-of-bounds message injection
 
 Presently, upon attempting to go out of bounds gives the out-of-bounds message in the `system` role.
 I wanted to experiment with different roles.
-
 
 
 ```json
@@ -101,8 +106,13 @@ I wanted to experiment with different roles.
 {"op_code":5,"worker_id":"47f8d929-115a-42de-bece-da65e7d9d3bb-29688","trial_id":251,"param_name":"presence_penalty","param_value_internal":0.20042013398601832,"distribution":"{\"name\": \"FloatDistribution\", \"attributes\": {\"step\": null, \"low\": 0.2, \"high\": 2.5, \"log\": false}}"}
 {"op_code":5,"worker_id":"47f8d929-115a-42de-bece-da65e7d9d3bb-29688","trial_id":251,"param_name":"repeat_penalty","param_value_internal":1.008843561462299,"distribution":"{\"name\": \"FloatDistribution\", \"attributes\": {\"step\": null, \"low\": 0.2, \"high\": 2.5, \"log\": false}}"}
 {"op_code":6,"worker_id":"47f8d929-115a-42de-bece-da65e7d9d3bb-29688","trial_id":251,"state":3,"values":null,"datetime_complete":"2026-09-11T11:22:33.361628"}
-
 ```
+
+
+## Training
+
+In order to train with pre-existing messages, I needed to improve the thought logging system.
+While I was able to quickly throw together a `jsonl` based logger, I wanted to practice postgres.
 
 <!-- Dependancy injection -->
 
@@ -129,7 +139,4 @@ Awful dev experience
 - could all be replaced with a json
 
 
-### MiniCPM
-
-Seems to listen to "you can't leave the tank", but not actually respect it.
-Reddit got my hopes up but it seems kinda dumb. -->
+ -->
