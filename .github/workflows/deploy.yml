@@ -21,16 +21,24 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install SPA site dependencies
         run: npm ci
-      
+
+      - name: Install blog dependencies
+        run: npm --prefix blog ci
+
       - name: Add LLM directives
         run: npm run directive
 
-      - name: Build
+      - name: Build SPA site
         run: npm run build:gh
+
+      - name: Build blog
+        run: npm --prefix blog run build
+
+      - name: Merge blog build into SPA dist
+        run: mv blog/build dist/blog
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v5

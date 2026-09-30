@@ -68,18 +68,6 @@
     }
 } */
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  /* border-inline: 1px solid var(--border); */
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
 }
@@ -103,21 +91,111 @@ h2 {
   letter-spacing: -0.24px;
   margin: 0 0 8px;
 }
-p {
-  margin: 0;
-}
 
-code,
-.counter {
+code {
   font-family: var(--mono);
   display: inline-flex;
   border-radius: 4px;
   color: var(--text-h);
-}
-
-code {
   font-size: 15px;
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+/* ============================================================
+   Docusaurus (blog) theme.
+   Maps the SPA palette (defined in the :root above) onto
+   Docusaurus's ifm-* variables so the blog matches the SPA.
+   Inert in the SPA: the SPA never sets a [data-theme] attribute.
+   ============================================================ */
+[data-theme='dark'] {
+  --ifm-color-primary: var(--accent);
+  --ifm-color-primary-dark: #b074ec;
+  --ifm-color-primary-darker: #a96ceb;
+  --ifm-color-primary-darkest: #8c55c4;
+  --ifm-color-primary-light: #ca95fc;
+  --ifm-color-primary-lighter: #d1a1fc;
+  --ifm-color-primary-lightest: #dfc2fd;
+
+  --ifm-background-color: var(--bg);
+  --ifm-background-surface-color: var(--bg);
+  --ifm-font-color-base: var(--text);
+  --ifm-heading-color: var(--text-h);
+  --ifm-h1-color: var(--text-h);
+  --ifm-h2-color: var(--text-h);
+  --ifm-h3-color: var(--text-h);
+
+  --ifm-font-family-base: var(--sans);
+  --ifm-font-family-monospace: var(--mono);
+  --ifm-font-size-base: 18px;
+  --ifm-line-height-base: 1.45;
+  --ifm-letter-spacing: 0.18px;
+
+  --ifm-navbar-background-color: #242424;
+  --ifm-navbar-link-color: var(--text);
+  --ifm-navbar-link-hover-color: var(--accent);
+  --ifm-navbar-link-hover-background-color: var(--accent-bg);
+  --ifm-navbar-shadow: 0 1px 0 var(--accent-border);
+
+  --ifm-toc-border-color: var(--border);
+  --ifm-toc-link-color: var(--text-grey);
+  --ifm-toc-link-color--hover: var(--accent);
+
+  --ifm-card-background-color: var(--bg);
+  --ifm-card-border-radius: 8px;
+  --ifm-card-highlight-color: var(--accent-border);
+
+  --ifm-code-background: var(--code-bg);
+  --ifm-code-border-radius: 4px;
+  --ifm-pre-background: var(--code-bg);
+  --ifm-pre-border-radius: 8px;
+
+  --ifm-footer-background-color: #101116;
+  --ifm-footer-color: var(--text-grey);
+  --ifm-footer-link-color: var(--text);
+  --ifm-footer-link-hover-color: var(--accent);
+  --ifm-footer-title-color: var(--text-h);
+
+  --ifm-breadcrumb-border-color: var(--border);
+  --ifm-breadcrumb-color: var(--text-grey);
+  --ifm-breadcrumb-item-color--disabled: var(--text-grey);
+  --ifm-breadcrumb-item-color--active: var(--text);
+
+  --ifm-menu-color: var(--text-grey);
+  --ifm-menu-color-active: var(--text);
+  --ifm-menu-color-background-active: var(--accent-bg);
+  --ifm-menu-link-subtitle-color: var(--text-grey);
+
+  --ifm-button-background: var(--accent-bg);
+  --ifm-button-border-color: transparent;
+  --ifm-button-color: var(--accent);
+  --ifm-button-hover-background: var(--accent-bg);
+  --ifm-button-hover-border-color: var(--accent-border);
+  --ifm-button-hover-color: var(--accent);
+
+  --ifm-link-color: var(--accent);
+  --ifm-link-hover-color: #d1a1fc;
+
+  --ifm-alert-border-radius: 8px;
+  --ifm-table-border-color: var(--border);
+  --ifm-table-row-background: var(--bg);
+  --ifm-table-row-background-odd: #1b1c23;
+  --ifm-table-row-background-hover: var(--accent-bg);
+
+  --ifm-hero-background-color: var(--bg);
+  --ifm-hero-alternate-background-color: #101116;
+
+  --ifm-blog-container-background: var(--bg);
+  --ifm-blog-post-link-background: var(--accent-bg);
+  --ifm-blog-post-link-hover-background: var(--accent-bg);
+}
+
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3,
+[data-theme='dark'] h4,
+[data-theme='dark'] h5,
+[data-theme='dark'] h6 {
+  font-weight: 500;
 }

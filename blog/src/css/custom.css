@@ -1,0 +1,12 @@
+/**
+ * Blog-specific CSS (Docusaurus).
+ *
+ * The bulk of the theme — design tokens, base typography, and the ifm-*
+ * variable mapping — lives in the shared SPA stylesheet (src/index.css),
+ * which is loaded before this file. Only blog-specific tweaks belong here.
+ */
+
+/* The SPA resets paragraph margins under #root; give blog prose some spacing. */
+.markdown p {
+  margin: 0.5rem 0;
+}
