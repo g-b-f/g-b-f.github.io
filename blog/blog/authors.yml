@@ -1,6 +1,6 @@
 # Maps author IDs (used in post front matter) to their details.
 # `page: true` generates an internal author page at /blog/authors/<key>.
-g-b-f:
+gbf:
   name: Gabriel Birkbeck Frazer
-  title: Page Owner
+  # title: Site Owner
   page: false
