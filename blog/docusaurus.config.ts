@@ -8,9 +8,7 @@ const config: Config = {
     onBrokenLinks: 'throw',
     // Docusaurus's head script defaults to 'light' and ignores defaultMode,
     // so force dark here (this runs after that script).
-    head: [
-        '<script>document.documentElement.setAttribute("data-theme","dark")</script>',
-    ],
+    // head: [ '<script>document.documentElement.setAttribute("data-theme","dark")</script>'],
     // The SPA is dark-only, so force the blog to dark mode as well.
     themeConfig: {
         colorMode: {
@@ -25,10 +23,10 @@ const config: Config = {
                 { to: '/blog/', label: 'Blog', position: 'left' },
             ],
         },
-        footer: {
-            style: 'dark',
-            copyright: `Copyright © ${new Date().getFullYear()} g-b-f.github.io`,
-        },
+        // footer: {
+        //     style: 'dark',
+        //     copyright: `Copyright © ${new Date().getFullYear()} g-b-f.github.io`,
+        // },
     },
     presets: [
         [
